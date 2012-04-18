@@ -1,0 +1,22 @@
+This website is meant for exploring places of city based on user's suggestion.
+
+When we visit a new place, and even the same place where we are living,
+we want to explore which interesting things are surrounding us,
+so that we can make our experience better. So what do we do?
+We google "bar nearby Bangalore" and we got large no. of results which makes us more miserable.
+Which is a better place to hangout, we got confused.
+We go for ratings and usually more famous places have high stars,
+but that doesn't mean you should go for that.
+Ex- Oval bar in Mantri mall, having high rating may not solve your purpose,
+may be price is high due to high star mall. The solution is direct user experience.
+
+So here comes our website...
+A site providing interesting experiences and places about the city.
+These experiences are shared by users related to the place in a particular city.
+They can tag their experience with funny. hangover, dance etc.
+When a new user come, he will search for the city,
+and the results showing experiences related to places in that city will be shown.
+So a user can choose the place according to his mood and taste.
+He also can share about his experience and another place and things go on.
+
+So basically its a tool to explore the city but key is experience, mood etc.

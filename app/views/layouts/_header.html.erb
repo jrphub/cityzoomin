@@ -1,0 +1,47 @@
+<!-- Dynamic Background -->
+		<div id="headerimgs">
+			<div id="headerimg1" class="headerimg"></div>
+			<div id="headerimg2" class="headerimg"></div>
+		</div>
+		<!-- ENDS Dynamic Background -->
+		
+		<!-- background nav -->
+		<div id="headernav">
+			<div id="back" class="btn"></div>
+			<div id="next" class="btn"></div>
+		</div>
+		<!-- ENDS background nav -->
+		
+		<div id="top-gap"></div>
+
+		<!-- wrapper -->
+		<div class="wrapper">
+		
+			<%=link_to image_tag("logo.png",alt: "CityZoomin",id:"logo"), root_path()%>
+			
+			<!-- nav bar holder -->
+			<div id="nav-bar-holder">
+				<!-- Navigation -->
+				<ul id="nav" class="sf-menu">
+					<li><%= link_to "Home", root_path %></li>
+					<li><a href="#">Pages</a>
+						<ul>
+							<li><a href="#">if any</a></li>
+							<li><a href="#">if any</a></li>
+						</ul>
+					</li>
+					<li><%= link_to "Help", help_path %></li>
+					<li><%= link_to "About", about_path %></li>
+					<li><%= link_to "Contact", contact_path %></li>
+				</ul>
+				<!-- ENDS Navigation -->
+				
+				<!-- Social -->
+				<ul class="social">
+					<li><a href="http://www.facebook.com" class="poshytip  facebook" title="Become a fan"></a></li>
+					<li><a href="http://www.twitter.com" class="poshytip  twitter" title="Follow my tweets"></a></li>
+					<li><a href="http://www.dribbble.com" class="poshytip  dribbble" title="Working on..."></a></li>
+				</ul>
+				<!-- ENDS Social -->
+			</div>
+			<!-- ENDS nav bar holder -->

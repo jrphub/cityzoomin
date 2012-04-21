@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Cityzoomin</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <!-- JS -->
+		<script type="text/javascript" src="/assets/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="/assets/slider.js"></script>
+		<script type="text/javascript" src="/assets/custom.js"></script>
+		<script src="/assets/slides/source/slides.min.jquery.js"></script>
+		<script src="/assets/quicksand.js"></script>
+		
+		<!-- superfish -->
+		<script type="text/javascript" src="/assets/superfish-1.4.8/js/hoverIntent.js"></script>
+		<script type="text/javascript" src="/assets/superfish-1.4.8/js/superfish.js"></script>
+		<script type="text/javascript" src="/assets/superfish-1.4.8/js/supersubs.js"></script>
+		<!-- ENDS superfish -->
 
-<%= yield %>
+		<!-- poshytip -->
+		<link rel="stylesheet" href="/assets/poshytip-1.0/src/tip-twitter/tip-twitter.css" type="text/css" />
+		<link rel="stylesheet" href="/assets/poshytip-1.0/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css" />
+		<script type="text/javascript" src="/assets/poshytip-1.0/src/jquery.poshytip.min.js"></script>
+		<!-- ENDS poshytip -->
+		
+		
+		
+		<!-- prettyPhoto -->
+		<script type="text/javascript" src="/assets/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+		<link rel="stylesheet" href="/assets/prettyPhoto/css/prettyPhoto.css" type="text/css" media="screen" />
+		<!-- ENDS prettyPhoto -->
+		
+		<!-- GOOGLE FONTS -->
+		<!--link href='http://fonts.googleapis.com/css?family=Droid+Serif:400italic' rel='stylesheet' type='text/css'-->
 
-</body>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>    
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+    	<% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
 </html>

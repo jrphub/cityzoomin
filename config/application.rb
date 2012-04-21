@@ -38,6 +38,8 @@ module Cityzoomin
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    #the below two lines are for making css and js file not 404, lifesaver.
     config.assets.precompile << '*.js'
     config.assets.precompile << '*.css'
 

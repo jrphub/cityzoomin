@@ -39,6 +39,7 @@ module Cityzoomin
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     config.assets.precompile << '*.js'
+    config.assets.precompile << '*.css'
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,

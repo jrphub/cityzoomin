@@ -13,7 +13,8 @@ var photos = [
 	{ "image" : "/assets/bg/blue.jpg", "color" : "#ffffff" },
 	{"image" : "/assets/bg/spaces.jpg", "color" : "#000000" },
 	{ "image" : "/assets/bg/twilight.jpg", "color" : "#000000" },
-	{ "image" : "/assets/bg/rainbow.jpg", "color" : "#ffffff" }
+	{ "image" : "/assets/bg/rainbow.jpg", "color" : "#ffffff" },
+	{ "image" : "/assets/bg/umbrella.jpg", "color" : "#6698FF" }
 ];
 
 // IMPORTANT: Don't mess below this line //

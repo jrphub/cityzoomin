@@ -7,7 +7,7 @@ var slideshowSpeed = 9000;
 
 
 
-// Variable to store the img/slider we need to set as background
+// Variable to store the images/slider we need to set as background
 var photos = [ 
 	{"image" : "/assets/bg/grunge.jpg", "color" : "#ffffff" },
 	{ "image" : "/assets/bg/blue.jpg", "color" : "#ffffff" },

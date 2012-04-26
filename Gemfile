@@ -6,7 +6,6 @@ gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 #gem 'activerecord-postgresql-adapter'
-gem 'pg'
 
 group :development, :test do
   gem 'mysql2'
@@ -38,5 +37,5 @@ group :test do
 end
 
 group :production do
-#  gem 'pg'
+  gem 'pg'
 end

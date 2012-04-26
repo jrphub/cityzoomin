@@ -1,6 +1,9 @@
 Cityzoomin::Application.routes.draw do
+  resources :users
+
   root :to => 'pages#home'
   
+  match 'signup',  to: 'users#new'
   match 'home', to: 'pages#home'
   match 'about', to: 'pages#about'
   match 'contact', to: 'pages#contact'

@@ -53,6 +53,13 @@ a{
 	min-height: 500px;
 }
 
+#signup-content{
+	width: 606px;
+	float:right ;
+	margin-right: 20px;
+	min-height: 500px;
+}
+
 /* WP images ALIGNMENT  --------------------------------------------------*/
 
 
@@ -308,13 +315,15 @@ a{
 
 /* FORMS ------------------------------------------------------------*/
 
-#commentform,
+#commentform,#new_user
 #contactForm{
 	margin-bottom: 18px;
 }
 
 #contactForm input,
 #contactForm textarea,
+#new_user input,
+#new_user textarea,
 #commentform input,
 #commentform textarea{
 	padding: 10px 15px;
@@ -330,18 +339,21 @@ a{
 }
 
 #contactForm input,
+#new_user input,
 #commentform input{
 	width: 200px;
 	margin-bottom: 20px;
 }
 
 #contactForm textarea,
+#new_user textarea,
 #commentform textarea{
 	width: 570px;
 	height: 230px;
 }
 
 #contactForm #submit,
+#new_user #submit,
 #commentform #submit{
 	width: 76px;
 	margin: 21px 0px;
@@ -355,15 +367,16 @@ a{
 }
 
 #contactForm #submit:hover,
+#new_user #submit:hover,
 #commentform input#submit:hover{
 	opacity: 0.8;
 }
 
 #contactForm label,
+#new_user label,
 #commentform label{
 	padding-left: 7px;
 }
-
 
 #respond{ 
 	margin: 25px 0 0px 0px;
@@ -378,7 +391,27 @@ a{
 }
 
 #error{
-	margin-left: 10px;
+	padding:2px 4px;
+	margin:20px 200px 20px 200px;
+	border:solid 1px #FBD3C6;
+	background:#FDE4E1;
+	color:#CB4721;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+
+}
+
+#success{
+	padding:2px 4px;
+	margin:20px 200px 20px 200px;
+	border:solid 1px #C0F0B9;
+	background:#D5FFC6;
+	color:#48A41C; 
+	font-family:Arial, Helvetica, sans-serif; font-size:14px; 
+	font-weight:bold;
+	text-align:center;
 }
 
 /* GOOGLE MAP -----------------------------------------------------*/
@@ -843,13 +876,16 @@ h1,h2,h3,h4,h5,h6{
 	background: url("/assets/ribbon.png") no-repeat top left;
 	
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+	
 }
 
-.ribbon span{
+.ribbon span a{
 	background: url("/assets/ribbon.png") no-repeat bottom right;
 	display: block;
 	line-height: 59px;
 	padding-right: 49px;
+	text-decoration: none;
+	color: #f2f2f2;
 }
 
 /* FEATURED -------------------------------------------------------*/

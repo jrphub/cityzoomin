@@ -1,0 +1,59 @@
+<div id="content-wrap">
+<!-- Page wrap -->
+    	<div id="page-wrap">
+    	
+			<div class="page-title" style="text-align: center;"><h1>Sign Up</h1>
+				 <span>It's free.</span></div>
+			<div id="error"></div>
+			<!-- side content -->
+			<div id="signup-content">
+			<!-- form -->
+						
+						<!-- send mail configuration -->
+						<!--input type="hidden" value="jyotirajanpattnaik@gmail.com" name="to" id="to" />
+						<input type="hidden" value="ENter the subject here" name="subject" id="subject" />
+						<input type="hidden" value="send-mail.php" name="sendMailUrl" id="sendMailUrl" /-->
+						<!-- ENDS send mail configuration -->
+						
+					
+				<!--form id="new_user" action="/users" and each element has id user_* -->
+				<%= form_for(@user) do |f| %>
+					<!-- if javascript is disabled in a browser, we should provide server side validation-->
+					<%= render 'shared/error_messages', object: f.object %>
+					<fieldset>
+						<div>
+					      	<%= f.text_field :name, :class =>"form-poshytip", :title =>"Enter your full name" %>
+					      	<%= f.label :name %>
+			      		</div>
+						<div>
+					      	<%= f.text_field :email, :class => "form-poshytip", :title =>"Valid E-mail please, you will need it to log in!" %>
+					      	<%= f.label :email %>
+						</div>
+						<div>
+					      	<%= f.password_field :password, :class => "form-poshytip", :title =>"At least 6 characters" %>
+					      	<%= f.label :password %>
+						</div>
+						<div>
+					      	<%= f.password_field :password_confirmation, :class =>"form-poshytip", :title =>"Re-enter your password" %>
+					      	<%= f.label :password_confirmation, "Confirmation" %>
+						</div>
+			      			<p style="padding-left:80px;"><%= f.submit "Signup", :id =>"submit"%></p>
+			      	</fieldset>
+		    	<% end %>
+				<!--p id="success" class="success">Form data sent. Thanks for your comments.</p-->
+				<!-- ENDS form -->
+			</div>
+			<!-- ENDS side content -->
+
+			<div class="clear"></div>
+    	
+    	</div>
+    	<!-- ENDS Page wrap -->
+    	
+    </div>
+    <!-- ENDS content wrap -->
+    
+</div>
+<!-- ENDS Wrapper -->
+<script type="text/javascript" src="/assets/signup_form_validations.js"></script>
+  

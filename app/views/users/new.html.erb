@@ -18,24 +18,28 @@
 					
 				<!--form id="new_user" action="/users" and each element has id user_* -->
 				<%= form_for(@user) do |f| %>
-					<!-- if javascript is disabled in a browser, we should provide server side validation-->
-					<%= render 'shared/error_messages', object: f.object %>
+					<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
+					<%= render 'shared/error_messages', object: f.object%>
 					<fieldset>
 						<div>
+							<%= f.label :name %><br>
 					      	<%= f.text_field :name, :class =>"form-poshytip", :title =>"Enter your full name" %>
-					      	<%= f.label :name %>
+					      	
 			      		</div>
 						<div>
+							<%= f.label :email %><br>
 					      	<%= f.text_field :email, :class => "form-poshytip", :title =>"Valid E-mail please, you will need it to log in!" %>
-					      	<%= f.label :email %>
+					      	
 						</div>
 						<div>
+							<%= f.label :password %><br>
 					      	<%= f.password_field :password, :class => "form-poshytip", :title =>"At least 6 characters" %>
-					      	<%= f.label :password %>
+					      	
 						</div>
 						<div>
+							<%= f.label :password_confirmation, "Confirmation" %><br>
 					      	<%= f.password_field :password_confirmation, :class =>"form-poshytip", :title =>"Re-enter your password" %>
-					      	<%= f.label :password_confirmation, "Confirmation" %>
+					      	
 						</div>
 			      			<p style="padding-left:80px;"><%= f.submit "Signup", :id =>"submit"%></p>
 			      	</fieldset>

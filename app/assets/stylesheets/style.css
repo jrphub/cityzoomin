@@ -4,9 +4,9 @@
 
 
 /* IMPORTS ------------------------------------------------------------*/
-
 @import url("/assets/reset.css");
 @import url("/assets/comments.css");
+
 
 
 /* HACKS ------------------------------------------------------------*/
@@ -400,8 +400,48 @@ a{
 	font-size:14px;
 	font-weight:bold;
 	text-align:center;
-
+	ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
 }
+
+.field_with_errors {
+  color: #CB4721;
+  
+ }
+
+#server_error{
+	text-align: left;
+	margin: 10px 200px 10px 10px; 
+	color: #CB4721;
+	font-size:14px;
+	font-family:Arial, Helvetica, sans-serif;
+	background:#FDE4E1;
+	font-weight:bold;
+	padding:20px;
+}
+/*
+#error_explanation {
+  color:#f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.alert alert-error {
+	padding:2px 4px;
+	margin:20px 200px 20px 200px;
+	border:solid 1px #FBD3C6;
+	background:#FDE4E1;
+	color:#CB4721;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+}*/
+
 
 #success{
 	padding:2px 4px;

@@ -13,7 +13,7 @@
 				<!--form id="new_user" action="/sessions" and each element has id user_* -->
 				<%= form_for(:session, :url => sessions_path) do |f| %>
 					<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-					<%= render 'shared/error_messages', object: f.object%>
+					
 					<fieldset>
 						<div>
 							<%= f.label :email %><br>

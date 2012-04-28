@@ -485,7 +485,7 @@
 	// default options
 	$.fn.slides.option = {
 		preload: false, // boolean, Set true to preload images in an image based slideshow
-		preloadImage: '/img/loading.gif', // string, Name and location of loading image for preloader. Default is "/img/loading.gif"
+		preloadImage: '/assets/loading.gif', // string, Name and location of loading image for preloader. Default is "/assets/loading.gif"
 		container: 'slides_container', // string, Class name for slides container. Default is "slides_container"
 		generateNextPrev: false, // boolean, Auto generate next/prev buttons
 		next: 'next', // string, Class name for next button

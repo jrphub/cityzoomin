@@ -22,7 +22,7 @@
       overflow-x: hidden;
       padding: 0px 5px 10px 22px;
       margin-bottom: 10px;
-      background: url("../img/tweet-quotes.png") no-repeat 0px 3px transparent;
+      background: url("/assets/tweet-quotes.png") no-repeat 0px 3px transparent;
       border-bottom: 1px solid #373737;
 }
 

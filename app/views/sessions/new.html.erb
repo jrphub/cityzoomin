@@ -1,4 +1,5 @@
 <%provide(:title,"Sign in")%>
+
 <div id="content-wrap">
 <!-- Page wrap -->
     	<div id="page-wrap">
@@ -7,22 +8,22 @@
 				 <span>I'm excited to meet you</span></div>
 			<div id="error"></div>
 			<!-- side content -->
-			<div id="signup-content">
+			<div id="signin-content">
 			<!-- form -->
 						
 				<!--form id="new_user" action="/sessions" and each element has id user_* -->
 				<%= form_for(:session, :url => sessions_path) do |f| %>
 					<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-					
+					<!--%= render 'shared/error_messages', object: f.object%-->
 					<fieldset>
 						<div>
 							<%= f.label :email %><br>
-					      	<%= f.text_field :email, :class => "form-poshytip", :title =>"Valid E-mail please, you will need it to log in!" %>
+					      	<%= f.text_field :email, :class => "form-poshytip", :title =>"Your registered email id please!" %>
 					      	
 						</div>
 						<div>
 							<%= f.label :password %><br>
-					      	<%= f.password_field :password, :class => "form-poshytip", :title =>"At least 6 characters" %>
+					      	<%= f.password_field :password, :class => "form-poshytip", :title =>"Hope!you've remembered your password" %>
 					      	
 						</div>
 			      			<p style="padding-left:80px;"><%= f.submit "Signin", :id =>"submit"%></p>
@@ -44,4 +45,5 @@
 </div>
 <!-- ENDS Wrapper -->
 <script type="text/javascript" src="/assets/signin_form_validations.js"></script>
+
   

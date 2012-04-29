@@ -4,14 +4,14 @@ Cityzoomin::Application.routes.draw do
   
   root :to => 'pages#home'
   
-  match 'signup',  to: 'users#new'
-  match 'signin', to: 'sessions#new'
-  match 'signout', to: 'sessions#destroy', via: :delete
+  match '/signup',  to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
   
-  match 'home', to: 'pages#home'
-  match 'about', to: 'pages#about'
-  match 'contact', to: 'pages#contact'
-  match 'help', to: 'pages#help'
+  match '/home', to: 'pages#home'
+  match '/about', to: 'pages#about'
+  match '/contact', to: 'pages#contact'
+  match '/help', to: 'pages#help'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,4 +1,6 @@
 <!-- Dynamic Background -->
+<%= javascript_include_tag 'application' %>
+<!--gems overwrite the new structure of the default.js location-->
 		<div id="headerimgs">
 			<div id="headerimg1" class="headerimg"></div>
 			<div id="headerimg2" class="headerimg"></div>
@@ -37,14 +39,15 @@
 		                <li><%= link_to "Profile", current_user %></li>
 		                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
 		                <li>
-		                  <%= link_to "Sign out", signout_path, method: "delete" %>
+		                  <%= link_to "Sign out", signout_path, :method => :delete %>
 		                </li>
 		              
 		          <% else %>
 		            <li><%= link_to "Sign in", signin_path %></li>
-		          <% end %>
-		          <li><%= link_to "About", about_path %></li>
+		            <li><%= link_to "About", about_path %></li>
 					<li><%= link_to "Contact", contact_path %></li>
+		          <% end %>
+		          	
 				</ul>
 				<!-- ENDS Navigation -->
 				

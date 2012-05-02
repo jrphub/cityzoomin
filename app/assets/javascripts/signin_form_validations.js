@@ -5,7 +5,7 @@ $(document).ready(function(){
 	// hide messages 
 	$("#error").hide();
 	$("#success").hide();
-	var form = $("#new_user");
+	var form = $("#session_user");
 	// on submit...
 	form.submit(function() {
 		$("#error").hide();
@@ -13,7 +13,8 @@ $(document).ready(function(){
 		//required:
 		
 		// email
-		var email = $("input#session_email").val();
+		var email = $("#session_email").val();
+		
 		if(email == ""){
 			$("#error").fadeIn().text("Email required");
 			$("input#session_email").focus();
@@ -31,7 +32,7 @@ $(document).ready(function(){
 			return false;
 		}
 		// password
-		var password = $("input#session_password").val();
+		var password = $("#session_password").val();
 		if(password == ""){
 			$("#error").fadeIn().text("Password required");
 			$("input#session_password").focus();

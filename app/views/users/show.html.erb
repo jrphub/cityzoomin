@@ -1,11 +1,48 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div id="content-wrap">
+<!-- Page wrap -->
+    	<div id="page-wrap">
+    		<table style="border-collapse: collapse;">
+    			<tbody>
+    				<tr>
+    					<td style="width:30%">
+    						<table>
+	    						<tr>
+	    							<td>
+	    								<div class="gravatar">
+	    									<%= gravatar_for @user%>
+	    								</div>
+	    							</td>
+    							</tr>
+    							<tr>
+	    							<td>
+	    								<p style="font-size: 18px;font-weight: bold;text-align: center"><%= @user.name %></p>
+	    							</td>
+	    						</tr>
+    						</table>
+    					</td>
+    				</tr>
+    			</tbody>
+    			</table>
+    			<img src="/assets/page-title.png" style="text-align: center;height: 50px;"/>
+			<!--div id="user-header">
+				<div id="left-header">
+					<%= gravatar_for @user%>
+					<p><%= @user.name %></p>
+				</div>
+				<div id="right-header">
+					<span>Hey! it's always feel good to see you back</span>
+					<h2>Your Details:</h2>
+					<br />
+				</div>
+				
+				 
+			 </div-->
+      		<div id="side-content">
+				<h2 style="padding-top: 20px;">Under Construction</h2>
+    		</div>
+    	<!-- ENDS Page wrap -->
+    </div>
+    <!-- ENDS content wrap -->
 </div>
+<!-- ENDS Wrapper -->

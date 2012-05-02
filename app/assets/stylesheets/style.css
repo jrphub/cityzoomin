@@ -319,7 +319,6 @@ a{
 #contactForm{
 	margin-bottom: 18px;
 }
-
 #contactForm input,
 #contactForm textarea,
 #new_user input,
@@ -421,6 +420,8 @@ a{
 	font-weight:bold;
 	padding:20px;
 }
+
+
 /*
 #error_explanation {
   color:#f00;
@@ -590,6 +591,45 @@ h1,h2,h3,h4,h5,h6{
 	font-weight: 400;
 	line-height: 1.2em;
 }
+/*
+#user-header{
+	padding:10px;
+	
+}*/
+
+.gravatar{
+	padding:5px;
+	height:100px;
+	width: 100px;
+	
+}
+/*
+#left-header{
+	float:left;
+	padding-top:30px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:10px;
+	
+}
+
+#left-header p{
+	font-size: 20px;
+	padding-left: 40px;
+}
+#right-header{
+	padding-top:30px;
+	padding-right:550px;
+}
+#right-header span{
+	font-size: 18px;
+	
+}
+#separator{
+	background: url("/assets/page-title.png")  center bottom no-repeat ;
+	margin:30px;
+}*/
+
 
 /* PAGE TITLE -------------------------------------------------------------------*/
 
@@ -602,6 +642,8 @@ h1,h2,h3,h4,h5,h6{
 	display: inline;
 	line-height: 70px;
 }
+
+
 
 .page-title span{
 	color: #999999;

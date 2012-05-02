@@ -13,10 +13,10 @@ $(document).ready(function(){
 		//required:
 		
 		// email
-		var email = $("input#user_email").val();
+		var email = $("input#session_email").val();
 		if(email == ""){
 			$("#error").fadeIn().text("Email required");
-			$("input#user_email").focus();
+			$("input#session_email").focus();
 			return false;
 		}
 		//email regex
@@ -27,14 +27,14 @@ $(document).ready(function(){
 		
 		if(!isValidEmailAddress(email)) {
 	    	$("#error").fadeIn().text("Email should contain only alphanumeric characters and +_-.");
-			$("input#user_email").focus();
+			$("input#session_email").focus();
 			return false;
 		}
 		// password
-		var password = $("input#user_password").val();
+		var password = $("input#session_password").val();
 		if(password == ""){
 			$("#error").fadeIn().text("Password required");
-			$("input#user_password").focus();
+			$("input#session_password").focus();
 			return false;
 		}
 		

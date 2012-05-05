@@ -315,7 +315,7 @@ a{
 
 /* FORMS ------------------------------------------------------------*/
 
-#commentform,#new_user,#session_user
+#commentform,#new_user,.edit_user,#session_user
 #contactForm{
 	margin-bottom: 18px;
 }
@@ -323,6 +323,8 @@ a{
 #contactForm textarea,
 #new_user input,
 #new_user textarea,
+.edit_user input,
+.edit_user textarea,
 #session_user input,
 #session_user textarea,
 #commentform input,
@@ -341,6 +343,7 @@ a{
 
 #contactForm input,
 #new_user input,
+.edit_user input,
 #session_user input,
 #commentform input{
 	width: 200px;
@@ -349,6 +352,7 @@ a{
 
 #contactForm textarea,
 #new_user textarea,
+.edit_user textarea,
 #session_user textarea,
 #commentform textarea{
 	width: 570px;
@@ -357,6 +361,7 @@ a{
 
 #contactForm #submit,
 #new_user #submit,
+.edit_user #submit,
 #session_user #submit,
 #commentform #submit{
 	width: 76px;
@@ -372,6 +377,7 @@ a{
 
 #contactForm #submit:hover,
 #new_user #submit:hover,
+.edit_user #submit:hover,
 #session_user #submit:hover,
 #commentform input#submit:hover{
 	opacity: 0.8;
@@ -380,6 +386,7 @@ a{
 #contactForm label,
 #session_user label,
 #new_user label,
+.edit_user label,
 
 #commentform label{
 	padding-left: 7px;
@@ -458,10 +465,15 @@ a{
 
 .alert-error {
     background-color: #F2DEDE;
-    border-color: #EED3D7;
+    border:solid 1px #FBD3C6;
     color: #B94A48;
 }
 
+.alert-success {
+    background-color: #D5FFC6;
+    border:solid 1px #C0F0B9;
+    color: #48A41C;
+}
 .alert {
     
     border: 1px solid #FBEED5;

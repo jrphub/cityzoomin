@@ -33,20 +33,21 @@
 						</ul>
 					</li>
 					<% if signed_in? %>
-		            <li><%= link_to "Users", users_path %></li>
+		            	<li><%= link_to "Users", users_path %></li>
+		            	<li><%= link_to "Profile", current_user %></li>
+		             	<li><a href="#">Account</a>
+							<ul>
+								<li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+								<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+							</ul>
+						</li>
+		                
 		              
-		              
-		                <li><%= link_to "Profile", current_user %></li>
-		                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-		                <li>
-		                  <%= link_to "Sign out", signout_path, :method => :delete %>
-		                </li>
-		              
-		          <% else %>
-		            <li><%= link_to "Sign in", signin_path %></li>
-		            <li><%= link_to "About", about_path %></li>
-					<li><%= link_to "Contact", contact_path %></li>
-		          <% end %>
+		           <% else %>
+			           <li><%= link_to "Sign in", signin_path %></li>
+			           <li><%= link_to "About", about_path %></li>
+					   <li><%= link_to "Contact", contact_path %></li>
+		           <% end %>
 		          	
 				</ul>
 				<!-- ENDS Navigation -->
@@ -55,7 +56,6 @@
 				<ul class="social">
 					<li><a href="http://www.facebook.com" class="poshytip  facebook" title="Become a fan"></a></li>
 					<li><a href="http://www.twitter.com" class="poshytip  twitter" title="Follow my tweets"></a></li>
-					<li><a href="http://www.dribbble.com" class="poshytip  dribbble" title="Working on..."></a></li>
 				</ul>
 				<!-- ENDS Social -->
 			</div>

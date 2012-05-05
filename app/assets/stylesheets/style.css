@@ -463,7 +463,7 @@ a{
 }
 
 
-.alert-error {
+.alert-error, .alert-notice {
     background-color: #F2DEDE;
     border:solid 1px #FBD3C6;
     color: #B94A48;

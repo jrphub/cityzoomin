@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$("#success").hide();
 	
 	// on submit...
-	$("#contactForm #submit").click(function() {
+	$("#formContent #submit").click(function() {
 		$("#error").hide();
 		
 		//required:
@@ -66,7 +66,7 @@ $(document).ready(function(){
 	// on success...
 	 function success(){
 	 	$("#success").fadeIn();
-	 	$("#contactForm").fadeOut();
+	 	$("#formContent").fadeOut();
 	 }
 	
     return false;

@@ -1,0 +1,60 @@
+<% provide(:title, "Share Your Experience") %>
+<div id="content-wrap">
+<!-- Page wrap -->
+    	<div id="page-wrap">
+    	
+			<div class="page-title"><h1>Share Your Experience</h1>
+				 <span>It's a noble job, go ahead.</span></div>
+			<div id="error"></div>
+			<!-- side content -->
+			<div id="formContent" style="padding-left: 20px;">
+					
+				<!--form id="new_user" action="/users" and each element has id user_* -->
+				<%= form_for(@micropost) do |f| %>
+					<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
+					<%= render 'shared/error_messages', object: f.object%>
+					<fieldset>
+						<div>
+							<p>City:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@city%></span></p>
+							<input type="hidden" name="micropost[city]" value="<%=@city%>">
+						</div>
+						<div>
+							<%= f.label :location %><br>
+					      	<%= f.text_field :location, :class =>"form-poshytip", :title =>"Enter particular location" %>
+					      	
+			      		</div>
+						<div>
+							<%= f.label :title %><br>
+					      	<%= f.text_field :title, :class => "form-poshytip", :title =>"Give a title to your post" %>
+					      	
+						</div>
+						<div>
+							<%= f.label :content %><br>
+					      	<%= f.text_field :content, :class => "form-poshytip", :title =>"You can put some word to your memory" %>
+					      	
+						</div>
+						<div>
+							<%= f.label :category %><br>
+					      	<%= f.text_field :category, :class => "form-poshytip", :title =>"Tag your post" %>
+					      	
+						</div>
+			      			<p style="padding-left:80px;"><%= f.submit "Create", :id =>"submit"%></p>
+			      	</fieldset>
+		    	<% end %>
+				<!--p id="success" class="success">Form data sent. Thanks for your comments.</p-->
+				<!-- ENDS form -->
+			</div>
+			<!-- ENDS side content -->
+
+			<div class="clear"></div>
+    	
+    	</div>
+    	<!-- ENDS Page wrap -->
+    	
+    </div>
+    <!-- ENDS content wrap -->
+    
+</div>
+<!-- ENDS Wrapper -->
+<script type="text/javascript" src="/assets/new_post_form_validations.js"></script>
+  

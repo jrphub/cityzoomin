@@ -97,7 +97,7 @@ $(document).ready(function(){
 	// on success...
 		 function success(){
 			 $("#success").fadeIn();
-			 $("#contactForm").fadeOut();
+			 $("#formContent").fadeOut();
 		 }*/
 	
 	

@@ -25,24 +25,46 @@
     			</tbody>
     			</table>
     			<img src="/assets/page-title.png" style="text-align: center;height: 50px;"/>
-			<!--div id="user-header">
-				<div id="left-header">
-					<%= gravatar_for @user%>
-					<p><%= @user.name %></p>
-				</div>
-				<div id="right-header">
-					<span>Hey! it's always feel good to see you back</span>
-					<h2>Your Details:</h2>
-					<br />
-				</div>
+				<div id="">
+					<div style="font-size: 20px;padding-left:10px;padding-top:20px;">Enter a city name to create a post
+					<%= form_tag(new_micropost_path, :method => "get", :id=> "formContent", :onsubmit=>"return validatePost();") do %>
+					<fieldset>
+							<div>
+						      	<input type="text" name="q" id="q">
+						      	<%= submit_tag("Create", :id =>"submit")%>
+				      		</div>
+			      	</fieldset>
+			    	<% end %>
+			    </div>
+				    
+    			</div>
 				
 				 
-			 </div-->
-      		<div id="side-content">
-				<h2 style="padding-top: 20px;">Zoom your city in</h2>
-    		</div>
+			 </div>
+      			
     	<!-- ENDS Page wrap -->
     </div>
     <!-- ENDS content wrap -->
 </div>
 <!-- ENDS Wrapper -->
+<script type="text/javascript">
+	function validatePost(){
+		var city = $("#q").val();
+		if(city == "" || city == null){
+			alert("Please enter a city name");
+			$("input#q").focus();
+			return false;
+		}
+		//city regex
+		/*function isValidCity(city_name) {
+    		var pattern = new RegExp(/^[a-zA-Z0-9-#]$/);
+    		return pattern.test(city_name);
+		};
+		
+		if(!isValidCity(city)) {
+	    	alert("please enter a valid city name")
+			$("input#q").focus();
+			return false;
+		}*/
+	}
+</script>

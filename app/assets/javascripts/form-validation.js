@@ -1,3 +1,5 @@
+//TODO: validations id will be changed after making complete contact form in view
+
 $(document).ready(function(){
 
 	// hide messages 

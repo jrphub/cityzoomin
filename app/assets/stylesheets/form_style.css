@@ -130,6 +130,21 @@ fieldset
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
 
+#inputs textarea
+{
+    background: #f1f1f1 no-repeat;
+    padding: 15px 15px 15px 30px;
+    margin: 0 0 10px 0;
+    width: 353px; /* 353 + 2 + 45 = 400 */
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
 #username
 {
     background-position: 5px -2px !important;

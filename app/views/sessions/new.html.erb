@@ -1,49 +1,32 @@
 <%provide(:title,"Sign in")%>
+	<div id="box">
+		<h1>Log In</h1>
+		<div id="error"></div>
+		<% flash.each do |key, value| %>
+	        <div id="<%= key %>"><%= value %></div>
+	      <% end %>
+		<div id="login">
+		<!-- form -->
+					
+			<!--form id="new_session" action="/sessions" and each element has id user_* -->
+			<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
+				<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
+				<!--%= render 'shared/error_messages', object: f.object%-->
+				<fieldset id="inputs">
+						<%= f.label :email %><br>
+				      	<%= f.text_field :email,:placeholder=>"Email", :autofocus=>"required"%>
+				      	
+						<%= f.label :password %><br>
+				      	<%= f.password_field :password,:placeholder=>"Password", :autofocus=>"required" %>
+				</fieldset>
+				<fieldset id="actions">
+					<%= f.submit "Signin", :id =>"submit"%>
+			        <a href="#">Forgot your password?</a>  
+			        <p style="padding:3px;font-weight: bold;">New User?<%= link_to "Signup", signup_path%></p>   
+		      	</fieldset>
+	    	<% end %>
+		</div>
+	</div>
 
-<div id="content-wrap">
-<!-- Page wrap -->
-    	<div id="page-wrap">
-    	
-			<div class="page-title" style="text-align: center;"><h1>Signin</h1>
-				 <span>I'm excited to meet you</span></div>
-			<div id="error"></div>
-			<!-- side content -->
-			<div id="signin-content">
-			<!-- form -->
-						
-				<!--form id="new_user" action="/sessions" and each element has id user_* -->
-				<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
-					<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-					<!--%= render 'shared/error_messages', object: f.object%-->
-					<fieldset>
-						<div>
-							<%= f.label :email %><br>
-					      	<%= f.text_field :email, :class => "form-poshytip", :title =>"Your registered email id please!" %>
-					      	
-						</div>
-						<div>
-							<%= f.label :password %><br>
-					      	<%= f.password_field :password, :class => "form-poshytip", :title =>"Hope!you've remembered your password" %>
-					      	
-						</div>
-			      			<p style="padding-left:80px;"><%= f.submit "Signin", :id =>"submit"%></p>
-			      			<p style="padding-left:15px;">New User?&nbsp;<%= link_to "Signup Now!", signup_path, :id=>"signup_link"%></p>
-			      	</fieldset>
-		    	<% end %>
-				<!-- ENDS form -->
-			</div>
-			<!-- ENDS side content -->
-
-			<div class="clear"></div>
-    	
-    	</div>
-    	<!-- ENDS Page wrap -->
-    	
-    </div>
-    <!-- ENDS content wrap -->
-    
-</div>
-<!-- ENDS Wrapper -->
-<script type="text/javascript" src="/assets/signin_form_validations.js"></script>
 
   

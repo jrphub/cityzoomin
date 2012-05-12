@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	// hide messages 
 	$("#error").hide();
-	$("#success").hide();
+	//$("#success").hide();
 	var form = $(".edit_user");
 	// on submit...
 	form.submit(function() {

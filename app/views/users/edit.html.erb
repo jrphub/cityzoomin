@@ -1,67 +1,36 @@
-<div id="content-wrap">
-<!-- Page wrap -->
-    	<div id="page-wrap">
-    	
-			<div class="page-title" style="text-align: center;"><h1>Edit Details</h1>
-				 <span>Change is only constant</span></div>
-			<div id="error"></div>
-			<!-- signup content -->
-			<div id="signup-content">
-				<%= gravatar_for @user %>
-    			<a href="http://gravatar.com/emails" id="">change</a>
-    			<div></div>
-			<!-- form -->
-						
-						<!-- send mail configuration -->
-						<!--input type="hidden" value="jyotirajanpattnaik@gmail.com" name="to" id="to" />
-						<input type="hidden" value="ENter the subject here" name="subject" id="subject" />
-						<input type="hidden" value="send-mail.php" name="sendMailUrl" id="sendMailUrl" /-->
-						<!-- ENDS send mail configuration -->
-						
-					
-				<!--form id="new_user" action="/users" and each element has id user_* -->
-				<%= form_for(@user) do |f| %>
-					<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-					<%= render 'shared/error_messages', object: f.object%>
-					<fieldset>
-						<div>
-							<%= f.label :name %><br>
-					      	<%= f.text_field :name, :class =>"form-poshytip", :title =>"Enter your full name" %>
-					      	
-			      		</div>
-						<div>
-							<%= f.label :email %><br>
-					      	<%= f.text_field :email, :class => "form-poshytip", :title =>"Valid E-mail please, you will need it to log in!" %>
-					      	
-						</div>
-						<div>
-							<%= f.label :password %><br>
-					      	<%= f.password_field :password, :class => "form-poshytip", :title =>"At least 6 characters" %>
-					      	
-						</div>
-						<div>
-							<%= f.label :password_confirmation, "Confirmation" %><br>
-					      	<%= f.password_field :password_confirmation, :class =>"form-poshytip", :title =>"Re-enter your password" %>
-					      	
-						</div>
-			      			<p style="padding-left:80px;"><%= f.submit "Update", :id =>"submit"%></p>
-			      	</fieldset>
-		    	<% end %>
-		    	
-				<!--p id="success" class="success">Form data sent. Thanks for your comments.</p-->
-				<!-- ENDS form -->
-			</div>
-			<!-- ENDS signup content -->
-
-			<div class="clear"></div>
-    	
+<%provide(:title,"Profile Edit")%>
+	<div id="box">
+		<h1>Edit Your Profile</h1>
+		<div id="error"></div>
+		<% flash.each do |key, value| %>
+	        <div id="<%= key %>"><%= value %></div>
+	      <% end %>
+		<div id="login">
+			<!--form id="new_user" action="/users" and each element has id user_* -->
+			<%= form_for(@user) do |f| %>
+				<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
+				<%= render 'shared/error_messages', object: f.object%>
+				
+				<div style="text-align: center;"><%= gravatar_for @user%>
+				<a href="http://gravatar.com/emails" id="">change</a></div>
+				<div></div>
+				<br />
+				<fieldset id="inputs">
+				<%= f.label :name %><br>
+		      	<%= f.text_field :name,:placeholder=>"Your Name", :autofocus=>"required"%>
+		      	
+				<%= f.label :email %><br>
+		      	<%= f.text_field :email,:placeholder=>"Email", :autofocus=>"required"%>
+		      	
+				<%= f.label :password %><br>
+		      	<%= f.password_field :password,:placeholder=>"Password", :autofocus=>"required" %>
+		      	
+		      	<%= f.label :password_confirmation, "Confirmation" %><br>
+		      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :autofocus=>"required" %>
+			</fieldset>
+			<fieldset id="actions">
+				<%= f.submit "Update", :id =>"submit"%>
+      		</fieldset>
+	    	<% end %>
     	</div>
-    	<!-- ENDS Page wrap -->
-    	
-    </div>
-    <!-- ENDS content wrap -->
-    
-</div>
-<!-- ENDS Wrapper -->
-<script type="text/javascript" src="/assets/edit_details_validations.js"></script>
-  
+	</div>

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	// hide messages 
 	$("#error").hide();
-	$("#success").hide();
+	//$("#success").hide();
 	
 	// on submit...
 	$("#formContent #submit").click(function() {

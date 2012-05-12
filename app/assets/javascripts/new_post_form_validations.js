@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	// hide messages 
 	$("#error").hide();
-	$("#success").hide();
+	//$("#success").hide();
 	var form = $("#new_micropost");
 	// on submit...
 	form.submit(function() {

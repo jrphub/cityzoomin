@@ -5,6 +5,7 @@ gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem "geocoder"
 #gem 'activerecord-postgresql-adapter'
 
 group :development, :test do

@@ -7,14 +7,22 @@
         <% end %>
 		<div id="login">	
 		<!--form id="new_micropost" action="/micropost" and each element has id micropost_* -->
-			<%= form_for(@micropost) do |f| %>
+			<%= form_for @micropost, :html=>{:multipart => true} do |f| %>
 				<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
 				<%= render 'shared/error_messages', object: f.object%>
 				<fieldset id="inputs">
-						<p>City:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@city%></span></p>
-						<input type="hidden" name="micropost[city]" value="<%=@city%>">
-						<%= f.label :location %><br>
-				      	<%= f.text_field :location,:placeholder=>"Type particular location"%>
+					<%= fields_for(:location) do |i| %>
+						<p>Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
+						<input type="hidden" name="location[name]" value="<%=@loc_name%>">
+						<%= i.label :city %><br>
+				      	<%= i.text_field :city,:placeholder=>"Which city does it belong?"%>
+				      	
+				      	<%= i.label :state %><br>
+				      	<%= i.text_field :state,:placeholder=>"Which state does it belong?"%>
+				      	
+				      	<%= i.label :country %><br>
+				      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
+				    <%end%>
 				      	
 						<%= f.label :title %><br>
 				      	<%= f.text_field :title,:placeholder=>"Give a title to your post"%>

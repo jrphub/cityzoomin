@@ -4,24 +4,22 @@
 #
 #  id          :integer(4)      not null, primary key
 #  content     :string(255)
-#  city        :string(255)
 #  location_id :integer(4)      not null
-#  title       :string(255)
-#  category    :string(255)
-#  user_id     :integer(4)
+#  title       :string(255)     not null
+#  category    :string(255)     not null
+#  user_id     :integer(4)      not null
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :category, :city, :content, :location, :title
+  attr_accessible :category, :content, :title, :location_id
   belongs_to :user
   has_one :location
   
   validates :user_id, presence: true
   validates :category, presence:true
-  validates :city, presence:true
-  validates :location, presence:true
+  validates :location_id, presence:true
   validates :title, presence:true, length:{maximum: 80}
   
   default_scope order: 'microposts.created_at DESC'

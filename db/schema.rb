@@ -11,11 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515214001) do
+ActiveRecord::Schema.define(:version => 20120524193623) do
 
   create_table "locations", :force => true do |t|
     t.string   "name",                                     :null => false
     t.string   "city",                                     :null => false
+    t.string   "state",                                    :null => false
+    t.string   "country",                                  :null => false
     t.decimal  "latitude",   :precision => 6, :scale => 6
     t.decimal  "longitude",  :precision => 6, :scale => 6
     t.datetime "created_at",                               :null => false
@@ -26,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20120515214001) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
-    t.string   "city",        :null => false
     t.integer  "location_id", :null => false
     t.string   "title",       :null => false
     t.string   "category",    :null => false
@@ -38,15 +39,15 @@ ActiveRecord::Schema.define(:version => 20120515214001) do
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
-    t.string   "name",            :null => false
-    t.string   "email",           :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "name",                           :null => false
+    t.string   "email",                          :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "password_digest"
-    t.string   "remember_token"
+    t.string   "remember_token",  :limit => 256
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token", :length => {"remember_token"=>255}
 
 end

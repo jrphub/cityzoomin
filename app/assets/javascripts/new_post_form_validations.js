@@ -6,10 +6,26 @@ $(document).ready(function(){
 	// on submit...
 	form.submit(function() {
 		$("#error").hide();
-		var name = $("input#micropost_location").val();
-		if(name == "" || name == null){
-			$("#error").fadeIn().text("Please provide particular location");
-			$("input#location").focus();
+		var city = $("input#location_city").val();
+		if(city == "" || city == null){
+			$("#error").fadeIn().text("Please provide the city");
+			$("input#location_city").focus();
+			
+			return false;
+		}
+		
+		var state = $("input#location_state").val();
+		if(state == "" || state == null){
+			$("#error").fadeIn().text("Please provide the city");
+			$("input#location_state").focus();
+			
+			return false;
+		}
+		
+		var country = $("input#location_country").val();
+		if(country == "" || country == null){
+			$("#error").fadeIn().text("Please provide the city");
+			$("input#location_country").focus();
 			
 			return false;
 		}

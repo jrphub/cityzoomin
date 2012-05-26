@@ -6,10 +6,13 @@
         <meta name="description" content="Exploring different cities in the world" />
         <meta name="keywords" content="explore, find, place, city, state, world, best"/>
         <link rel="stylesheet" type="text/css" href="/assets/image_wall_css/style.css" />
+        
         <link rel="stylesheet" type="text/css" href="/assets/style7.css" />
         <link rel="stylesheet" type="text/css" href="/assets/body_style.css" />
+        
         <link rel="stylesheet" type="text/css" href="/assets/form_style.css" />
         <link rel="stylesheet" type="text/css" href="/assets/notification.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/gmaps4rails.css" />
         <script type="text/javascript" src="/assets/jquery.min.js"></script>
         
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css' />
@@ -22,6 +25,7 @@
 	    <div class="container">
 	      <%= yield %>
 	      <%= render 'layouts/footer' %>
+	      
 	      <%= debug(params) if Rails.env.development? %>
 	    </div>
   	</body>

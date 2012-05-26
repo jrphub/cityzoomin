@@ -1,10 +1,8 @@
 class MicropostsController < ApplicationController
   before_filter :signed_in_user
-  
   def new
     @loc_name=params[:q]
     @micropost=current_user.microposts.build(params[:micropost])
-    
   end
   
   def create

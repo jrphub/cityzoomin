@@ -7,18 +7,23 @@
 #  city       :string(255)     not null
 #  state      :string(255)     not null
 #  country    :string(255)     not null
-#  latitude   :decimal(6, 6)
-#  longitude  :decimal(6, 6)
+#  latitude   :float
+#  longitude  :float
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
 
 class Location < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :name, :city, :state, :country
+  attr_accessible :name, :city, :state, :country, :latitude, :longitude
+  
+   
   
   validates :name, presence:true
   validates :city, presence:true
   validates :state, presence:true
   validates :country, presence:true
+  
+  
+  
 end

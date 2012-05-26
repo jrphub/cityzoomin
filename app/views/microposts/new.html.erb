@@ -5,6 +5,20 @@
 		<% flash.each do |key, value| %>
 	        <div id="<%= key %>"><%= value %></div>
         <% end %>
+        <%@location = TempLocation.new(:address=>@loc_name)
+	      if @location.save
+	      		@loc_id=@location.id
+	      end
+        %>
+        <%@temp_location = TempLocation.find(@loc_id)%>
+        <%if @temp_location%>
+        	<%@json = @temp_location.to_gmaps4rails%>
+        	<%= gmaps4rails(@json) %>
+        <%else%>
+        	<div id="notice" style="margin:20px">Sorry, Couldn't show you the location. Try again giving city/state name in location<br />
+        		Ex : Mantri Mall, Bangalore
+        	</div>
+        <%end%>
 		<div id="login">	
 		<!--form id="new_micropost" action="/micropost" and each element has id micropost_* -->
 			<%= form_for @micropost, :html=>{:multipart => true} do |f| %>
@@ -14,6 +28,7 @@
 					<%= fields_for(:location) do |i| %>
 						<p>Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
 						<input type="hidden" name="location[name]" value="<%=@loc_name%>">
+						<!-- pending @temp_city, @temp_state, @temp_country-->
 						<%= i.label :city %><br>
 				      	<%= i.text_field :city,:placeholder=>"Which city does it belong?"%>
 				      	

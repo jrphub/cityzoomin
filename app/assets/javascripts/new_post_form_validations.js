@@ -16,7 +16,7 @@ $(document).ready(function(){
 		
 		var state = $("input#location_state").val();
 		if(state == "" || state == null){
-			$("#error").fadeIn().text("Please provide the city");
+			$("#error").fadeIn().text("Please provide the state");
 			$("input#location_state").focus();
 			
 			return false;
@@ -24,7 +24,7 @@ $(document).ready(function(){
 		
 		var country = $("input#location_country").val();
 		if(country == "" || country == null){
-			$("#error").fadeIn().text("Please provide the city");
+			$("#error").fadeIn().text("Please provide the country");
 			$("input#location_country").focus();
 			
 			return false;

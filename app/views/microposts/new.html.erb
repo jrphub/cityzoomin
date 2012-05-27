@@ -10,6 +10,7 @@
         if @location.save
       	  	@loc_id=@location.id
         	@temp_location = TempLocation.find(@loc_id)
+        	
     	%>
     
         	<%@json = @temp_location.to_gmaps4rails%>

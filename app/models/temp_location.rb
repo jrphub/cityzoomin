@@ -15,7 +15,7 @@
 
 class TempLocation < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :address, :latitude, :longitude
+  attr_accessible :address, :latitude, :longitude, :city, :state, :country
   acts_as_gmappable
       def gmaps4rails_address
           address
@@ -23,4 +23,12 @@ class TempLocation < ActiveRecord::Base
        def gmaps4rails_infowindow
          "<h4>Location</h4>" << "<h4>#{address}</h4>"
      end
+   reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.city    = geo.city
+      obj.state = geo.state
+      obj.country = geo.country
+    end
+  end
+  after_validation :reverse_geocode  
 end

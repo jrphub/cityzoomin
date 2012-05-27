@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526134443) do
+ActiveRecord::Schema.define(:version => 20120527122541) do
 
   create_table "locations", :force => true do |t|
     t.string   "name",       :null => false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120526134443) do
   add_index "locations", ["name", "city"], :name => "unique_locations", :unique => true
 
   create_table "microposts", :force => true do |t|
-    t.string   "content"
+    t.text     "content"
     t.integer  "location_id", :null => false
     t.string   "title",       :null => false
     t.string   "category",    :null => false

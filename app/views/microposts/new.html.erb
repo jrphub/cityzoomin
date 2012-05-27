@@ -16,10 +16,20 @@
         	<%@json = @temp_location.to_gmaps4rails%>
         	<%= gmaps4rails(@json) %>
     	<%else%>
-        	<div id="notice" style="margin:20px">Sorry, Couldn't show you the location. Try again giving city/state name in location<br />
+        	<div id="notice" style="margin:05px">Sorry, Couldn't show you the location. Try again giving city/state name in location<br />
         		Ex : Mantri Mall, Bangalore
         	</div>
     	<%end%>
+    	<h4>*If the location is not showing or showing the wrong one, you can try again with more hints.
+    	<%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
+			<fieldset id="inputs">
+				<label for="q" style="font-size: 18px;">Enter a location with more hints</label><br/>
+				<input type="text" name="q" id="q" placeholder="Type the location address" autofocus="required">
+			</fieldset>
+			<fieldset id="actions" style="margin:1px">
+				<%= submit_tag("Proceed", :id =>"submit")%>
+			</fieldset>
+    	<% end %>
 		<div id="login">	
 		<!--form id="new_micropost" action="/micropost" and each element has id micropost_* -->
 			<%= form_for @micropost, :html=>{:multipart => true} do |f| %>
@@ -38,16 +48,13 @@
 				      	
 				      	<%= i.label :country %><br>
 				      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
-				      	<input type="hidden" name="location[latitude]" value="<%=@temp_location.latitude%>">
-				      	<input type="hidden" name="location[longitude]" value="<%=@temp_location.longitude%>">
-				      	
 				    <%end%>
 				      	
 						<%= f.label :title %><br>
 				      	<%= f.text_field :title,:placeholder=>"Give a title to your post"%>
 				      	
 						<%= f.label :content %><br>
-				      	<%= f.text_field :content,:placeholder=>"Put some word to your memory"%>
+				      	<%= f.text_area :content,:placeholder=>"Put some word to your memory"%>
 				      	
 						<%= f.label :category %><br>
 				      	<%= f.text_field :category,:placeholder=>"Tag your post"%>

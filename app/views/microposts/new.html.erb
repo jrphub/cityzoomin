@@ -38,6 +38,8 @@
 				      	
 				      	<%= i.label :country %><br>
 				      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
+				      	<input type="hidden" name="location[latitude]" value="<%=@temp_location.latitude%>">
+				      	<input type="hidden" name="location[longitude]" value="<%=@temp_location.longitude%>">
 				      	
 				    <%end%>
 				      	

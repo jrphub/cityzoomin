@@ -11,7 +11,8 @@ class MicropostsController < ApplicationController
        params[:micropost][:location_id] = @new_location.id
     else
        @location=Location.create({:name => params[:location][:name], :city => params[:location][:city],
-              :state => params[:location][:state]})
+              :state => params[:location][:state], :country => params[:location][:country],
+              :latitude => params[:location][:latitude], :longitude => params[:location][:longitude]})
        params[:micropost][:location_id] = @location.id
     end
     

@@ -3,7 +3,7 @@
 # Table name: microposts
 #
 #  id          :integer(4)      not null, primary key
-#  content     :string(255)
+#  content     :text
 #  location_id :integer(4)      not null
 #  title       :string(255)     not null
 #  category    :string(255)     not null

@@ -1,0 +1,47 @@
+<% provide(:title, "All Post") %>
+<div id="box">
+	<h1>Zoomins By All Users</h1>
+	<div id="error"></div>
+	<% flash.each do |key, value| %>
+        <div id="<%= key %>"><%= value %></div>
+    <% end %>
+    <%= will_paginate @allposts%>
+		<ul>
+			<%@allposts.each do |post|%>
+  			<li>
+  				<div id="box" style="background-color: #CCFB5D;
+  					 width:100%;margin:0px 0px 20px -35px;padding-top:10px;padding-bottom:05px;">
+  				<table style="border-collapse: collapse;">
+					<tbody>
+						<tr>
+							<td style="width:30px">
+								<table>
+		    						<tr>
+		    							<td>
+		    								<div>
+		    									<%= gravatar_for post%>
+		    								</div>
+		    							</td>
+									</tr>
+								</table>
+							</td>
+							<td style="padding-left:10px;">
+								<p style="font-weight: bold;"><%=post.title%></p>
+								<p>By&nbsp;<span style="font-weight: bold;"><%=post.username%></span></p>
+								<p><%=post.content%></p>
+								<p><span style="font-weight: bold;">Location:</span><%=post.locname%></p>
+								<p><span style="font-weight: bold;">Address:</span><%=post.city%>,<%=post.state%>,<%=post.country%></p>
+								<p><span style="font-weight: bold;">Tag:</span><%=post.category%></p>
+								<span class="timestamp">
+    								Posted <%= time_ago_in_words(post.created_at) %> ago.
+ 								</span>
+ 								<div style="height: 15px;">
+							</td>
+						</tr>
+					</tbody>
+		</table>
+		</div>
+			</li>
+			<%end%>
+		</ul>
+	<%= will_paginate @allposts%>

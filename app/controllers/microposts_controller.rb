@@ -22,11 +22,25 @@ class MicropostsController < ApplicationController
     @user = User.new
     if @micropost.save
       flash[:success] = "Post Created. Thanks for sharing!"
-      redirect_to current_user
+      redirect_to microposts_path
     else
       flash[:error] = "Creation failed. Please try again"
       redirect_to current_user
     end
+  end
+  
+  def index
+    @allposts = Micropost.joins(:user)
+    .joins('INNER JOIN locations ON microposts.location_id = locations.id')
+    .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
+    user_id, locations.name as locname, city, state, country, username, email")
+    .paginate(page: params[:page],per_page:3)
+    
+    #sql version
+    #SELECT microposts.id,content, location_id, title, category,microposts.created_at,microposts.updated_at,
+    #user_id, locations.name as locname, city, state, country, users.name as username FROM `microposts` 
+    #INNER JOIN `users` ON `users`.`id` = `microposts`.`user_id` INNER JOIN locations ON microposts.location_id = locations.
+    #id ORDER BY microposts.created_at DESC LIMIT 10 OFFSET 0
   end
   
 end

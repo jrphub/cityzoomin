@@ -15,8 +15,14 @@
 	                    <% if signed_in? %>
 	                    <li>
 	                    	<div class="ca-content">
-	                    	<h2><%= link_to("Home", home_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
-	                    	<h3><%= link_to("Your Home", home_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
+	                    	<h2><%= link_to("Zoom", microposts_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
+	                    	<h3><%= link_to("By All", microposts_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
+	                    	</div>
+                    	</li>
+	                    <li>
+	                    	<div class="ca-content">
+	                    	<h2><%= link_to("Zoom", microposts_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
+	                    	<h3><%= link_to("By You", microposts_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
 	                    	</div>
                     	</li>
 	                    <li>

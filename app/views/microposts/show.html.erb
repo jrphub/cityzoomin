@@ -25,9 +25,9 @@
 							</td>
 							<td style="padding-left:10px;">
 								<p style="font-weight: bold;text-decoration: underline;"><a href="<%=@post.first.id%>"><%=@post.first.title%></a></p>
-								<p>By&nbsp;<span style="font-weight: bold;"><%=@post.first.username%></span></p>
+								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=@post.first.user_id%>"><%=@post.first.username%></a></span></p>
 								<p><%=@post.first.content%></p>
-								<p><span style="font-weight: bold;">Location:</span><%=@post.first.locname%></p>
+								<p><span style="font-weight: bold;">Location:</span><a href="/locations/<%=@post.first.location_id%>"><%=@post.first.locname%></a></p>
 								<p><span style="font-weight: bold;">Address:</span><%=@post.first.city%>,<%=@post.first.state%>,<%=@post.first.country%></p>
 								<p><span style="font-weight: bold;">Tag:</span><%=@post.first.category%></p>
 								<span class="timestamp">

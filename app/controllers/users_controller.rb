@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   before_filter :signed_in_user, only: [:edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
-  
+  before_filter :correct_user_profile,   only: [:show]
   def show
     @user = User.find(params[:id])
   end
@@ -48,5 +48,10 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(microposts_path) unless current_user?(@user)
+    end
+    
+    def correct_user_profile
+      @user = User.find(params[:id])
+      @auth="yes" if current_user?(@user)
     end
 end

@@ -30,8 +30,7 @@ class MicropostsController < ApplicationController
   end
   
   def index
-    @micropost=current_user.microposts.build(params[:micropost])
-    @user = User.new
+    @user = User.find(cookies[:userid])
     @allposts = Micropost.joins(:user)
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')
     .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
@@ -40,9 +39,16 @@ class MicropostsController < ApplicationController
     
     #sql version
     #SELECT microposts.id,content, location_id, title, category,microposts.created_at,microposts.updated_at,
-    #user_id, locations.name as locname, city, state, country, users.name as username FROM `microposts` 
+    #user_id, locations.name as locname, city, state, country, username FROM `microposts` 
     #INNER JOIN `users` ON `users`.`id` = `microposts`.`user_id` INNER JOIN locations ON microposts.location_id = locations.
     #id ORDER BY microposts.created_at DESC LIMIT 10 OFFSET 0
+  end
+  
+  def show
+    @post=Micropost.joins(:user)
+    .joins('INNER JOIN locations ON microposts.location_id = locations.id')
+    .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
+    user_id, locations.name as locname, city, state, country, username, email").where(:id=>params[:id])
   end
   
   

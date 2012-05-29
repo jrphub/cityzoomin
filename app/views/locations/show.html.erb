@@ -1,6 +1,6 @@
-<% provide(:title, "All Post") %>
+<% provide(:title, @locname) %>
 <div id="box">
-	<h1>Zoomins By All Users</h1>
+	<h1>All Zoomins for&nbsp;&quot;<%=@locname%>&quot;</h1>
 	<div id="error"></div>
 	<% flash.each do |key, value| %>
         <div id="<%= key %>"><%= value %></div>
@@ -10,7 +10,7 @@
 		<ul>
 			<%@allposts.each do |post|%>
   			<li>
-  				<div id="box" style="background-color: #CCFB5D;
+  				<div id="box" style="background-color: #FF99FF;
   					 width:100%;margin:0px 0px 20px -35px;padding-top:10px;padding-bottom:05px;">
   				<table style="border-collapse: collapse;">
 					<tbody>
@@ -30,7 +30,7 @@
 								<p style="font-weight: bold;text-decoration: underline;"><a href="microposts/<%=post.id%>"><%=post.title%></a></p>
 								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username%></a></span></p>
 								<p><%=post.content%></p>
-								<p><span style="font-weight: bold;">Location:</span><a href="/locations/<%=post.location_id%>"><%=post.locname%></a></p>
+								<p><span style="font-weight: bold;">Location:</span><a href="<%=post.location_id%>"><%=post.locname%></a></p>
 								<p><span style="font-weight: bold;">Address:</span><%=post.city%>,<%=post.state%>,<%=post.country%></p>
 								<p><span style="font-weight: bold;">Tag:</span><%=post.category%></p>
 								<span class="timestamp">

@@ -1,6 +1,7 @@
 module SessionsHelper
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
+    cookies.permanent[:userid] = user.id
     current_user = user
   end
   
@@ -19,6 +20,7 @@ module SessionsHelper
   def sign_out
     current_user = nil
     cookies.delete(:remember_token)
+    cookies.delete(:userid)
   end
   
   def current_user

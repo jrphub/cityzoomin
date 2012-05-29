@@ -1,11 +1,11 @@
 Cityzoomin::Application.routes.draw do
   resources :users
   resources :microposts
+  resources :locations
   resources :sessions,   only: [:new, :create, :destroy]
   
   root :to => 'pages#home'
   
-  match '/microposts/createpost', to: 'microposts#show'
   match '/microposts/new', to: 'microposts#new'
   match '/signup',  to: 'users#new'
   match '/signin', to: 'sessions#new'

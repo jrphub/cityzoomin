@@ -1,0 +1,43 @@
+<% provide(:title, @post.first.title) %>
+<div id="box">
+	<div id="error"></div>
+	<% flash.each do |key, value| %>
+        <div id="<%= key %>" style="display:block;"><%= value %></div>
+      <% end %>
+      <%= link_to("Create/Search A Zoomin", current_user, :class=>"button add")%>
+      <ul>
+      	<li>
+  				<div id="box" style="background-color: #A3C2FF;
+  					 width:100%;margin:0px 0px 20px -35px;padding-top:10px;padding-bottom:05px;">
+  				<table style="border-collapse: collapse;">
+					<tbody>
+						<tr>
+							<td style="width:30px">
+								<table>
+		    						<tr>
+		    							<td>
+		    								<div>
+		    									<%= gravatar_for @post.first%>
+		    								</div>
+		    							</td>
+									</tr>
+								</table>
+							</td>
+							<td style="padding-left:10px;">
+								<p style="font-weight: bold;text-decoration: underline;"><a href="<%=@post.first.id%>"><%=@post.first.title%></a></p>
+								<p>By&nbsp;<span style="font-weight: bold;"><%=@post.first.username%></span></p>
+								<p><%=@post.first.content%></p>
+								<p><span style="font-weight: bold;">Location:</span><%=@post.first.locname%></p>
+								<p><span style="font-weight: bold;">Address:</span><%=@post.first.city%>,<%=@post.first.state%>,<%=@post.first.country%></p>
+								<p><span style="font-weight: bold;">Tag:</span><%=@post.first.category%></p>
+								<span class="timestamp">
+    								Posted <%= time_ago_in_words(@post.first.created_at) %> ago.
+ 								</span>
+ 								<div style="height: 15px;">
+							</td>
+						</tr>
+					</tbody>
+		</table>
+		</div>
+			</li>
+		</ul>

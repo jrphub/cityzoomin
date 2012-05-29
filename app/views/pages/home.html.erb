@@ -1,4 +1,4 @@
-<div class="iw_wrapper" style="float:left;">
+<div class="iw_wrapper" style="<%if signed_in?%>width:95%;<%else%>float:left;<%end%>">
 	<ul class="iw_thumbs" id="iw_thumbs">
 		<li><img src="/assets/image_wall/thumbs/1.jpg" data-img="/assets/image_wall/full/1.jpg" alt="Thumb1"/><div><h2>Serenity</h2><p>Far far away, behind the word mountains there live the blind texts.</p></div></li>
 		<li><img src="/assets/image_wall/thumbs/2.jpg" data-img="/assets/image_wall/full/2.jpg" alt="Thumb2"/><div><h2>Silence</h2><p>Separated they live in Bookmarksgrove right at the coast of the Semantics.</p></div></li>
@@ -52,7 +52,12 @@
 	<span class="iw_close"></span>
 	<span class="iw_zoom">Click thumb to zoom</span>
 </div>
-<div style='float:right;margin-right:50px;width:32%'>
+<% 
+if signed_in?
+	#images=user's + near_by_user's location+other_user's
+else
+%>
+<div style='float:right;margin-right:50px;width:32%;'>
 	<div id="login">
 		<div id="error" style="margin: 0px;"></div>
 		<% flash.each do |key, value| %>
@@ -106,3 +111,4 @@
     	<% end %>
 	</div>
 </div>
+<%end%>

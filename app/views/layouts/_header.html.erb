@@ -15,14 +15,21 @@
 	                    <% if signed_in? %>
 	                    <li>
 	                    	<div class="ca-content">
-	                    	<h2><%= link_to("Zoom", microposts_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
-	                    	<h3><%= link_to("By All", microposts_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
+	                    	<h2><%= link_to("Image", root_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
+	                    	<h3><%= link_to("Wall", root_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
+	                    	</div>
+                    	</li>
+	                    
+	                    <li>
+	                    	<div class="ca-content">
+	                    	<h2><%= link_to("All", microposts_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
+	                    	<h3><%= link_to("Zoom", microposts_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
 	                    	</div>
                     	</li>
 	                    <li>
 	                    	<div class="ca-content">
-	                    	<h2><%= link_to("Zoom", microposts_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
-	                    	<h3><%= link_to("By You", microposts_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
+	                    	<h2><%= link_to("Your", microposts_path, :class=>"ca-main", :style=>"text-align:center") %></h2>
+	                    	<h3><%= link_to("Zoom", microposts_path, :class=>"ca-sub", :style=>"text-align:center;line-height:50px;") %></h3>
 	                    	</div>
                     	</li>
 	                    <li>
@@ -46,7 +53,7 @@
                     	
 						
 						<%else%>
-						<li>
+	                    <li>
 	                        <a href="/home">
 	                            <div class="ca-content">
 	                                <h2 class="ca-main">Home</h2>
@@ -54,7 +61,6 @@
 	                            </div>
 	                        </a>
 	                    </li>
-	                    
 	                    <li>
 	                        <a href="/about">
 	                            <div class="ca-content">

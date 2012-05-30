@@ -4,6 +4,6 @@ class Emailer < ActionMailer::Base
   def confirmation_email(user)
     @user = user
     headers("X-Author" => "City Zoom-in")
-    mail(:to => user.email, :subject => "Confirmation from City Zoom-in")
+    mail(:to => user.email, :subject => "Confirmation from City Zoom-in").deliver
   end
 end

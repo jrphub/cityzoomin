@@ -31,7 +31,9 @@
 								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username%></a></span></p>
 								<p><%=post.content%></p>
 								<p><span style="font-weight: bold;">Location:</span><a href="<%=post.location_id%>"><%=post.locname%></a></p>
-								<p><span style="font-weight: bold;">Address:</span><%=post.city%>,<%=post.state%>,<%=post.country%></p>
+								<p><span style="font-weight: bold;">Address: </span><a href="show?city=<%=post.city%>"><%=post.city%></a>, 
+									<a href="show?state=<%=post.state%>"><%=post.state%></a>, 
+									<a href="show?country=<%=post.country%>"><%=post.country%></a></p>
 								<p><span style="font-weight: bold;">Tag:</span><%=post.category%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at) %> ago.

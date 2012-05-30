@@ -1,0 +1,38 @@
+<ul>
+      	<li>
+  				<div id="box" style="background-color: #A3C2FF;
+  					 width:100%;margin:0px 0px 20px -35px;padding-top:10px;padding-bottom:05px;">
+  				<table style="border-collapse: collapse;">
+					<tbody>
+						<tr>
+							<td style="width:30px">
+								<table>
+		    						<tr>
+		    							<td>
+		    								<div>
+		    									<%= gravatar_for @post.first%>
+		    								</div>
+		    							</td>
+									</tr>
+								</table>
+							</td>
+							<td style="padding-left:10px;">
+								<p style="font-weight: bold;"><a href="<%=@post.first.id%>"><%=@post.first.title%></a></p>
+								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=@post.first.user_id%>"><%=@post.first.username%></a></span></p>
+								<p><%=@post.first.content%></p>
+								<p><span style="font-weight: bold;">Location: </span><a href="/locations/<%=@post.first.location_id%>"><%=@post.first.locname%></a></p>
+								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=@post.first.city%>"><%=@post.first.city%></a>, 
+									<a href="/locations/show?state=<%=@post.first.state%>"><%=@post.first.state%></a>, 
+									<a href="/locations/show?country=<%=@post.first.country%>"><%=@post.first.country%></a></p>
+								<p><span style="font-weight: bold;">Tag:</span><%=@post.first.category%></p>
+								<span class="timestamp">
+    								Posted <%= time_ago_in_words(@post.first.created_at) %> ago.
+ 								</span>
+ 								<div style="height: 15px;">
+							</td>
+						</tr>
+					</tbody>
+		</table>
+		</div>
+			</li>
+		</ul>

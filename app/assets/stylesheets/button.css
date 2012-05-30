@@ -27,6 +27,7 @@
         background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#ddd));
         background-image: -webkit-linear-gradient(top, #fafafa, #ddd);
         background-image: -moz-linear-gradient(top, #fafafa, #ddd);
+        text-decoration:none;
 }
 
 .button:active

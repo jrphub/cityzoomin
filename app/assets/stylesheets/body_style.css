@@ -48,3 +48,8 @@
   left: auto;
 }
 
+#box a:hover
+{
+	text-decoration:underline;
+}
+

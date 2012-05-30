@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      Emailer.confirmation_email(@user)
       sign_in @user
       redirect_to microposts_path
     else

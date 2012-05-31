@@ -26,15 +26,23 @@
 									</tr>
 								</table>
 							</td>
-							<td style="padding-left:10px;">
-								<p style="font-weight: bold;"><a href="/microposts/<%=post.id%>"><%=post.title%></a></p>
-								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username%></a></span></p>
+							<td style="padding-left:10px;width:100%;">
+								<div style="float:right;">
+									<% if current_user?(post.user) %>
+    								<%= link_to image_tag('close.png'), post, method:  :delete,
+                                    	confirm: "You sure?",
+                                     	title:   "Delete" %>
+  									<% end %>
+								</div>
+								
+								<p style="font-weight: bold;"><a href="/microposts/<%=post.id%>"><%=post.title.titleize%></a></p>
+								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username.titleize%></a></span></p>
 								<p><%=post.content%></p>
-								<p><span style="font-weight: bold;">Location:</span><a href="<%=post.location_id%>"><%=post.locname%></a></p>
-								<p><span style="font-weight: bold;">Address: </span><a href="show?city=<%=post.city%>"><%=post.city%></a>, 
-									<a href="show?state=<%=post.state%>"><%=post.state%></a>, 
-									<a href="show?country=<%=post.country%>"><%=post.country%></a></p>
-								<p><span style="font-weight: bold;">Tag:</span><%=post.category%></p>
+								<p><span style="font-weight: bold;">Location: </span><a href="<%=post.location_id%>"><%=post.locname.titleize%></a></p>
+								<p><span style="font-weight: bold;">Address: </span><a href="show?city=<%=post.city%>"><%=post.city.titleize%></a>, 
+									<a href="show?state=<%=post.state%>"><%=post.state.titleize%></a>, 
+									<a href="show?country=<%=post.country%>"><%=post.country.titleize%></a></p>
+								<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at) %> ago.
  								</span>

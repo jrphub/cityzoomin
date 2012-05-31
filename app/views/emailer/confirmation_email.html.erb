@@ -1,5 +1,9 @@
-<p>Dear <%= @user.username %>,
+<p>Dear <%= @user.username.titleize %>,
 <br/>
 Welcome to CityZoomin.
 <br/>
-<b>Share on.</b></p>
+<p>Your email address <b><%=@user.email%></b> has been associated with a CityZoomin account.</p>
+<p>Share on.</p>
+<br>
+<p>Happy Sending,</p>
+<b>CityZoomin Team</b>

@@ -16,15 +16,22 @@
 									</tr>
 								</table>
 							</td>
-							<td style="padding-left:10px;">
-								<p style="font-weight: bold;"><a href="<%=@post.first.id%>"><%=@post.first.title%></a></p>
-								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=@post.first.user_id%>"><%=@post.first.username%></a></span></p>
+							<td style="padding-left:10px;width:100%;">
+								<div style="float:right;">
+									<% if current_user?(@post.first.user) %>
+    								<%= link_to image_tag('close.png'), @post.first, method:  :delete,
+                                    	confirm: "You sure?",
+                                     	title:   "Delete" %>
+  									<% end %>
+								</div>
+								<p style="font-weight: bold;"><a href="<%=@post.first.id%>"><%=@post.first.title.titleize%></a></p>
+								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=@post.first.user_id%>"><%=@post.first.username.titleize%></a></span></p>
 								<p><%=@post.first.content%></p>
-								<p><span style="font-weight: bold;">Location: </span><a href="/locations/<%=@post.first.location_id%>"><%=@post.first.locname%></a></p>
-								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=@post.first.city%>"><%=@post.first.city%></a>, 
-									<a href="/locations/show?state=<%=@post.first.state%>"><%=@post.first.state%></a>, 
-									<a href="/locations/show?country=<%=@post.first.country%>"><%=@post.first.country%></a></p>
-								<p><span style="font-weight: bold;">Tag:</span><%=@post.first.category%></p>
+								<p><span style="font-weight: bold;">Location: </span><a href="/locations/<%=@post.first.location_id%>"><%=@post.first.locname.titleize%></a></p>
+								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=@post.first.city.titleize%>"><%=@post.first.city%></a>, 
+									<a href="/locations/show?state=<%=@post.first.state%>"><%=@post.first.state.titleize%></a>, 
+									<a href="/locations/show?country=<%=@post.first.country%>"><%=@post.first.country.titleize%></a></p>
+								<p><span style="font-weight: bold;">Tag: </span><%=@post.first.category.titleize%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(@post.first.created_at) %> ago.
  								</span>

@@ -1,4 +1,13 @@
 <%provide(:title,"Profile Edit")%>
+<style type="text/css">
+html{
+	background: url("/assets/bg9.gif") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+</style>
 	<div id="box">
 		<h1>Edit Your Profile</h1>
 		<div id="error"></div>
@@ -12,7 +21,7 @@
 				<%= render 'shared/error_messages', object: f.object%>
 				
 				<div style="text-align: center;"><%= gravatar_for @user%>
-				<a href="http://gravatar.com/emails" id="">change</a></div>
+				<a href="http://gravatar.com/emails" id="" style="color:#000;">change</a></div>
 				<div></div>
 				<br />
 				<fieldset id="inputs">

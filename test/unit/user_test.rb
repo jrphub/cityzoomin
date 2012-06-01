@@ -9,6 +9,7 @@
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
 #  remember_token  :string(256)
+#  temp_password   :string(255)
 #
 
 require 'test_helper'

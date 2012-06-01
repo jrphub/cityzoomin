@@ -1,4 +1,13 @@
 <% provide(:title, @user.username) %>
+<style type="text/css">
+html{
+	background: url("/assets/bg11.gif") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+</style>
 <div id="box">
 	<div id="error"></div>
 	<% flash.each do |key, value| %>

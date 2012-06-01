@@ -1,4 +1,13 @@
 <% provide(:title, @locname) %>
+<style type="text/css">
+html{
+	background: url("/assets/bg6.gif") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+</style>
 <div id="box">
 	<h1>All Zoomins for&nbsp;&quot;<%=@locname%>&quot;</h1>
 	<div id="error"></div>
@@ -10,8 +19,7 @@
 		<ul>
 			<%@allposts.each do |post|%>
   			<li>
-  				<div id="box" style="background-color: #FF99FF;
-  					 width:100%;margin:0px 0px 20px -35px;padding-top:10px;padding-bottom:05px;">
+  				<div id="inner-box">
   				<table style="border-collapse: collapse;">
 					<tbody>
 						<tr>

@@ -1,4 +1,13 @@
 <%provide(:title,"Sign in")%>
+<style type="text/css">
+html{
+	background: url("/assets/bg4.gif") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+</style>
 	<div id="box">
 		<h1>Log In</h1>
 		<div id="error"></div>
@@ -21,7 +30,7 @@
 				</fieldset>
 				<fieldset id="actions">
 					<%= f.submit "Signin", :id =>"submit"%>
-			        <a href="#">Forgot your password?</a>  
+			        <a href="forgot_password">Forgot your password?</a>  
 			        <p style="padding:3px;font-weight: bold;">New User?<%= link_to "Signup", signup_path%></p>   
 		      	</fieldset>
 	    	<% end %>

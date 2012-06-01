@@ -26,10 +26,6 @@
   width: 50%;
   top: 80%;
   max-width:300px;
-  background: rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);
-  -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
   -o-transform: rotate(-3deg);
@@ -49,6 +45,63 @@
 }
 
 #box a:hover
+{
+	text-decoration:underline;
+}
+#inner-box
+{
+  position: relative;
+  width: 60%;
+  background: #ddd;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 2em 1.5em;
+  color: rgba(0,0,0, .8);
+  line-height: 1.5;
+  margin-top: 0px;
+  margin-bottom:60px;
+  margin-left:auto;
+  margin-right:auto;
+  height: auto;
+  opacity:0.9;
+  background-color: #561D8E;
+  color:#fff;
+  width:100%;
+  margin:0px 0px 20px -35px;
+  padding-top:10px;
+  padding-bottom:05px;
+  text-shadow: 0 1px 0 #000;
+}
+
+#inner-box:before, #inner-box:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+#inner-box:after
+{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+#inner-box a:hover
 {
 	text-decoration:underline;
 }

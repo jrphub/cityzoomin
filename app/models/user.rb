@@ -9,10 +9,11 @@
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
 #  remember_token  :string(256)
+#  temp_password   :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation
+  attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :temp_password
   has_secure_password
   has_many :microposts
   

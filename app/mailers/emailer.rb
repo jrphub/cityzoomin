@@ -4,6 +4,12 @@ class Emailer < ActionMailer::Base
   def confirmation_email(user)
     @user = user
     headers("X-Author" => "City Zoom-in")
-    mail(:to => user.email, :subject => "Confirmation from City Zoom-in").deliver
+    mail(:to => user.email, :subject => "Confirmation from CityZoomin Team").deliver
+  end
+  
+  def forgot_password_email(user)
+    @user = user
+    headers("X-Author" => "City Zoom-in")
+    mail(:to => user.email, :subject => "Reset password from CityZoomin Team").deliver
   end
 end

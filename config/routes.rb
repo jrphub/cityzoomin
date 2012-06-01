@@ -2,6 +2,7 @@ Cityzoomin::Application.routes.draw do
   resources :users
   resources :microposts
   resources :locations
+  resources :forgotpasswords
   resources :sessions,   only: [:new, :create, :destroy]
   
   root :to => 'pages#home'
@@ -11,6 +12,8 @@ Cityzoomin::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
+  match '/fplast', to: 'pages#fplast'
+  match '/forgot_password', to: 'pages#forgot_password'
   match '/home', to: 'pages#home'
   match '/about', to: 'pages#about'
   match '/contact', to: 'pages#contact'

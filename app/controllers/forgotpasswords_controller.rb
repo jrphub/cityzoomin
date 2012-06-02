@@ -6,7 +6,7 @@ class ForgotpasswordsController < ApplicationController
       @user.attributes={:temp_password=>@a}
       if @user.save(:validate=>false)
         if Emailer.forgot_password_email(@user)
-          flash[:success] = 'Succesfully mail sent to #{params[:forgotpassword][:email]}'
+          flash[:success] = "Mail sent to #{params[:forgotpassword][:email]}"
           redirect_to fplast_path
         else
           flash[:error] = 'Email sending failed'
@@ -29,20 +29,15 @@ class ForgotpasswordsController < ApplicationController
   def update
     @user=User.find(params[:user][:id])
     if params[:user][:password] == params[:user][:password_confirmation]
-      if params[:user][:password].length<=6
-        @user.attributes={:password=>params[:user][:password]}
-        if @user.save(:validate=>false)
-          @user.attributes={:temp_password=>"pw"}
-          @user.save(:validate=>false)
-          sign_in @user
-          redirect_to microposts_path
-        else
-          flash[:error] = 'Sorry! We couldn\'t process your request now.'
-          redirect_to (:back)
-        end
+      @user.attributes={:password=>params[:user][:password]}
+      if @user.save(:validate=>false)
+        @user.attributes={:temp_password=>"pw"}
+        @user.save(:validate=>false)
+        sign_in @user
+        redirect_to microposts_path
       else
-        flash[:error] = 'Password should have minimum length of 6'
-        redirect_to(:back)
+        flash[:error] = 'Sorry! We couldn\'t process your request now.'
+        redirect_to (:back)
       end
      else
        flash[:error] = 'Password and Confirm Password must be same'

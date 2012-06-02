@@ -9,7 +9,10 @@
 	      <div id="login">
 	      	<%= form_for(@user,:url =>forgotpassword_path , :html=>{:id=>'fp_details', :class=>'fp_details'}) do |f| %>
 	      	<%= render 'shared/error_messages', object: f.object%>
-	      	<div style="text-align: center;"><%= gravatar_for @user%></div>
+	      	<div style="text-align: center;">
+	      		<%= gravatar_for @user%><br>
+	      		<a href="/signin" style="color: #3151A2;">Not <%=@user.username.titleize%>?</a>
+	      	</div>
       		<br />
 			<fieldset id="inputs">
 			<%= f.label :password %><br>

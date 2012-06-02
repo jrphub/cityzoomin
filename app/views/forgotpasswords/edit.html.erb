@@ -1,0 +1,25 @@
+<% provide(:title, "Change Password") %>
+<div id="box">
+	<h1>Change Your Password</h1>
+		<div id="error"></div>
+		<% flash.each do |key, value| %>
+	        <div id="<%= key %>"><%= value %></div>
+	      <% end %>
+	      <div id="login">
+	      	<%= form_for(@user) do |f| %>
+	      	<%= render 'shared/error_messages', object: f.object%>
+	      	<div style="text-align: center;"><%= gravatar_for @user%></div>
+      		<br />
+			<fieldset id="inputs">
+			<%= f.label :password %><br>
+	      	<%= f.password_field :password,:placeholder=>"New Password", :autofocus=>"required" %>
+	      	<input type="hidden" name="user[id]" value="<%=@user.id%>">
+	      	<%= f.label :password_confirmation, "Confirmation" %><br>
+	      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter New Password", :autofocus=>"required" %>
+		</fieldset>
+		<fieldset id="actions">
+			<%= f.submit "Update", :id =>"submit"%>
+  		</fieldset>
+    	<% end %>
+	</div>
+</div>

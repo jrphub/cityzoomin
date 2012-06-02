@@ -13,7 +13,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :temp_password
+  attr_accessible :username, :email,:temp_password, :password, :password_confirmation
   has_secure_password
   has_many :microposts
   
@@ -27,6 +27,19 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  
+  def update_just_this_one(attr, value)
+      raise "Bad #{attr}" if(!User.valid_attribute?(attr, value))
+      self.update_attribute(attr, value)
+    end
+
+  def self.valid_attribute?(attr, value)
+    mock = self.new(attr => value)
+    unless mock.valid?
+      return mock.errors.has_key?(attr)
+    end
+    true
+  end
   
   private
 

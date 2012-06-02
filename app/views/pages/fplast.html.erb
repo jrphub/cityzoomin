@@ -1,5 +1,9 @@
 <% provide(:title, "Mail Sent") %>
 <div id="box">
-	<p>We have sent you the password reset link to your email id.</p>
-	<p>Please check your mail and reset your password</p>
+	<div id="error"></div>
+		<% flash.each do |key, value| %>
+	        <div id="<%= key %>"><%= value %></div>
+	      <% end %>
+	<p style="font-size: 16px; font-weight: bold;">We have sent you the password reset link to your email id.</p>
+	<p style="font-size: 16px; font-weight: bold;">Please check your mail and reset your password</p>
 </div>

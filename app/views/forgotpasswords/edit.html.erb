@@ -1,4 +1,5 @@
 <% provide(:title, "Change Password") %>
+<%@user=User.find_by_temp_password(params[:key])%>
 <div id="box">
 	<h1>Change Your Password</h1>
 		<div id="error"></div>
@@ -6,7 +7,7 @@
 	        <div id="<%= key %>"><%= value %></div>
 	      <% end %>
 	      <div id="login">
-	      	<%= form_for(@user) do |f| %>
+	      	<%= form_for(@user,:url =>forgotpassword_path , :html=>{:id=>'fp_details', :class=>'fp_details'}) do |f| %>
 	      	<%= render 'shared/error_messages', object: f.object%>
 	      	<div style="text-align: center;"><%= gravatar_for @user%></div>
       		<br />
@@ -23,3 +24,42 @@
     	<% end %>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	// hide messages 
+	$("#error").hide();
+	//$("#success").hide();
+	var form = $(".fp_details");
+	// on submit...
+	form.submit(function() {
+		$("#error").hide();
+		var password = $("input#user_password").val();
+		if(password == ""){
+			$("#error").fadeIn().text("Password required");
+			$("input#user_password").focus();
+			return false;
+		}
+		//passowrd length validation
+		if (password.length <6) {
+			$("#error").fadeIn().text("Password should have minimum 6 characters");
+			$("input#user_password").focus();
+			return false;
+		}
+		// confirm password
+		var c_password = $("input#user_password_confirmation").val();
+		if(c_password == ""){
+			$("#error").fadeIn().text("Re-enter Password");
+			$("input#user_password_confirmation").focus();
+			return false;
+		}
+		
+		if (password != c_password) {
+			$("#error").fadeIn().text("Mismatch password");
+			$("input#user_password_confirmation").focus();
+			return false;
+		}
+		});  
+		return false;
+});
+
+</script>

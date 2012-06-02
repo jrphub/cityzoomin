@@ -29,11 +29,10 @@ class ForgotpasswordsController < ApplicationController
   def update
     @user=User.find(params[:user][:id])
     if params[:user][:password] == params[:user][:password_confirmation]
-      @user.attributes={:password=>params[:user][:password]}
+      @user.attributes={:password=>params[:user][:password], :temp_password=>"pw"}
       if @user.save(:validate=>false)
-        @user.attributes={:temp_password=>"pw"}
-        @user.save(:validate=>false)
         sign_in @user
+        flash[:success] = "Password successfully changed"
         redirect_to microposts_path
       else
         flash[:error] = 'Sorry! We couldn\'t process your request now.'

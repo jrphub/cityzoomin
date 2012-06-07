@@ -175,7 +175,7 @@ $(window).load(function(){
 								$el.data('ribbon',false);
 								
 								// reset the image z-index and height
-								$img.css('z-index',1).stop().animate({
+								$img.css('z-index',0).stop().animate({
 									height 		: $img.data('originalHeight')
 								}, imgAnim.speed,imgAnim.easing);
 								

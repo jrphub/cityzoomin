@@ -46,7 +46,28 @@
 
 #box a:hover
 {
-	text-decoration:underline;
+	text-decoration:none;
+}
+
+
+#box h1 {
+	background-image: url("/assets/bg-header.jpg");
+    background-position: left top;
+    background-repeat: repeat-x;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 5px #666666;
+    overflow: hidden;
+    position: relative;
+	border-bottom: 1px solid #218994;
+    height: auto;
+    overflow: hidden;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    color: #FFFFFF;
+    font-size: 30px;
+    line-height: 35px;
 }
 #inner-box
 {
@@ -58,19 +79,20 @@
   padding: 2em 1.5em;
   color: rgba(0,0,0, .8);
   line-height: 1.5;
-  margin-top: 0px;
-  margin-bottom:60px;
+  margin-top: 5px;
+  margin-bottom:20px;
   margin-left:auto;
   margin-right:auto;
   height: auto;
   opacity:0.9;
   background-color: #561D8E;
   color:#fff;
-  width:100%;
-  margin:0px 0px 20px -35px;
+  width:95%;
   padding-top:10px;
   padding-bottom:05px;
   text-shadow: 0 1px 0 #000;
+  border: 1px dotted #333333;
+  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.25);
 }
 
 #inner-box:before, #inner-box:after

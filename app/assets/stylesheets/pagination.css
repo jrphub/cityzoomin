@@ -10,9 +10,11 @@
     margin-bottom: 0;
     margin-left: 0;
     background-color: #ADD6FF;
+    color: #000;
 }
 .pagination li {
     display: inline;
+    color: #000;
 }
 .pagination a {
     -moz-border-bottom-colors: none;
@@ -27,13 +29,17 @@
     line-height: 34px;
     padding: 0 14px;
     text-decoration: none;
+    color: #000;
 }
 .pagination a:hover, .pagination .active a {
     background-color: #F5F5F5;
+    text-decoration: none;
+    color: #000;
 }
 .pagination .active a {
     color: #999999;
     cursor: default;
+    color: #000;
 }
 .pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover {
     background-color: transparent;

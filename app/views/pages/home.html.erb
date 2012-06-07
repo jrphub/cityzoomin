@@ -57,58 +57,12 @@ if signed_in?
 	#images=user's + near_by_user's location+other_user's
 else
 %>
-<div style='float:right;margin-right:50px;width:32%;'>
+<div style='float:right;margin-right:50px;width:30%;'>
 	<div id="login">
-		<div id="error" style="margin: 0px;"></div>
-		<% flash.each do |key, value| %>
-        	<div id="<%= key %>" style="margin: 0px;"><%= value %></div>
-      	<% end %>
-	<!-- form -->
-		<h1>Log In</h1>
-		<!--form id="new_session" action="/sessions" and each element has id user_* -->
-		<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
-			<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-			<!--%= render 'shared/error_messages', object: f.object%-->
-			<fieldset id="inputs">
-					<%= f.label :email %><br>
-			      	<%= f.text_field :email,:placeholder=>"Email", :autofocus=>"required"%>
-			      	
-					<%= f.label :password %><br>
-			      	<%= f.password_field :password,:placeholder=>"Password", :autofocus=>"required" %>
-			</fieldset>
-			<fieldset id="actions">
-				<%= f.submit "Signin", :id =>"submit"%>
-		        <a href="forgot_password">Forgot your password?</a>      	
-	      	</fieldset>
-    	<% end %>
-		<p style="font-size: 18px;padding-top:10px;">New User?</p>
-	<!-- form -->
-		<h1>Sign Up</h1>
-	<!-- form -->
-		<%@user = User.new%>
-			<!--form id="new_user" action="/users" and each element has id user_* -->
-		<%= form_for(@user) do |f| %>
-			<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-			<%= render 'shared/error_messages', object: f.object%>
-			
-			<fieldset id="inputs">
-				<%= f.label :username %><br>
-		      	<%= f.text_field :username,:placeholder=>"Your Name"%>
-		      	
-				<%= f.label :email %><br>
-		      	<%= f.text_field :email,:placeholder=>"Email"%>
-		      	
-				<%= f.label :password %><br>
-		      	<%= f.password_field :password,:placeholder=>"Password"%>
-		      	
-		      	<%= f.label :password_confirmation, "Confirmation" %><br>
-		      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password"%>
-			</fieldset>
-			<fieldset id="actions">
-				<%= f.submit "Signup", :id =>"submit"%>
-      		</fieldset>
-      		
-    	<% end %>
+		t
+		o
+		d
+		o
 	</div>
 </div>
 <%end%>

@@ -178,3 +178,6 @@ ul.iw_thumbs li:nth-child(7n) img{
 .footer a.left{
 	float:left;
 }
+.footer a.right{
+	float:right;
+}

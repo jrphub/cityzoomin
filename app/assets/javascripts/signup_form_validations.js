@@ -1,19 +1,19 @@
 $(document).ready(function(){
 	// hide messages 
-	$("#error").hide();
+	$("#signup_error").hide();
 	//$("#success").hide();
 	var form = $("#new_user");
 	// on submit...
 	form.submit(function() {
-		$("#error").hide();
+		$("#signup_error").hide();
 		
 		//required:
 		
 		//name
-		var name = $("input#user_name").val();
+		var name = $("input#user_username").val();
 		if(name == ""){
-			$("#error").fadeIn().text("Name required.");
-			$("input#user_name").focus();
+			$("#signup_error").fadeIn().text("Name required.");
+			$("input#user_username").focus();
 			
 			return false;
 		}
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		// email
 		var email = $("input#user_email").val();
 		if(email == ""){
-			$("#error").fadeIn().text("Email required");
+			$("#signup_error").fadeIn().text("Email required");
 			$("input#user_email").focus();
 			return false;
 		}
@@ -32,33 +32,33 @@ $(document).ready(function(){
 		};
 		
 		if(!isValidEmailAddress(email)) {
-	    	$("#error").fadeIn().text("Email should contain only alphanumeric characters and +_-.");
+	    	$("#signup_error").fadeIn().text("Email should contain only alphanumeric characters and +_-.");
 			$("input#user_email").focus();
 			return false;
 		}
 		// password
 		var password = $("input#user_password").val();
 		if(password == ""){
-			$("#error").fadeIn().text("Password required");
+			$("#signup_error").fadeIn().text("Password required");
 			$("input#user_password").focus();
 			return false;
 		}
 		//passowrd length validation
 		if (password.length <6) {
-			$("#error").fadeIn().text("Password should have minimum 6 characters");
+			$("#signup_error").fadeIn().text("Password should have minimum 6 characters");
 			$("input#user_password").focus();
 			return false;
 		}
 		// confirm password
 		var c_password = $("input#user_password_confirmation").val();
 		if(c_password == ""){
-			$("#error").fadeIn().text("Re-enter Password");
+			$("#signup_error").fadeIn().text("Re-enter Password");
 			$("input#user_password_confirmation").focus();
 			return false;
 		}
 		
 		if (password != c_password) {
-			$("#error").fadeIn().text("Mismatch password");
+			$("#signup_error").fadeIn().text("Mismatch password");
 			$("input#user_password_confirmation").focus();
 			return false;
 		}

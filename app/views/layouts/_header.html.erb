@@ -1,6 +1,106 @@
 <!-- Dynamic Background -->
 <%= javascript_include_tag 'application' %>
 <!--gems overwrite the new structure of the default.js location-->
+<style type='text/css'>
+    #mask{ 
+        position:absolute; /* important */
+        top:10px; /* start from top */
+        left:0px; /* start from left */
+        height:100%; /* cover the whole page */
+        width:100%;  /* cover the whole page */
+        display:none; /* don't show it '*/          
+        
+        /* styling bellow */
+        background-color: black; 
+    }
+    
+    .modal_window{
+        position:absolute; /* important so we can position it on center later */
+        display:none; /* don't show it */
+        
+        /* styling bellow */
+        color:#000;
+    }
+    
+    /* style a specific modal window  */
+    #modal_window{
+        padding:50px;
+        border:1px solid gray;
+        background: #246493;
+        color:black;
+    }
+    
+</style>
+<script type='text/javascript'>
+
+    $(document).ready(function(){
+    
+    //get the height and width of the page
+    var window_width = $(window).width();
+    var window_height = $(window).height();
+    
+    //vertical and horizontal centering of modal window(s)
+    /*we will use each function so if we have more then 1 
+    modal window we center them all*/
+    $('.modal_window').each(function(){
+        
+        //get the height and width of the modal
+        var modal_height = $(this).outerHeight();
+        var modal_width = $(this).outerWidth();
+        
+        //calculate top and left offset needed for centering
+        var top = (window_height-modal_height)/2;
+        var left = (window_width-modal_width)/2;
+        
+        //apply new top and left css values 
+        $(this).css({'top' : top , 'left' : left});
+        
+    });
+
+        
+        $('.activate_modal').click(function(){
+            $('.modal_window').fadeOut(500);
+              //get the id of the modal window stored in the name of the activating element       
+            var modal_id = $(this).attr('name');
+              
+              //use the function to show it
+            show_modal(modal_id);
+              
+        });
+        
+        $('.close_modal').click(function(){
+            
+            //use the function to close it
+            close_modal();
+            
+        });
+        
+    });
+    
+    //THE FUNCTIONS
+    
+    function close_modal(){
+        
+        //hide the mask
+        $('#mask').fadeOut(500);
+        
+        //hide modal window(s)
+        $('.modal_window').fadeOut(500);
+        
+    }
+    function show_modal(modal_id){
+    
+        //set display to block and opacity to 0 so we can use fadeTo
+        $('#mask').css({ 'display' : 'block', opacity : 0});
+        
+        //fade in the mask to opacity 0.8 
+        $('#mask').fadeTo(500,0.8);
+         
+         //show the modal window
+        $('#'+modal_id).fadeIn(500);
+        
+    }
+</script>
 <div class="content">
 			<div class="header">
 				<div style="float:left;">
@@ -54,26 +154,18 @@
 						
 						<%else%>
 	                    <li>
-	                        <a href="/home">
+	                        <a class='activate_modal' name='modal_window3' href="#">
 	                            <div class="ca-content">
-	                                <h2 class="ca-main">Home</h2>
-	                                <h3 class="ca-sub">Safest Place</h3>
+	                                <h2 class="ca-main">Login</h2>
+	                                <h3 class="ca-sub">Enter</h3>
 	                            </div>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a href="/about">
+	                        <a class='activate_modal' name='modal_window4' href="#">
 	                            <div class="ca-content">
-	                                <h2 class="ca-main">About</h2>
-	                                <h3 class="ca-sub">Know us</h3>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="/contact">
-	                            <div class="ca-content">
-	                                <h2 class="ca-main">Contact</h2>
-	                                <h3 class="ca-sub">Poke us</h3>
+	                                <h2 class="ca-main">Signup</h2>
+	                                <h3 class="ca-sub">It's free'</h3>
 	                            </div>
 	                        </a>
 	                    </li>

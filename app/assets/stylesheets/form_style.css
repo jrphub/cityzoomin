@@ -120,7 +120,7 @@ fieldset
     background: #f1f1f1 url(http://www.red-team-design.com/wp-content/uploads/2011/09/login-sprite.png) no-repeat;
     padding: 15px 15px 15px 30px;
     margin: 0 0 10px 0;
-    width: 86%; /* 353 + 2 + 45 = 400 */
+    width: 82%; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -135,7 +135,7 @@ fieldset
     background: #f1f1f1 no-repeat;
     padding: 15px 15px 15px 30px;
     margin: 0 0 10px 0;
-    width: 86%; /* 353 + 2 + 45 = 400 */
+    width: 82%; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [:edit, :update, :image_wall]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :correct_user_profile,   only: [:show]
   def show
@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     else
       render "edit"
     end
+  end
+  
+  def image_wall
+    @user = User.find(cookies[:userid])
   end
   
   private

@@ -42,7 +42,7 @@
 	                    <% if signed_in? %>
 	                    <li>
 	                    	<div class="ca-content">
-	                    	<h3><%= link_to("Image Wall", root_path, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
+	                    	<h3><%= link_to("Image Wall", :image_wall, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
 	                    	</div>
                     	</li>
 	                    
@@ -74,20 +74,7 @@
                     	
 						
 						<%else%>
-	                    <li>
-	                        <a class='activate_modal' name='modal_window3' href="#">
-	                            <div class="ca-content">
-	                                <h3 class="ca-sub">Login</h3>
-	                            </div>
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a class='activate_modal' name='modal_window4' href="#">
-	                            <div class="ca-content">
-	                                <h3 class="ca-sub">Signup</h3>
-	                            </div>
-	                        </a>
-	                    </li>
+						<!--do nothing-->
 	                    <% end %>
 	                </ul>
                </div>

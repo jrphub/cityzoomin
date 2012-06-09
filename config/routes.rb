@@ -7,6 +7,7 @@ Cityzoomin::Application.routes.draw do
   
   root :to => 'pages#home'
   
+  match '/image_wall', to: 'users#image_wall'
   match '/microposts/new', to: 'microposts#new'
   match '/signup',  to: 'users#new'
   match '/signin', to: 'sessions#new'

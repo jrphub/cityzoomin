@@ -4,21 +4,12 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 	padding:0;
 }
 html{
-	-moz-transition: width 0.2s ease-in-out 0s;
-	background-image: -moz-linear-gradient(center top , #277D8E, #45A478); 
-	background-repeat:no-repeat;
-	height:100%;
-    -webkit-background-size: cover;
+	background: url("/assets/bg.png") no-repeat center fixed;
+	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#277d8e), to(#45a478));
-	background-image: -webkit-linear-gradient(top, #277d8e, #45a478);
-	background-image: -moz-linear-gradient(top, #277d8e, #45a478); 
-    background-image: -ms-linear-gradient(top, #277d8e, #45a478); 
-    background-image: -o-linear-gradient(top, #277d8e, #45a478); 
-    background-image: linear-gradient(to bottom, #277d8e, #45a478);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#277d8e', endColorstr='#45a478',GradientType=0 );
+	-moz-transition: width 0.2s ease-in-out 0s;
 }
 body {
 	margin:0;

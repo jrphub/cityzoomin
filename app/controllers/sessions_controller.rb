@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  force_ssl :except=>:new
+  force_ssl :only=>:create
   def new
     
   end

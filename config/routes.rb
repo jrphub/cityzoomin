@@ -1,16 +1,27 @@
 Cityzoomin::Application.routes.draw do
+  SSL_PROTO__ = 'https' unless defined?(SSL_PROTO__)
   resources :users
+  scope :constraints => { :protocol => 'https' } do
+    resources :users do
+      resources :create
+    end
+  end
   resources :microposts
   resources :locations
   resources :forgotpasswords
   resources :sessions,   only: [:new, :create, :destroy]
+  scope :constraints => { :protocol => 'https' } do
+    resources :sessions do
+      resources :create
+    end
+  end
   
   root :to => 'pages#home'
   
   match '/image_wall', to: 'users#image_wall'
   match '/microposts/new', to: 'microposts#new'
-  match '/signup',  to: 'users#new', :force_ssl=>"true"
-  match '/signin', to: 'sessions#new', :force_ssl=>"true"
+  match '/signup',  to: 'users#new'
+  match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
   match '/fplast', to: 'pages#fplast'

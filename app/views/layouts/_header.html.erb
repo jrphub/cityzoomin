@@ -4,8 +4,7 @@
 <div class="content">
 	<div class="header">
 		<div style="float:left;">
-			<h1 style="color: #fff;"><%=link_to("City Zoomin",root_path, :html=>{:style=>"font-size:100px"}) %></h1>
-			<span style="padding-left: 40px;">Zoom Your World</span>
+			<%=link_to(image_tag ("logo.png"),:action=>root_path)%>
 		</div>
 		<div style="float:right">
 			<% if signed_in? %>
@@ -48,5 +47,5 @@
             <% end %>
        </div>
 	</div>
-	<div style="height:200px;display:block;"></div>
+	<div style="height:150px;display:block;"></div>
 

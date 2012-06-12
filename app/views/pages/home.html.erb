@@ -52,7 +52,7 @@
 				<table>
 					<tr>
 						<td>
-							<div id="box" style="padding:3%;color: #000;width:40%;margin-left:15%;margin-bottom:0px;">
+							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;">
 								<div id="error" style="margin: 0px;"></div>
 								<% flash.each do |key, value| %>
 						        	<div id="<%= key %>" style="margin: 0px;"><%= value %></div>
@@ -64,16 +64,15 @@
 									</fieldset>
 									<fieldset id="actions" style="margin: 0px;">
 										<%= f.submit "Signin", :id =>"submit"%>
+										<a href="forgot_password" style="color:#3151A2;">Forgot your password?</a>
 							      	</fieldset>
-							      	<br>
-							      	<a href="forgot_password" style="color:#3151A2;">Forgot your password?</a>  
 						    	<% end %>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td style="padding-top:2%;">
-							<div id="box" style="padding:3%;color: #000;width:40%;margin-left:15%;margin-bottom:0px;">
+							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;">
 								<div id="signup_error" style="margin: 0px;"></div>
 								<% flash.each do |key, value| %>
 							        <div id="<%= key %>" style="margin: 0px;"><%= value %></div>

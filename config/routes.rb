@@ -3,19 +3,18 @@ Cityzoomin::Application.routes.draw do
   resources :users
   #scope :constraints => { :protocol => 'https' } do
    # resources :users do
-    #  resources :create
+    # resources :create
     #end
   #end
   resources :microposts
   resources :locations
   resources :forgotpasswords
-  resources :sessions,   only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   #scope :constraints => { :protocol => 'https' } do
    # resources :sessions do
-   #   resources :create
+   # resources :create
     #end
   #end
-  
   root :to => 'pages#home'
   
   match '/image_wall', to: 'users#image_wall'

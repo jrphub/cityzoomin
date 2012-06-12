@@ -11,7 +11,7 @@ a{
 .header {
 	width:100%;
 	height:auto;
-	position:fixed;
+	position:absolute;
 	background:#000;
 	opacity:0.9;
 	z-index:4;

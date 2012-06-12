@@ -1,5 +1,9 @@
 module SessionsHelper
   def sign_in(user)
+    cookies[:last_signin] = user.signin_at
+    user.attributes={:signin_at=>Time.now}
+    user.save(:validate=>false)
+    #User.update_attributes("signin_at=?", Time.now)
     cookies.permanent[:remember_token] = user.remember_token
     cookies.permanent[:userid] = user.id
     current_user = user
@@ -13,6 +17,7 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
 
+#This function is widely used to check a user is logged in or not
   def signed_in?
     !current_user.nil?
   end
@@ -21,6 +26,7 @@ module SessionsHelper
     current_user = nil
     cookies.delete(:remember_token)
     cookies.delete(:userid)
+    cookies.delete(:last_signin)
   end
   
   def current_user

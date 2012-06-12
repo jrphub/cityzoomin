@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120531194330) do
     t.string   "password_digest"
     t.string   "remember_token",  :limit => 256
     t.string   "temp_password"
+    t.datetime "signin_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

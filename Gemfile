@@ -8,7 +8,6 @@ gem 'bootstrap-will_paginate'
 gem "geocoder"
 gem 'gmaps4rails'
 gem 'rest-client'
-#gem 'activerecord-postgresql-adapter'
 
 group :development, :test do
   gem 'mysql2'
@@ -34,10 +33,6 @@ gem 'jquery-rails'
 #gem 'therubyracer'
 #gem 'libv8'
 
-
-group :test do
-#  gem 'capybara'
-end
 
 group :production do
   gem 'pg'

@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @title = "Home"
+    if signed_in?
+      redirect_to :microposts
+    else
+      @title = "Home"
+    end
   end
 
   def contact

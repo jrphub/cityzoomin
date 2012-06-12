@@ -1,6 +1,11 @@
 module SessionsHelper
   def sign_in(user)
-    cookies[:last_signin] = user.signin_at
+     last_signin = user.signin_at
+     if last_signin.nil?
+       cookies[:last_signin] = user.created_at
+     else
+       cookies[:last_signin] = user.signin_at
+     end
     user.attributes={:signin_at=>Time.now}
     user.save(:validate=>false)
     #User.update_attributes("signin_at=?", Time.now)

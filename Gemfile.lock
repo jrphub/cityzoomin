@@ -88,6 +88,8 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.1.16)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -124,6 +126,7 @@ DEPENDENCIES
   pg
   rails
   railties
+  rest-client
   sass-rails
   uglifier
   will_paginate

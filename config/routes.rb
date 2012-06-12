@@ -9,8 +9,8 @@ Cityzoomin::Application.routes.draw do
   
   match '/image_wall', to: 'users#image_wall'
   match '/microposts/new', to: 'microposts#new'
-  match '/signup',  to: 'users#new'
-  match '/signin', to: 'sessions#new'
+  match '/signup',  to: 'users#new', :force_ssl=>"true"
+  match '/signin', to: 'sessions#new', :force_ssl=>"true"
   match '/signout', to: 'sessions#destroy', via: :delete
   
   match '/fplast', to: 'pages#fplast'

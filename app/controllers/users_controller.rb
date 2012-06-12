@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  ssl_required  :create
+  #ssl_required  :create
+  #force_ssl :only=>:create
   before_filter :signed_in_user, only: [:edit, :update, :image_wall]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :correct_user_profile,   only: [:show]

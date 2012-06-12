@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  ssl_required  :create
+  #ssl_required  :create
+  #force_ssl :only=>:create
   def new
     
   end

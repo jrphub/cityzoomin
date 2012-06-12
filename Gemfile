@@ -8,7 +8,6 @@ gem 'bootstrap-will_paginate'
 gem "geocoder"
 gem 'gmaps4rails'
 gem 'rest-client'
-gem 'ssl_requirement'
 
 group :development, :test do
   gem 'mysql2'

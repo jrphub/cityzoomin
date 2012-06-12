@@ -10,10 +10,11 @@
 #  password_digest :string(255)
 #  remember_token  :string(256)
 #  temp_password   :string(255)
+#  signin_at       :datetime
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :email,:temp_password, :password, :password_confirmation
+  attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :signin_at
   has_secure_password
   has_many :microposts
   

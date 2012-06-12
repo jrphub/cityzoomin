@@ -68,7 +68,7 @@
 <script type="text/javascript">
 	function validatePost(){
 		var city = $("#q").val();
-		if(city == "" || city == null){
+		if(city == "" || city == null || city == "Type the location address"){
 			alert("Please enter a city name");
 			$("input#q").focus();
 			return false;
@@ -87,7 +87,7 @@
 		}*/
 	function validateSearchPost(){
 		var city = $("#s").val();
-		if(city == "" || city == null){
+		if(city == "" || city == null || city == "Type a city name you want to explore"){
 			alert("Please enter a city name to explore");
 			$("input#s").focus();
 			return false;

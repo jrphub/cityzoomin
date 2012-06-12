@@ -11,7 +11,7 @@ $(document).ready(function(){
 		
 		//name
 		var name = $("input#user_name").val();
-		if(name == ""){
+		if(name == "" || name == "Your Name"){
 			$("#error").fadeIn().text("Name required.");
 			$("input#user_name").focus();
 			return false;
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		
 		// email
 		var email = $("input#user_email").val();
-		if(email == ""){
+		if(email == "" || email == "Email"){
 			$("#error").fadeIn().text("Email required");
 			$("input#user_email").focus();
 			return false;

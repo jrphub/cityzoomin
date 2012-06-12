@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	Placeholders.init();
 	// hide messages 
 	$("#signup_error").hide();
 	//$("#success").hide();
@@ -7,11 +8,9 @@ $(document).ready(function(){
 	form.submit(function() {
 		$("#signup_error").hide();
 		
-		//required:
-		
 		//name
 		var name = $("input#user_username").val();
-		if(name == ""){
+		if(name == "" || name == "Your Name"){
 			$("#signup_error").fadeIn().text("Name required.");
 			$("input#user_username").focus();
 			
@@ -20,7 +19,7 @@ $(document).ready(function(){
 		
 		// email
 		var email = $("input#user_email").val();
-		if(email == ""){
+		if(email == "" || email == "Email"){
 			$("#signup_error").fadeIn().text("Email required");
 			$("input#user_email").focus();
 			return false;

@@ -1,83 +1,52 @@
 <!-- Dynamic Background -->
 <%= javascript_include_tag 'application' %>
 <!--gems overwrite the new structure of the default.js location-->
-<style type='text/css'>
-    #mask{ 
-        position:absolute; /* important */
-        top:10px; /* start from top */
-        left:0px; /* start from left */
-        height:100%; /* cover the whole page */
-        width:100%;  /* cover the whole page */
-        display:none; /* don't show it '*/          
-        /* styling bellow */
-        background-color: black; 
-    }
-    
-    .modal_window{
-        position:absolute; /* important so we can position it on center later */
-        display:none; /* don't show it */
-        
-        /* styling bellow */
-        color:#000;
-    }
-    /* style a specific modal window  */
-    #modal_window{
-        padding:50px;
-        border:1px solid gray;
-        background: #246493;
-        color:black;
-    }
-</style>
 <div class="content">
-			<div class="header">
-				<div style="float:left;">
-				<!--a href="index.html"><h1 style="font-size: 100px;">City Zoomin</h1></a-->
-				<h1 style="color: #fff;"><%=link_to("City Zoomin",root_path, :html=>{:style=>"font-size:100px"}) %></h1>
-				<span style="padding-left: 40px;">Zoom Your World</span>
-				</div>
-				<div style="float:right">
-
-				<ul class="ca-menu">
-	                    
-	                    <% if signed_in? %>
-	                    <li>
-	                    	<div class="ca-content">
-	                    	<h3><%= link_to("Image Wall", :image_wall, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-	                    	</div>
-                    	</li>
-	                    
-	                    <li>
-	                    	<div class="ca-content">
-	                    	<h3><a style="text-align:center;" class="ca-sub" href="/microposts">All CZ</a></h3>
-	                    	</div>
-                    	</li>
-	                    <li>
-	                    	<div class="ca-content">
-	                    	<h3><a style="text-align:center;" class="ca-sub" href="/microposts/index?view=only">Your CZ</a></h3>
-	                    	</div>
-                    	</li>
-	                    <li>
-	                    	<div class="ca-content">
-	                    	<h3><%= link_to("Profile", current_user, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-	                    	</div>
-                    	</li>
-                    	<li>
-	                    	<div class="ca-content">
-	                    	<h3><%= link_to("Edit Profile", edit_user_path(current_user), :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-	                    	</div>
-                    	</li>
-                    	<li>
-	                    	<div>
-	                    	<h3><%= link_to("Signout", signout_path, :method => :delete, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-	                    	</div>
-                    	</li>
-                    	
-						
-						<%else%>
-						<!--do nothing-->
-	                    <% end %>
-	                </ul>
-               </div>
-			</div>
-			<div style="height:150px;display:block;"></div>
+	<div class="header">
+		<div style="float:left;">
+			<h1 style="color: #fff;"><%=link_to("City Zoomin",root_path, :html=>{:style=>"font-size:100px"}) %></h1>
+			<span style="padding-left: 40px;">Zoom Your World</span>
+		</div>
+		<div style="float:right">
+			<% if signed_in? %>
+			<div style="color: #FFFFFF;font-size:12px; width:100%;text-align:center;padding:20px;">Welcome! <%=current_user.email.titleize%></div>
+			<ul class="ca-menu">
+                <li>
+                	<div class="ca-content">
+                	<h3><%= link_to("Image Wall", :image_wall, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
+                	</div>
+            	</li>
+                
+                <li>
+                	<div class="ca-content">
+                	<h3><%=link_to("All CZ", :microposts, :class=>"ca-sub", :style=>"text-align:center;")%></h3>
+                	</div>
+            	</li>
+                <li>
+                	<div class="ca-content">
+                	<h3><a style="text-align:center;" class="ca-sub" href="/microposts/index?view=only">Your CZ</a></h3>
+                	</div>
+            	</li>
+                <li>
+                	<div class="ca-content">
+                	<h3><%= link_to("Profile", current_user, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
+                	</div>
+            	</li>
+            	<li>
+                	<div class="ca-content">
+                	<h3><%= link_to("Edit Profile", edit_user_path(current_user), :class=>"ca-sub", :style=>"text-align:center;") %></h3>
+                	</div>
+            	</li>
+            	<li>
+                	<div>
+                	<h3><%= link_to("Signout", signout_path, :method => :delete, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
+                	</div>
+            	</li>
+        	</ul>
+			<%else%>
+			<!--do nothing-->
+            <% end %>
+       </div>
+	</div>
+	<div style="height:200px;display:block;"></div>
 

@@ -1,7 +1,6 @@
 <style type="text/css">
 	.home-caption{
-		margin-left:10%;
-		margin-top:4%;
+		margin-top:2%;
 		color:#000;
 	}
 	.home-caption h2{
@@ -13,76 +12,93 @@
 		font-size:18px;
 	}
 </style>
-<div style="float:left;width: 60%;">
-	<div id="slideshow">
-        <ul>
-          <li>
-            <img src="/assets/bg1.gif" alt="Light" title="Light Trails" />
-          </li>
-          
-          <li>
-            <img src="/assets/bg3.jpg" alt="Kid" title="Sweet" />
-          </li>
-          
-          <li>           
-            <img src="/assets/bg10.gif" alt="Colours" title="Colours" />
-          </li>
-          
-          <li>           
-            <img src="/assets/bg12.jpg" alt="Whistle Podu" title="Whistle Podu" />
-          </li>
-          
-          <li>           
-            <img src="/assets/bg4.jpg" alt="cute" title="Cute" />
-          </li>	                         
-        </ul>
-      </div>
-      <script type="text/javascript" src="/assets/craftyslide.min.js"></script>
-      <script>
-        $("#slideshow").craftyslide();
-      </script>
-      <div class="home-caption">
-      	<h2>Welcome to CityZoomin</h2>
-      	<p>Find out interesting places in your city.</p>
-      </div>
-</div>
-<div style='float:right;padding-right:10%;width:30%;'>
-	<div id="box" style="width: 80%;padding:3%;color: #000;">
-		<div id="error" style="margin: 0px;"></div>
-		<% flash.each do |key, value| %>
-        	<div id="<%= key %>" style="margin: 0px;"><%= value %></div>
-      	<% end %>
-		<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
-			<fieldset id="inputs">
-			      	<%= f.text_field :email,:placeholder=>"Email"%>
-			      	<%= f.password_field :password,:placeholder=>"Password"%>
-			</fieldset>
-			<fieldset id="actions" style="margin: 0px;">
-				<%= f.submit "Signin", :id =>"submit"%>
-		        <a href="forgot_password">Forgot your password?</a>  
-	      	</fieldset>
-    	<% end %>
-	</div>
-	<div id="box" style="width: 80%;padding:3%;margin-top:-12%;">
-		<div id="signup_error" style="margin: 0px;"></div>
-		<% flash.each do |key, value| %>
-	        <div id="<%= key %>" style="margin: 0px;"><%= value %></div>
-      	<% end %>
-		<%@user = User.new%>
-		<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages', object: f.object%>
-			<fieldset id="inputs">
-		      	<%= f.text_field :username,:placeholder=>"Your Name"%>
-		      	
-		      	<%= f.text_field :email,:placeholder=>"Email"%>
-		      	
-		      	<%= f.password_field :password,:placeholder=>"Password"%>
-		      	
-		      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password"%>
-			</fieldset>
-			<fieldset id="actions" style="margin: 0px;">
-				<%= f.submit "Signup", :id =>"submit"%>
-	  		</fieldset>
-    	<% end %>
-	</div>
+<div style="align:center;margin:0 5%;">
+	<table>
+		<tr>
+			<td style="padding-left:5%;">
+				<div id="slideshow">
+			        <ul>
+			          <li>
+			            <img src="/assets/bg1.gif" alt="Light" title="Light Trails" />
+			          </li>
+			          
+			          <li>
+			            <img src="/assets/bg3.jpg" alt="Kid" title="Sweet" />
+			          </li>
+			          
+			          <li>           
+			            <img src="/assets/bg10.gif" alt="Colours" title="Colours" />
+			          </li>
+			          
+			          <li>           
+			            <img src="/assets/bg12.jpg" alt="Whistle Podu" title="Whistle Podu" />
+			          </li>
+			          
+			          <li>           
+			            <img src="/assets/bg4.jpg" alt="cute" title="Cute" />
+			          </li>	                         
+			        </ul>
+			      </div>
+			      <script type="text/javascript" src="/assets/craftyslide.min.js"></script>
+			      <script>
+			        $("#slideshow").craftyslide();
+			      </script>
+			      <div class="home-caption">
+			      	<h2>Welcome to CityZoomin</h2>
+			      	<p>Find out interesting places in your city.</p>
+			      </div>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td>
+							<div id="box" style="padding:3%;color: #000;width:40%;margin-left:15%;margin-bottom:0px;">
+								<div id="error" style="margin: 0px;"></div>
+								<% flash.each do |key, value| %>
+						        	<div id="<%= key %>" style="margin: 0px;"><%= value %></div>
+						      	<% end %>
+								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
+									<fieldset id="inputs">
+									      	<%= f.text_field :email,:placeholder=>"Email"%>
+									      	<%= f.password_field :password,:placeholder=>"Password"%>
+									</fieldset>
+									<fieldset id="actions" style="margin: 0px;">
+										<%= f.submit "Signin", :id =>"submit"%>
+							      	</fieldset>
+							      	<br>
+							      	<a href="forgot_password" style="color:#3151A2;">Forgot your password?</a>  
+						    	<% end %>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding-top:2%;">
+							<div id="box" style="padding:3%;color: #000;width:40%;margin-left:15%;margin-bottom:0px;">
+								<div id="signup_error" style="margin: 0px;"></div>
+								<% flash.each do |key, value| %>
+							        <div id="<%= key %>" style="margin: 0px;"><%= value %></div>
+						      	<% end %>
+								<%@user = User.new%>
+								<%= form_for(@user) do |f| %>
+									<%= render 'shared/error_messages', object: f.object%>
+									<fieldset id="inputs">
+								      	<%= f.text_field :username,:placeholder=>"Your Name"%>
+								      	
+								      	<%= f.text_field :email,:placeholder=>"Email"%>
+								      	
+								      	<%= f.password_field :password,:placeholder=>"Password"%>
+								      	
+								      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password"%>
+									</fieldset>
+									<fieldset id="actions" style="margin: 0px;">
+										<%= f.submit "Signup", :id =>"submit"%>
+							  		</fieldset>
+						    	<% end %>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </div>

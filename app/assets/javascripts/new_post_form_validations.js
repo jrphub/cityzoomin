@@ -7,7 +7,7 @@ $(document).ready(function(){
 	form.submit(function() {
 		$("#error").hide();
 		var city = $("input#location_city").val();
-		if(city == "" || city == null){
+		if(city == "" || city == null || city == "Which city does it belong?"){
 			$("#error").fadeIn().text("Please provide the city");
 			$("input#location_city").focus();
 			
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		}
 		
 		var state = $("input#location_state").val();
-		if(state == "" || state == null){
+		if(state == "" || state == null || state == "Which state does it belong?"){
 			$("#error").fadeIn().text("Please provide the state");
 			$("input#location_state").focus();
 			
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		}
 		
 		var country = $("input#location_country").val();
-		if(country == "" || country == null){
+		if(country == "" || country == null || country == "Which country does it belong?"){
 			$("#error").fadeIn().text("Please provide the country");
 			$("input#location_country").focus();
 			
@@ -31,14 +31,14 @@ $(document).ready(function(){
 		}
 		
 		var title = $("input#micropost_title").val();
-		if(title == "" || title == null){
+		if(title == "" || title == null || title == "Give a title to your post"){
 			$("#error").fadeIn().text("Title required");
 			$("input#title").focus();
 			return false;
 		}
 		
 		var category = $("input#micropost_category").val();
-		if(category == "" || category == null){
+		if(category == "" || category == null || category == "Tag your post"){
 			$("#error").fadeIn().text("Tag the place");
 			$("input#category").focus();
 			return false;

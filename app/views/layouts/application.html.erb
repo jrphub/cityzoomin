@@ -5,19 +5,15 @@
 		<meta charset="UTF-8" />
         <meta name="description" content="Exploring different cities in the world" />
         <meta name="keywords" content="explore, find, place, city, state, world, best"/>
-        <link rel="stylesheet" type="text/css" href="/assets/image_wall_css/style.css" />
         
-        <link rel="stylesheet" type="text/css" href="/assets/style7.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/body_style.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/form_style.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/notification.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/craftyslide.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/gmaps4rails.css" />
-        <script type="text/javascript" src="/assets/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="/assets/pagination.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/button.css" />
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css' />
+        <!--CSS -->
+        <link rel="stylesheet" type="text/css" href="/assets/image_wall_css/style.css" />
+        <%=stylesheet_link_tag "body_style", "button", "craftyslide", "form_style",
+        						"gmaps4rails", "notification", "pagination", "style7"
+        %>
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css' />
 		<link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css' />
+        <script type="text/javascript" src="/assets/jquery.min.js"></script>
 		<%= csrf_meta_tags %>
 		<%= render 'layouts/shim' %>
     </head>

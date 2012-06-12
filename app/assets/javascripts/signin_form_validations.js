@@ -10,12 +10,10 @@ $(document).ready(function(){
 	form.submit(function() {
 		$("#error").hide();
 		
-		//required:
-		
 		// email
 		var email = $("#session_email").val();
 		
-		if(email == ""){
+		if(email == "" || email == "Email"){
 			$("#error").fadeIn().text("Email required");
 			$("input#session_email").focus();
 			return false;

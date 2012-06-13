@@ -29,19 +29,22 @@
 							<%=Micropost.joins(:user).where("user_id=?", params[:id]).size%></span></p>
 						<!-- Other way to do find total post of a user  User.find(params[:id]).microposts.size-->
 						</div>
-						<p style="font-size: 16px; font-weight: bold;">Last Login:
-							<span style="font-size: 14px;">
-							 <%if current_user?(@user)%>
-							 <%=cookies[:last_signin].to_date%>&nbsp;
+						<p style="font-size: 16px;"><span style="font-weight: bold;">Last Login:</span>
+							<span style="font-size: 12px;font-weight: bold;">
+								<!-- cookie stores string, but id is integer-->
+							 <%if (@user.id.to_s == cookies[:userid])%>
+							 	<%=cookies[:last_signin].to_date%></span>&nbsp;
 							 	( <%=time_ago_in_words(cookies[:last_signin])%> ago )
 							 <%else%>
 							 	<%dt=User.find(params[:id])%>
 							 	<%if dt.signin_at.nil?%>
-							 	Newbie
+							 		<span>Newbie</span>
 							 	<%else%>
-							 	<%=dt.signin_at.to_date%>
+							 	<span style="font-size: 12px;font-weight: bold;">
+							 		<%=dt.signin_at.to_date%>
+							 	</span>
 							 	&nbsp;
-							 	( <%=time_ago_in_words(dt.signin_at)%> ago )
+							 		( <%=time_ago_in_words(dt.signin_at)%> ago )
 							 	<%end%>
 							 <%end%>
 						</p>

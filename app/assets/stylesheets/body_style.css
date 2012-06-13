@@ -51,13 +51,12 @@
 
 
 #box h1 {
-	background-image: url("/assets/bg-header_black.png");
+	-moz-animation: 2s linear 0s normal none infinite animate-bg;
+    background-color: #61B832;
+    background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
 	font-family: 'PT Sans Narrow';
     background-position: left top;
-    background-repeat: repeat-x;
-    border-radius: 3px 3px 3px 3px;
     box-shadow: 0 0 5px #666666;
-    overflow: hidden;
     position: relative;
 	border-bottom: 1px solid #218994;
     height: auto;
@@ -68,7 +67,6 @@
     padding-bottom:10px;
     color: #FAFAFA;
     font-size: 26px;
-    line-height: 30px;
 }
 #inner-box
 {

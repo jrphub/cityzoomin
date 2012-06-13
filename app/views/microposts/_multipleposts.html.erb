@@ -24,7 +24,7 @@
 							</td>
 							<td style="padding-left:10px;width:100%;">
 								<div style="float:right;">
-									<% if current_user?(post.user) %>
+									<% if current_user?(post.user) || current_user.admin? %>
     								<%= link_to image_tag('close.png'), post, method:  :delete,
                                     	confirm: "You sure?",
                                      	title:   "Delete" %>
@@ -41,7 +41,7 @@
 								<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at) %> ago.
- 							</span>
+ 								</span>
  								<div style="height: 15px;">
 							</td>
 						</tr>

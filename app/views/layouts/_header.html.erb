@@ -8,8 +8,20 @@
 		</div>
 		<div style="float:right">
 			<% if signed_in? %>
-			<div style="color: #FFFFFF;font-size:12px; width:100%;text-align:center;padding:20px;">Welcome! <%=current_user.email.titleize%></div>
+			<div style="color: #FFFFFF;font-size:12px; width:100%;text-align:center;padding:20px;">
+				Welcome! <%=current_user.email.titleize%>
+				<%if current_user.admin?%>
+				(Admin)
+				<%end%>
+			</div>
 			<ul class="ca-menu">
+				<%if current_user.admin?%>
+				<li>
+	            	<div class="ca-content">
+	            	<h3><%= link_to("All Users", :users, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
+	            	</div>
+            	</li>
+				<%end%>
                 <li>
                 	<div class="ca-content">
                 	<h3><%= link_to("Image Wall", :image_wall, :class=>"ca-sub", :style=>"text-align:center;") %></h3>

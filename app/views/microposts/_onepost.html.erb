@@ -17,7 +17,7 @@
 						</td>
 						<td style="padding-left:10px;width:100%;">
 							<div style="float:right;">
-								<% if current_user?(@post.first.user) %>
+								<% if current_user?(@post.first.user) || current_user.admin? %>
 								<%= link_to image_tag('close.png'), @post.first, method:  :delete,
                                 	confirm: "You sure?",
                                  	title:   "Delete" %>

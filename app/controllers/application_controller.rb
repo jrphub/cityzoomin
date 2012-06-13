@@ -9,5 +9,12 @@ class ApplicationController < ActionController::Base
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
-
+  
+  rescue_from ActiveRecord::RecordNotFound, :with=>:record_not_found
+  
+  private
+    def record_not_found
+      render :text=>"<h1>404 Not Found</h1>", :status=>404
+    end
+    
 end

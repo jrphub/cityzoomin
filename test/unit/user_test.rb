@@ -11,6 +11,7 @@
 #  remember_token  :string(256)
 #  temp_password   :string(255)
 #  signin_at       :datetime
+#  admin           :boolean(1)      default(FALSE)
 #
 
 require 'test_helper'

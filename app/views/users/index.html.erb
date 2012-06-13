@@ -1,0 +1,64 @@
+<% provide(:title, "All Users") %>
+<div id="box">
+	<h1>Admin : List of all users</h1>
+	<div id="error"></div>
+	<% flash.each do |key, value| %>
+        <div id="<%= key %>"><%= value %></div>
+    <% end %>
+	<%= will_paginate @users %>
+
+	<ul>
+		<%@users.each do |user|%>
+	  	<li>
+	  		<div id="inner-box">
+  				<table style="border-collapse: collapse;">
+					<tbody>
+						<tr>
+							<td style="width:30px">
+								<table>
+		    						<tr>
+		    							<td>
+		    								<div>
+		    									<%= gravatar_for user%>
+		    								</div>
+		    							</td>
+									</tr>
+								</table>
+							</td>
+							<td style="padding-left:10px;width:100%;">
+								<div style="float:right;">
+									<% unless current_user?(user) %>
+    								<%= link_to image_tag('close.png'), user, method:  :delete,
+                                    	confirm: "You sure?",
+                                     	title:   "Delete User" %>
+  									<% end %>
+								</div>
+								<p style="font-weight: bold;"><%= link_to user.username.titleize, user %></p>
+								<p><span style="font-weight: bold;">Since:</span>
+									<%=user.created_at.to_date%> (<%=time_ago_in_words(user.created_at)%>)
+								</p>
+								<p><span style="font-weight: bold;">Total Zoomin Post:</span>
+									<!--applying eager loading -->
+									<%=user.microposts.size%>
+								</p>
+								<p><span style="font-weight: bold;">Last signin at:</span>
+									<span>
+										<%unless user.signin_at.nil?%>
+										<%=user.signin_at.to_date%>(<%=time_ago_in_words(user.signin_at)%>)
+										<%else%>
+										Newbie
+										<%end%>
+									</span>
+								</p>
+								<div style="height: 15px;">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</li>
+		<%end%>
+	</ul>
+
+<%= will_paginate @users%>
+</div>

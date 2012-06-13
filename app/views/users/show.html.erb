@@ -30,13 +30,19 @@
 						<!-- Other way to do find total post of a user  User.find(params[:id]).microposts.size-->
 						</div>
 						<p style="font-size: 16px; font-weight: bold;">Last Login:
+							<span style="font-size: 14px;">
 							 <%if current_user?(@user)%>
 							 <%=cookies[:last_signin].to_date%>&nbsp;
 							 	( <%=time_ago_in_words(cookies[:last_signin])%> ago )
 							 <%else%>
-							 	<%dt=User.signin_at.where("id=?", params[:id])%>
-							 	<%=dt.to_date%>&nbsp;
-							 	( <%=time_ago_in_words(dt)%> ago )
+							 	<%dt=User.find(params[:id])%>
+							 	<%if dt.signin_at.nil?%>
+							 	Newbie
+							 	<%else%>
+							 	<%=dt.signin_at.to_date%>
+							 	&nbsp;
+							 	( <%=time_ago_in_words(dt.signin_at)%> ago )
+							 	<%end%>
 							 <%end%>
 						</p>
 					</td>

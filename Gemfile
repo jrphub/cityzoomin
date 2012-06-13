@@ -8,6 +8,7 @@ gem 'bootstrap-will_paginate'
 gem "geocoder"
 gem 'gmaps4rails'
 gem 'rest-client'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'mysql2'

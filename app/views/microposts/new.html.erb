@@ -1,67 +1,91 @@
 <% provide(:title, "Share Your Experience") %>
-<div id="box">
-		<h1>Share Your Experience</h1>
-		<div id="error"></div>
-		<% flash.each do |key, value| %>
-	        <div id="<%= key %>"><%= value %></div>
-        <% end %>
-    	<%
-    	@location = TempLocation.new(:address=>@loc_name)
-        if @location.save
-      	  	@loc_id=@location.id
-        	@temp_location = TempLocation.find(@loc_id)
-        	
-    	%>
-    
-        	<%@json = @temp_location.to_gmaps4rails%>
-        	<%= gmaps4rails(@json) %>
-    	<%else%>
-        	<div id="notice" style="margin:05px">Sorry, Couldn't show you the location. Try again giving city/state name in location<br />
-        		Ex : Mantri Mall, Bangalore
-        	</div>
-    	<%end%>
-    	<h4>*If the location is not showing or showing the wrong one, you can try again with more hints.
-    	<%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
-			<fieldset id="inputs">
-				<label for="q" style="font-size: 18px;">Enter a location with more hints</label><br/>
-				<input type="text" name="q" id="q" placeholder="Type the location address" autofocus="required">
-			</fieldset>
-			<fieldset id="actions" style="margin:1px">
-				<%= submit_tag("Proceed", :id =>"submit")%>
-			</fieldset>
-    	<% end %>
-		<div id="login">	
-		<!--form id="new_micropost" action="/micropost" and each element has id micropost_* -->
-			<%= form_for @micropost, :html=>{:multipart => true} do |f| %>
-				<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
-				<%= render 'shared/error_messages', object: f.object%>
-				<fieldset id="inputs">
-					<%= fields_for(:location) do |i| %>
-						<p>Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
-						<input type="hidden" name="location[name]" value="<%=@loc_name%>">
-						<!-- pending @temp_city, @temp_state, @temp_country-->
-						<%= i.label :city %><br>
-				      	<%= i.text_field :city,:placeholder=>"Which city does it belong?"%>
-				      	
-				      	<%= i.label :state %><br>
-				      	<%= i.text_field :state,:placeholder=>"Which state does it belong?"%>
-				      	
-				      	<%= i.label :country %><br>
-				      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
-				    <%end%>
-				      	<br>
-						<%= f.label :title %><br>
-				      	<%= f.text_field :title,:placeholder=>"Give a title to your post"%>
-				      	
-						<%= f.label :content %><br>
-				      	<%= f.text_area :content,:placeholder=>"Put some word to your memory"%>
-				      	
-						<%= f.label :category %><br>
-				      	<%= f.text_field :category,:placeholder=>"Tag your post"%>
-				 </fieldset>
-				 <fieldset id="actions">     	
-		      			<%= f.submit "Create", :id =>"submit"%>
-		      	</fieldset>
-	    	<% end %>
-		</div>
+<div id="inner-box" style="margin-bottom:0px;padding-bottom:0px;">
+<h1 style="width: 50%;margin-left:25%;">Share Your Experience</h1>
+<div style="align:center;">
+	<table style="bord">
+		<tr>
+			<td style="padding-left:5%;">
+				<table>
+					<tr>
+						<td>
+							<%
+					    	@location = TempLocation.new(:address=>@loc_name)
+					        if @location.save
+					      	  	@loc_id=@location.id
+					        	@temp_location = TempLocation.find(@loc_id)
+					        	
+					    	%>
+					    
+					        	<%@json = @temp_location.to_gmaps4rails%>
+					        	<%= gmaps4rails(@json) %>
+					    	<%else%>
+					        	<div id="notice" style="margin:5% 0% 20% 0%">Sorry, Couldn't show you the location. Try again giving city/state name in location<br />
+					        		Ex : Mantri Mall, Bangalore
+					        	</div>
+					    	<%end%>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="inner-box">
+						    	<h4>*If the location is not showing or showing the wrong one, you can try again with more hints.
+						    	<%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
+									<fieldset id="inputs">
+										<label for="q" style="font-size: 18px;">Enter a location with more hints</label><br/>
+										<input type="text" name="q" id="q" placeholder="Type the location address">
+									</fieldset>
+									<fieldset id="actions" style="margin:1px">
+										<%= submit_tag("Proceed", :id =>"submit")%>
+									</fieldset>
+						    	<% end %>
+			    			</div>
+						</td>
+					</tr>	
+		    	</table>
+			</td>
+			<td id="separator"></td>
+			<td style="width:50%;">
+				<div id="box" style="background-color: rgba(197, 197, 197, 0.31);">
+					<div id="error" style="margin:0px;"></div>
+					<% flash.each do |key, value| %>
+				        <div id="<%= key %>" style="margin:0px;"><%= value %></div>
+			        <% end %>	
+					<!--form id="new_micropost" action="/micropost" and each element has id micropost_* -->
+					<%= form_for @micropost, :html=>{:multipart => true} do |f| %>
+						<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
+						<%= render 'shared/error_messages', object: f.object%>
+						<fieldset id="inputs">
+							<%= fields_for(:location) do |i| %>
+								<p>Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
+								<input type="hidden" name="location[name]" value="<%=@loc_name%>">
+								<!-- pending @temp_city, @temp_state, @temp_country-->
+								<%= i.label :city %><br>
+						      	<%= i.text_field :city,:placeholder=>"Which city does it belong?"%>
+						      	<br>
+						      	<%= i.label :state %><br>
+						      	<%= i.text_field :state,:placeholder=>"Which state does it belong?"%>
+						      	<br>
+						      	<%= i.label :country %><br>
+						      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
+						    <%end%>
+						      	<br>
+								<%= f.label :title %><br>
+						      	<%= f.text_field :title,:placeholder=>"Give a title to your post"%>
+						      	<br>
+								<%= f.label :content %><br>
+						      	<%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
+						      	<br>
+								<%= f.label :category %><br>
+						      	<%= f.text_field :category,:placeholder=>"Tag your post"%>
+						 </fieldset>
+						 <fieldset id="actions">     	
+				      			<%= f.submit "Create", :id =>"submit"%>
+				      	</fieldset>
+			    	<% end %>
+				</div>
+			</td>
+		</tr>
+	</table>
 </div>
+</div>
+

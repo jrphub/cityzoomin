@@ -68,6 +68,25 @@ class MicropostsController < ApplicationController
     redirect_to(:back, :notice=>"Successfully deleted")
   end
   
+  def vote_up
+    begin
+      current_user.vote_exclusively_for(@post = Micropost.find(params[:id]))
+      redirect_to :back
+      rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+  
+  def vote_down
+    begin
+      current_user.vote_exclusively_against(@post = Micropost.find(params[:id]))
+      redirect_to :back
+      rescue ActiveRecord::RecordInvalid
+      render :nothing => true, :status => 404
+    end
+  end
+  
+    
   private
 
     def correct_user

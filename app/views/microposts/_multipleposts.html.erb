@@ -42,6 +42,21 @@
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at) %> ago.
  								</span>
+ 								<br>
+ 								<%if current_user.voted_for?(post)%>
+ 									<%=link_to image_tag('unlike.png',:alt=>"Unlike it", :title=>"Unlike it"), vote_down_micropost_path(post.id), :method=> :post %><br>
+ 									<%pvote_arr=post.voters_who_voted%>
+ 									<%pvote=pvote_arr.size-1%>
+ 									<%if pvote == 0%>
+ 										You liked it, great!
+ 									<%else%>
+ 										You and <%=pvote%> others liked it, awesome!
+									<%end%>
+ 								<%else%>
+									<%=link_to image_tag('like.png',:alt=>"Like it", :title=>"Like it"), vote_up_micropost_path(post.id), :method=> :post %><br>
+ 								<%end%>
+ 								<br />
+ 								
  								<div style="height: 15px;">
 							</td>
 						</tr>

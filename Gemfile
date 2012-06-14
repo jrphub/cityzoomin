@@ -10,6 +10,7 @@ gem 'gmaps4rails'
 gem 'rest-client'
 gem 'nokogiri'
 gem 'impressionist'
+gem 'thumbs_up'
 
 group :development, :test do
   gem 'mysql2'

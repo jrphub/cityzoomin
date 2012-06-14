@@ -6,7 +6,13 @@ Cityzoomin::Application.routes.draw do
     # resources :create
     #end
   #end
-  resources :microposts
+  resources :microposts do
+    member do
+      post :vote_up
+      post :vote_down
+    end
+  end
+
   resources :locations
   resources :forgotpasswords
   resources :sessions, only: [:new, :create, :destroy]

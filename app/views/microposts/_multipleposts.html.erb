@@ -43,17 +43,25 @@
     								Posted <%= time_ago_in_words(post.created_at) %> ago.
  								</span>
  								<br>
+ 								<br>
+ 								<%total_pvote_count=post.votes_for%>
+								<%net_pvote=total_pvote_count-1%>
  								<%if current_user.voted_for?(post)%>
- 									<%=link_to image_tag('unlike.png',:alt=>"Unlike it", :title=>"Unlike it"), vote_down_micropost_path(post.id), :method=> :post %><br>
- 									<%pvote_arr=post.voters_who_voted%>
- 									<%pvote=pvote_arr.size-1%>
- 									<%if pvote == 0%>
+ 									<%=link_to image_tag('unlike.png',:alt=>"Unlike it", :title=>"Unlike it"), vote_down_micropost_path(post.id), :method=> :post %>
+ 									&nbsp;&nbsp;<%=image_tag('comment.png',:alt=>"comment", :title=>"comment")%>
+ 									<br>
+ 									<%if net_pvote == 0%>
  										You liked it, great!
  									<%else%>
- 										You and <%=pvote%> others liked it, awesome!
+ 										You and <%=net_pvote%> others liked it, awesome! 
 									<%end%>
  								<%else%>
-									<%=link_to image_tag('like.png',:alt=>"Like it", :title=>"Like it"), vote_up_micropost_path(post.id), :method=> :post %><br>
+									<%=link_to image_tag('like.png',:alt=>"Like it", :title=>"Like it"), vote_up_micropost_path(post.id), :method=> :post %>
+									&nbsp;&nbsp;<%=image_tag('comment.png',:alt=>"comment", :title=>"comment")%>
+									<br>
+										<%if total_pvote_count>0%>
+										<%=total_pvote_count%> other(s) liked it, great!
+										<%end%>
  								<%end%>
  								<br />
  								
@@ -61,7 +69,7 @@
 							</td>
 						</tr>
 					</tbody>
-		</table>
+			</table>
 		</div>
 			</li>
 			<%end%>

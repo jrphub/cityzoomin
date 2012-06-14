@@ -16,7 +16,7 @@
 class Location < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :name, :city, :state, :country, :latitude, :longitude
-  
+  is_impressionable
    
   
   validates :name, presence:true

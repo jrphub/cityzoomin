@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   #ssl_required  :create
   #force_ssl :only=>:create
+  impressionist
   def new
     
   end

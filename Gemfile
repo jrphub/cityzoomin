@@ -9,6 +9,7 @@ gem "geocoder"
 gem 'gmaps4rails'
 gem 'rest-client'
 gem 'nokogiri'
+gem 'impressionist'
 
 group :development, :test do
   gem 'mysql2'

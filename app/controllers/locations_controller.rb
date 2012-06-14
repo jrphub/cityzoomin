@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  impressionist
   def show
     if (params[:city])
       @allposts=Micropost.joins(:user)

@@ -54,6 +54,9 @@
 	-moz-animation: 2s linear 0s normal none infinite animate-bg;
     background-color: rgba(3, 2, 12, 0.52);
     background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+    
 	font-family: 'PT Sans Narrow';
     background-position: left top;
     box-shadow: 0 0 5px #666666;
@@ -130,11 +133,12 @@
 	-moz-animation: 2s linear 0s normal none infinite animate-bg;
  	background-color: rgba(3, 2, 12, 0.52);
     background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+	background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
 	font-family: 'PT Sans Narrow';
     background-position: left top;
     box-shadow: 0 0 5px #666666;
     position: relative;
-	border-bottom: 1px solid #218994;
     height: auto;
     overflow: hidden;
     padding-left: 40px;

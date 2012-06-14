@@ -31,7 +31,7 @@ $(document).ready(function(){
 		};
 		
 		if(!isValidEmailAddress(email)) {
-	    	$("#signup_error").fadeIn().text("Email should contain only alphanumeric characters and +_-.");
+	    	$("#signup_error").fadeIn().text("Email should contain only alphanumeric characters,domain and +_-.");
 			$("input#user_email").focus();
 			return false;
 		}

@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :signin_at, :admin
   has_secure_password
   has_many :microposts, dependent: :destroy
-  is_impressionable
+  #is_impressionable
   
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

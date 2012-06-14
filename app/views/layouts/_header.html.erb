@@ -8,7 +8,7 @@
 		</div>
 		<div style="float:right">
 			<% if signed_in? %>
-			<div style="color: #FFFFFF;font-size:12px; width:100%;text-align:center;padding:20px;">
+			<div style="color: #FFFFFF;font-size:12px;text-align:center;padding:20px;">
 				Welcome! <%=current_user.email.titleize%>
 				<%if current_user.admin?%>
 				(Admin)

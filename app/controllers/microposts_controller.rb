@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  impressionist
+  #impressionist
   before_filter :signed_in_user
   before_filter :correct_user,   only: :destroy
   def new

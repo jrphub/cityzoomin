@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  impressionist
+  #impressionist
   def home
     if signed_in?
       redirect_to :microposts

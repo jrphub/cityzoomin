@@ -1,5 +1,5 @@
 class ForgotpasswordsController < ApplicationController
-  impressionist
+  #impressionist
   def create
     @user = User.find_by_email(params[:forgotpassword][:email])
     if @user

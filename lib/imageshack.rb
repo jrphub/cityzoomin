@@ -4,8 +4,8 @@ require 'nokogiri'
 class ImageShack
   def rest_upload
     post_data = {}
-    post_data['key'] = "#{ENV[IMAGESHACK_KEY]}"
-    post_data['a_user_name'] =  "#{ENV[IMAGESHACK_UID]}"
+    post_data['key'] = "#{ENV['IMAGESHACK_KEY']}"
+    post_data['a_user_name'] =  "#{ENV['IMAGESHACK_UID']}"
     post_data['public'] = "no"
     post_data['fileupload'] = File.new("#{Rails.root}/app/assets/images/bg.png", "rb")
     response = RestClient.post('http://imageshack.us/upload_api.php', post_data)

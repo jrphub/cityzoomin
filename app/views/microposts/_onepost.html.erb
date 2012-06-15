@@ -1,5 +1,5 @@
 <ul>
-  	<li>
+  	<li id="micropost_<%=@post.first.id%>">
 		<div id="inner-box">
 			<table style="border-collapse: collapse;">
 				<tbody>
@@ -19,8 +19,8 @@
 							<div style="float:right;">
 								<% if current_user?(@post.first.user) || current_user.admin? %>
 								<%= link_to image_tag('close.png'), @post.first, method:  :delete,
-                                	confirm: "You sure?",
-                                 	title:   "Delete" %>
+                                	confirm: "Do you really want to delete it?",
+                                 	title:   "Delete",:remote=>true %>
 								<% end %>
 							</div>
 							<p style="font-weight: bold;"><a href="<%=@post.first.id%>"><%=@post.first.title.titleize%></a></p>

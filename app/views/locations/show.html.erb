@@ -1,7 +1,6 @@
 <% provide(:title, @locname) %>
 <div id="box">
 	<h1>All Zoomins for&nbsp;&quot;<%=@locname%>&quot;</h1>
-	<div id="error"></div>
 	<% flash.each do |key, value| %>
         <div id="<%= key %>"><%= value %></div>
     <% end %>
@@ -9,7 +8,7 @@
     <%= will_paginate @allposts%>
 		<ul>
 			<%@allposts.each do |post|%>
-  			<li>
+  			<li  id="micropost_<%=post.id%>">
   				<div id="inner-box">
   				<table style="border-collapse: collapse;">
 					<tbody>
@@ -29,8 +28,8 @@
 								<div style="float:right;">
 									<% if current_user?(post.user) || current_user.admin?%>
     								<%= link_to image_tag('close.png'), post, method:  :delete,
-                                    	confirm: "You sure?",
-                                     	title:   "Delete" %>
+                                    	confirm: "Do you really want to delete it?",
+                                     	title:   "Delete",:remote=>true %>
   									<% end %>
 								</div>
 								

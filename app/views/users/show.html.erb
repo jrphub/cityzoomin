@@ -1,13 +1,12 @@
 <% provide(:title, @user.username) %>
-<div id="box" style="width:40%">
-	<div id="error"></div>
+<div id="box" style="width:50%">
 	<% flash.each do |key, value| %>
         <div id="<%= key %>" style="display:block;"><%= value %></div>
       <% end %>
 		<table style="border-collapse: collapse;">
 			<tbody>
 				<tr>
-					<td style="width:30%">
+					<td style="width:20%">
 						<table>
     						<tr>
     							<td>
@@ -33,7 +32,7 @@
 							<span style="font-size: 12px;font-weight: bold;">
 								<!-- cookie stores string, but id is integer-->
 							 <%if (@user.id.to_s == cookies[:userid])%>
-							 	<%=cookies[:last_signin].to_date%></span>&nbsp;
+							 	<%=cookies[:last_signin].to_date.strftime("%a, %B %d, %Y at %I:%M %p")%></span>&nbsp;
 							 	( <%=time_ago_in_words(cookies[:last_signin])%> ago )
 							 <%else%>
 							 	<%dt=User.find(params[:id])%>
@@ -41,7 +40,7 @@
 							 		<span>Newbie</span>
 							 	<%else%>
 							 	<span style="font-size: 12px;font-weight: bold;">
-							 		<%=dt.signin_at.to_date%>
+							 		<%=dt.signin_at.strftime("%a, %B %d, %Y at %I:%M %p")%>
 							 	</span>
 							 	&nbsp;
 							 		( <%=time_ago_in_words(dt.signin_at)%> ago )

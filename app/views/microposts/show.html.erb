@@ -1,7 +1,6 @@
 <%if @post %>
 <% provide(:title, @post.first.title) %>
 <div id="box">
-	<div id="error"></div>
 	<% flash.each do |key, value| %>
         <div id="<%= key %>" style="display:block;"><%= value %></div>
       <% end %>

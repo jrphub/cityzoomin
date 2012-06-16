@@ -1,8 +1,7 @@
 <% flash.each do |key, value| %>
     <div id="<%= key %>"><%= value %></div>
 <% end %>
-<%= link_to("Create/Search A Zoomin", current_user, :class=>"button add")%>
-<%= will_paginate @allposts%>
+<div style="margin:6% 0;height:3px;"></div>
 	<ul>
 		<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">

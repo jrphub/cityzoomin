@@ -1,11 +1,11 @@
 <% provide(:title, @locname) %>
 <div id="box">
-	<h1>All Zoomins for&nbsp;&quot;<%=@locname%>&quot;</h1>
+	<h1 style="margin-bottom:10px;">All Zoomins for&nbsp;&quot;<%=@locname%>&quot;</h1>
 	<% flash.each do |key, value| %>
         <div id="<%= key %>"><%= value %></div>
     <% end %>
-	<%= link_to("Create/Search A Zoomin", current_user, :class=>"button add")%>
-    <%= will_paginate @allposts%>
+	<%=render '/microposts/instant_create'%>
+	<div style="margin:6% 0;height:3px;"></div>
 		<ul>
 			<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">

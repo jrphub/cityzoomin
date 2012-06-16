@@ -5,7 +5,7 @@
         <div id="<%= key %>"><%= value %></div>
     <% end %>
 	<%=render '/microposts/instant_create'%>
-	<div style="margin:6% 0;height:3px;"></div>
+	<div style="margin:4% 0;height:3px;"></div>
 		<ul>
 			<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">

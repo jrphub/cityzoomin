@@ -1,9 +1,8 @@
 <%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
 	<fieldset id="inputs" style="float:left;width:80%;line-height: 1.5;">
-		<label for="q" style="font-size: 18px;">Enter a location to create a post</label><br/>
-		<input type="text" name="q" id="q" placeholder="Type the location address" style="width:100%;padding-right:10px;">
+		<input type="text" name="q" id="q" placeholder="Type the location address to create a post" style="width:100%;padding-right:10px;">
 	</fieldset>
-	<fieldset id="actions" style="float:right;width:13%;line-height: 1.5;margin-top:28px;">
-		<%= submit_tag("Create", :id =>"submit",:style=>"height:45px;width:90%;")%>
+	<fieldset id="actions" style="float:right;width:14%;line-height: 1.5;margin-top:2px;">
+		<%= submit_tag("Create", :id =>"submit",:style=>"height:46px;width:100%;")%>
 	</fieldset>
 <% end %>

@@ -76,3 +76,13 @@
 			<%end%>
 		</ul>
 	<%= will_paginate @allposts%>
+<script type="text/javascript">
+	function validatePost(){
+		var city = $("#q").val();
+		if(city == "" || city == null || city == "Type the location address"){
+			alert("Please enter a city name");
+			$("input#q").focus();
+			return false;
+		}
+	}
+</script>

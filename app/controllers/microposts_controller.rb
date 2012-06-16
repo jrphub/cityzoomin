@@ -27,7 +27,7 @@ class MicropostsController < ApplicationController
       redirect_to microposts_path
     else
       flash[:error] = "Creation failed. Please try again"
-      redirect_to current_user
+      redirect_to :back
     end
   end
   

@@ -1,3 +1,5 @@
+require "imageshack"
+
 class MicropostsController < ApplicationController
   #impressionist
   before_filter :signed_in_user
@@ -10,27 +12,32 @@ class MicropostsController < ApplicationController
   def create
     @new_location=Location.find_by_name(params[:location][:name])
     if @new_location
-       params[:micropost][:location_id] = @new_location.id
+      params[:micropost][:location_id] = @new_location.id
     else
-       @location=Location.create({:name => params[:location][:name], :city => params[:location][:city],
-              :state => params[:location][:state], :country => params[:location][:country],
-              :latitude => params[:location][:latitude], :longitude => params[:location][:longitude]})
-       params[:micropost][:location_id] = @location.id
+      @location=Location.create({:name => params[:location][:name], :city => params[:location][:city],
+                                 :state => params[:location][:state], :country => params[:location][:country],
+                                 :latitude => params[:location][:latitude], :longitude => params[:location][:longitude]})
+      params[:micropost][:location_id] = @location.id
     end
-    
+
+    @url = ImageShack.rest_upload(params[:micropost][:upload].tempfile)
     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
-               :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
-               :category=>params[:micropost][:category]})
+                                              :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
+                                              :category=>params[:micropost][:category]})
     @user = User.new
     if @micropost.save
-      flash[:success] = "Post Created. Thanks for sharing!"
-      redirect_to microposts_path
+      @upload = Photo.new(:url => @url, :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
+      if @upload.save
+        flash[:success] = "Post Created. Thanks for sharing!"
+        redirect_to microposts_path
+      end
     else
-      flash[:error] = "Creation failed. Please try again"
+      flash[:error] = "File not uploaded successfully,hence post creation failed"
       redirect_to :back
     end
   end
-  
+
+
   def index
     @user = User.find(cookies[:userid])
     @allposts = Micropost.joins(:user)

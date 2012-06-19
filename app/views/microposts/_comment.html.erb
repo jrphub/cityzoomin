@@ -7,7 +7,7 @@
 </div>
 <p class="title">
 	<%= gravatar_for_comment comment%>
-	<span class="username"><a href="/users/<%=comment.user_id%>"><%=comment.username.titleize%></a></span>
+	<a href="/users/<%=comment.user_id%>" class="username"><%=comment.username.titleize%></a>
 	<span class="comment_on">On <%=comment.created_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></span>
 </p>
 <p class="content">

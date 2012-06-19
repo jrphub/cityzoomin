@@ -42,8 +42,8 @@
 										<%@allcomments=Comment.find_all_by_micropost_id(post_id)%>
 										<%if @allcomments.nil?%>
 										<%else%>
-											<p style="padding:10px 0px;"><span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
-												<a href="#" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
+											<p style="padding:10px 0px;">View <span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
+												<a href="#comment_<%=post_id%>" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
 											</p>
 											<ul class="slidingDiv">
 												<%@allcomments.each do |comment|%>
@@ -53,6 +53,11 @@
 												<%end%>
 											</ul>
 										<%end%>
+									</div>
+									<div id="new_comment_<%=post_id%>" class="comments">
+										<ul class="newslidingDiv">
+											<!--New li comments will be added using ajax-->
+										</ul>
 									</div>
 									
  									<div id="comment_box_<%=post_id%>" class="comment_box">

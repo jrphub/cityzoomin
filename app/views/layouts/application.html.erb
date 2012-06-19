@@ -5,6 +5,13 @@
 		<meta charset="UTF-8" />
         <meta name="description" content="Exploring different cities in the world" />
         <meta name="keywords" content="explore, find, place, city, state, world, best"/>
+        <!--Open graph tags-->
+        <meta property="og:title" content="CityZoomin-Zoom your world" />
+		<meta property="og:type" content="city" />
+		<meta property="og:url" content="http://cityzoomin.herokuapp.com" />
+		<meta property="og:image" content="http://cityzoomin.herokuapp.com/assets/logo.png" />
+		<meta property="og:site_name" content="CityZoomin" />
+		<meta property="fb:admins" content="100001924177406" />
         
         <!--CSS -->
         <link rel="stylesheet" type="text/css" href="/assets/image_wall_css/style.css" />
@@ -33,6 +40,19 @@
 		</script>
     </head>
     <body>
+    	<!--Facebook like plugin script-->
+    	<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=253653944739261";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			</script>
+			
+		<!--End of script-->
+			
 	    <%= render 'layouts/header' %>
 	    <div class="container" id="container">
 	      <%= yield %>

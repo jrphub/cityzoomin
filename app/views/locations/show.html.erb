@@ -6,6 +6,9 @@
     <% end %>
 	<%=render '/microposts/instant_create'%>
 	<div style="margin:4% 0;height:3px;"></div>
+	<div id="inner-box">Share this result with 1 click :&nbsp;&nbsp;
+		<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/<%=request.fullpath%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+	</div>
 		<ul>
 			<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">
@@ -44,26 +47,8 @@
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.
  								</span>
- 								<br>
- 								<br>
- 								<%total_pvote_count=post.votes_for%>
-								<%net_pvote=total_pvote_count-1%>
- 								<%if current_user.voted_for?(post)%>
- 									<%=link_to image_tag('unlike.png',:alt=>"Unlike it", :title=>"Unlike it"), vote_down_micropost_path(post.id), :method=> :post %>
- 									<br>
- 									<%if net_pvote == 0%>
- 										You liked it, great!
- 									<%else%>
- 										You and <%=net_pvote%> others liked it, awesome! 
-									<%end%>
- 								<%else%>
-									<%=link_to image_tag('like.png',:alt=>"Like it", :title=>"Like it"), vote_up_micropost_path(post.id), :method=> :post %>
-									<br>
-										<%if total_pvote_count>0%>
-										<%=total_pvote_count%> other(s) liked it, great!
-										<%end%>
- 								<%end%>
- 								<br />
+ 								<br><br>
+							<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/microposts/<%=post.id%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
  								<!--Comment-->
 	 								
  								<%post_id = post.id%>

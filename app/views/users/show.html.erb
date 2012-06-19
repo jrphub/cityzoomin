@@ -1,3 +1,17 @@
+<style type="text/css">
+.details_title
+{
+	padding-left:2px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.details_heading
+{
+	font-size: 16px;
+	font-weight: bold;
+}
+</style>
 <% provide(:title, @user.username) %>
 <div id="box" style="width:50%">
 	<% flash.each do |key, value| %>
@@ -19,31 +33,35 @@
 					</td>
 					<td style="padding-left:10px;">
 						<%if current_user?(@user)%>
-						<p style="font-size: 16px; font-weight: bold;">It's always a pleasure to see you</p>
+						<p class="details_heading">It's always a pleasure to see you</p>
 						<%end%>
-						<p style="font-size: 16px; font-weight: bold;">Details:</p>
+						<p class="details_heading">Details:</p>
 						<div style="padding-left: 30px;">
-						<p>Name: <span style="padding-left:2px;font-size: 14px;font-weight: bold;"><%= @user.username.titleize %></span></p>
-						<p>Total Zoomin Post:<span style="padding-left:2px;font-size: 14px;font-weight: bold;">
-							<%=Micropost.joins(:user).where("user_id=?", params[:id]).size%></span></p>
+						<p>Name: <span class="details_title"><%= @user.username.titleize %></span></p>
+						<p>Total Zoomin Post:<span class="details_title">
+							<%=Micropost.find_all_by_user_id(params[:id]).size%></span></p>
+						<p>Total Zoomin Likes:<span class="details_title">
+							<%=Vote.find_all_by_voter_id(params[:id]).size%></span></p>
+						<p>Total Zoomin Comments:<span class="details_title">
+							<%=Comment.find_all_by_user_id(params[:id]).size%></span></p>
 						<!-- Other way to do find total post of a user  User.find(params[:id]).microposts.size-->
 						</div>
-						<p style="font-size: 16px;"><span style="font-weight: bold;">Last Login:</span>
-							<span style="font-size: 12px;font-weight: bold;">
+						<p class="details_heading">Last Login:
+							<span style="font-size: 12px;">
 								<!-- cookie stores string, but id is integer-->
-							 <%if (@user.id.to_s == cookies[:userid])%>
-							 	<%=cookies[:last_signin].to_date.strftime("%a, %B %d, %Y at %I:%M %p")%></span>&nbsp;
-							 	( <%=time_ago_in_words(cookies[:last_signin])%> ago )
+							 <%if (@user.id.to_s == session[:userid])%>
+							 	<%=cookies[:last_signin].to_date.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></span>&nbsp;
+							 	( <%=time_ago_in_words(cookies[:last_signin].to_date.localtime)%> ago )
 							 <%else%>
 							 	<%dt=User.find(params[:id])%>
 							 	<%if dt.signin_at.nil?%>
 							 		<span>Newbie</span>
 							 	<%else%>
 							 	<span style="font-size: 12px;font-weight: bold;">
-							 		<%=dt.signin_at.strftime("%a, %B %d, %Y at %I:%M %p")%>
+							 		<%=dt.signin_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%>
 							 	</span>
 							 	&nbsp;
-							 		( <%=time_ago_in_words(dt.signin_at)%> ago )
+							 		( <%=time_ago_in_words(dt.signin_at.localtime)%> ago )
 							 	<%end%>
 							 <%end%>
 						</p>
@@ -57,7 +75,7 @@
 			<%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
 				<fieldset id="inputs">
 					<label for="q" style="font-size: 18px;">Enter a location to create a post</label><br/>
-					<input type="text" name="q" id="q" placeholder="Type the location address" autofocus="required">
+					<input type="text" name="q" id="q" placeholder="Type the location address">
 				</fieldset>
 				<fieldset id="actions" style="margin:1px">
 					<%= submit_tag("Create", :id =>"submit")%>
@@ -67,7 +85,7 @@
 	    	<%= form_tag("#", :method => "get", :onsubmit=>"return validateSearchPost();") do %>
 				<fieldset id="inputs">
 					<label for="s" style="font-size: 18px;">Enter a city name to explore</label><br/>
-					<input type="text" name="s" id="s" placeholder="Type a city name you want to explore" autofocus="required">
+					<input type="text" name="s" id="s" placeholder="Type a city name you want to explore">
 				</fieldset>
 				<fieldset id="actions" style="margin:1px">
 					<%= submit_tag("Explore", :id =>"submit")%>

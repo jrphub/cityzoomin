@@ -1,4 +1,7 @@
 <div style="margin:4% 0;height:3px;"></div>
+<%if @allposts.empty?%>
+<div id="inner-box"><p style="padding:20px;font-size:20px;text-align:center;">Sorry! You haven't created any zoomin yet. Please create one</p></div>
+<%else%>
 	<ul>
 		<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">
@@ -6,16 +9,8 @@
 	  				<table style="border-collapse: collapse;">
 						<tbody>
 							<tr>
-								<td style="width:30px">
-									<table>
-			    						<tr>
-			    							<td>
-			    								<div>
-			    									<%= gravatar_for post%>
-			    								</div>
-			    							</td>
-										</tr>
-									</table>
+								<td style="width:30px;vertical-align:top;">
+									<%= gravatar_for post%>
 								</td>
 								<td style="padding-left:10px;width:100%;">
 									<div style="float:right;">
@@ -35,7 +30,7 @@
 									</p>
 									<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
 									<span class="timestamp">
-	    								Posted <%= time_ago_in_words(post.created_at) %> ago.
+	    								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.
 	 								</span>
 	 								<br>
 	 								<br>
@@ -43,24 +38,55 @@
 									<%net_pvote=total_pvote_count-1%>
 	 								<%if current_user.voted_for?(post)%>
 	 									<%=link_to image_tag('unlike.png',:alt=>"Unlike it", :title=>"Unlike it"), vote_down_micropost_path(post.id), :method=> :post %>
-	 									&nbsp;&nbsp;<%=image_tag('comment.png',:alt=>"comment", :title=>"comment")%>
 	 									<br>
 	 									<%if net_pvote == 0%>
 	 										You liked it, great!
 	 									<%else%>
-	 										You and <%=net_pvote%> others liked it, awesome! 
+	 										You and <%=net_pvote%> other(s) liked it, awesome! 
 										<%end%>
 	 								<%else%>
 										<%=link_to image_tag('like.png',:alt=>"Like it", :title=>"Like it"), vote_up_micropost_path(post.id), :method=> :post %>
-										&nbsp;&nbsp;<%=image_tag('comment.png',:alt=>"comment", :title=>"comment")%>
 										<br>
 											<%if total_pvote_count>0%>
 											<%=total_pvote_count%> other(s) liked it, great!
 											<%end%>
 	 								<%end%>
-	 								<br />
 	 								
-	 								<div style="height: 15px;">
+	 								<!--Comment-->
+	 								
+	 								<%post_id = post.id%>
+	 								<div id="comment_<%=post_id%>" class="comments">
+										<%@allcomments=Comment.find_all_by_micropost_id(post_id)%>
+										<%if @allcomments.nil?%>
+										<%else%>
+											<p style="padding:10px 0px;"><span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
+												<a href="#" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
+											</p>
+											<ul class="slidingDiv">
+												<%@allcomments.each do |comment|%>
+													<li id="comment_<%=comment.id%>">
+		 												<%=render '/microposts/comment', :comment=>comment, :post=>post%>
+	 												</li>
+												<%end%>
+											</ul>
+										<%end%>
+									</div>
+									
+ 									<div id="comment_box_<%=post_id%>" class="comment_box">
+										<form style="width:80%;" action="/microposts/<%=post_id%>/comment_create" method="post" data-remote="true" onsubmit="return validateComment();"/>
+											<fieldset style="float:left;width:80%;line-height: 1.5;">
+												<textarea name="micropost[description]" id="comment_text_<%=post_id%>" placeholder="Write a comment here..." style="width:100%;" rows="1"></textarea>
+												<input type="hidden" name="micropost[micropost_id]" value="<%=post_id%>">
+											</fieldset>
+											<fieldset id="actions" style="float:right;width:14%;margin-top:0px;">
+												<input type="submit" name="micropost[create]" value="Post" style="height:26px;width:80%;color:#000;background-color:#66CCFF;border:0px;">
+											</fieldset>
+										</form>
+									</div>
+ 									
+ 									<!--comment end-->
+ 									
+	 								<div style="height: 15px;"></div>
 								</td>
 							</tr>
 						</tbody>
@@ -69,4 +95,5 @@
 			</li>
 		<%end%>
 	</ul>
+<%end%>
 <%= will_paginate @allposts%>

@@ -1,3 +1,7 @@
+<%if signed_in?
+	redirect_to microposts_path
+end
+%>
 <% provide(:title, "Mail Sent") %>
 <div id="box">
 	<div id="error"></div>

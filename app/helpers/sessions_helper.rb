@@ -11,6 +11,9 @@ module SessionsHelper
     #User.update_attributes("signin_at=?", Time.now)
     cookies.permanent[:remember_token] = user.remember_token
     cookies.permanent[:userid] = user.id
+    session[:userid] = user.id
+    session[:username] = user.username
+    session[:email] = user.email
     current_user = user
   end
   
@@ -31,6 +34,7 @@ module SessionsHelper
     current_user = nil
     cookies.delete(:remember_token)
     cookies.delete(:userid)
+    session[:userid] = session[:username] = session[:email]=nil
     cookies.delete(:last_signin)
   end
   

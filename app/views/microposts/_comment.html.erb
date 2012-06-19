@@ -1,0 +1,17 @@
+<div style="float:right;">
+		<% if current_user?(comment.user) || current_user.admin? %>
+			<%= link_to image_tag('close.png'), comment, method:  :delete,
+            	confirm: "Do you really want to delete it?",
+             	title:   "Delete",:remote=>true %>
+		<% end %>
+</div>
+<p class="title">
+	<%= gravatar_for_comment comment%>
+	<span class="username"><a href="/users/<%=comment.user_id%>"><%=comment.username.titleize%></a></span>
+	<span class="comment_on">On <%=comment.created_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></span>
+</p>
+<p class="content">
+<%=comment.description.capitalize%>
+</p>
+<hr>
+			

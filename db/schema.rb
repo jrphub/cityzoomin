@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614182206) do
+ActiveRecord::Schema.define(:version => 20120618081947) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "description",  :null => false
+    t.integer  "user_id",      :null => false
+    t.integer  "micropost_id", :null => false
+    t.string   "username",     :null => false
+    t.string   "email",        :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"

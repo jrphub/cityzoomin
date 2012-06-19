@@ -17,6 +17,8 @@ class Micropost < ActiveRecord::Base
   belongs_to :user
   has_one :location
   acts_as_voteable
+  has_many :comments, dependent: :destroy#This is to create one object for sync.
+  #polymorphic association is not applicable for comment, user, micropost
   #is_impressionable
   
   validates :user_id, presence: true

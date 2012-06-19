@@ -35,7 +35,7 @@
 								</div>
 								<p style="font-weight: bold;"><%= link_to user.username.titleize, user %></p>
 								<p><span style="font-weight: bold;">Since:</span>
-									<%=user.created_at.to_date%> (<%=time_ago_in_words(user.created_at)%>)
+									<%=user.created_at.to_date%> (<%=time_ago_in_words(user.created_at.localtime)%>)
 								</p>
 								<p><span style="font-weight: bold;">Total Zoomin Post:</span>
 									<!--applying eager loading -->
@@ -44,7 +44,7 @@
 								<p><span style="font-weight: bold;">Last signin at:</span>
 									<span>
 										<%unless user.signin_at.nil?%>
-										<%=user.signin_at.to_date%>(<%=time_ago_in_words(user.signin_at)%>)
+										<%=user.signin_at.to_date%>(<%=time_ago_in_words(user.signin_at.localtime)%>)
 										<%else%>
 										Newbie
 										<%end%>

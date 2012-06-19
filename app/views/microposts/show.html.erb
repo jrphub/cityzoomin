@@ -25,4 +25,27 @@
 			return false;
 		}
 	}
+	
+	function validateComment(){
+		var comment = $("#comment").val();
+		if(comment == "" || comment == null || comment == "Write a comment here"){
+			alert("Please write a comment");
+			$("#comment").focus();
+			return false;
+		}
+	}
+</script>
+<script type="text/javascript">
+ 
+$(document).ready(function(){
+ 
+        $(".slidingDiv").hide();
+        $(".show_hide").show();
+ 
+    $('.show_hide').click(function(){
+    $(".slidingDiv").slideToggle();
+    });
+ 
+});
+ 
 </script>

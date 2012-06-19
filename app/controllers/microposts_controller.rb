@@ -44,6 +44,7 @@ class MicropostsController < ApplicationController
     #user_id, locations.name as locname, city, state, country, username FROM `microposts` 
     #INNER JOIN `users` ON `users`.`id` = `microposts`.`user_id` INNER JOIN locations ON microposts.location_id = locations.
     #id ORDER BY microposts.created_at DESC LIMIT 10 OFFSET 0
+    
   end
   
   def show
@@ -64,13 +65,13 @@ class MicropostsController < ApplicationController
   end
   
   def destroy
-    @post = Micropost.find(params[:id])
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to :back, :notice=>"Post is deleted successfully" }
-      format.json { head :no_content }
-      format.js #added
-    end
+      @post = Micropost.find(params[:id])
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to :back, :notice=>"Post is deleted successfully" }
+        format.json { head :no_content }
+        format.js #added
+      end
   end
   
   def vote_up
@@ -91,12 +92,35 @@ class MicropostsController < ApplicationController
     end
   end
   
+  def comment_create
+    @comment = Comment.new({:description => params[:micropost][:description],
+              :micropost_id=>params[:micropost][:micropost_id],
+              :user_id=>session[:userid], :username=>session[:username], :email=>session[:email]})
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to :back} #changed
+        format.json { render json: @comment, status: :created, location: @comment }
+        format.js #added
+      else
+        format.html { render action: :back } #changed
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
     
   private
 
     def correct_user
       @micropost = current_user.microposts.find_by_id(params[:id])
       redirect_to root_path if @micropost.nil?
+    end
+    
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_path, notice: "Please sign in."
+      end
     end
   
 end

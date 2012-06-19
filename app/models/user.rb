@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :microposts, dependent: :destroy
   acts_as_voter
+  has_many :comments#polymorphic association is not applicable for comment, user, micropost
   #is_impressionable
   
   before_save { |user| user.email = email.downcase }

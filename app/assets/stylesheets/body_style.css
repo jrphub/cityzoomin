@@ -176,3 +176,49 @@
     background: #246493;
     color:black;
 }
+
+.comments ul {
+  margin: 0;
+  padding: 0;
+}
+ 
+.comments li {
+  margin-bottom: 10px;
+  padding: 3px;
+  list-style: none;
+}
+ 
+.comments p {
+  margin: 0;
+}
+ 
+.comments .title {
+  font-size: 13px;
+  font-weight: bold;
+  padding-left:5px;
+  vertical-align:top;
+}
+
+.comments .title .username {
+	vertical-align:top;
+	padding-left: 5px;
+	color:#CCFF66;
+}
+ 
+.comments .content {
+  font-size: 12px;
+  margin-top:10px;
+  margin-bottom: 10px;
+  margin-left:55px
+}
+
+.comments .title .comment_on {
+	margin-left:-8%;
+	font-weight:lighter;
+	font-size: 8pt;
+  	color:#CCFF99
+}
+
+.show_hide {
+    display:none;
+}

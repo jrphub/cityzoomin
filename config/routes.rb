@@ -10,9 +10,10 @@ Cityzoomin::Application.routes.draw do
     member do
       post :vote_up
       post :vote_down
+      post :comment_create
     end
   end
-
+  resources :comments
   resources :locations
   resources :forgotpasswords
   resources :sessions, only: [:new, :create, :destroy]

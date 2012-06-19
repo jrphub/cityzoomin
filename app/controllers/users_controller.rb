@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   end
   
   def image_wall
-    @user = User.find(cookies[:userid])
+    @user = User.find(session[:userid])
   end
   
   private

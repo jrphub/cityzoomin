@@ -30,7 +30,7 @@ class MicropostsController < ApplicationController
                                               :category=>params[:micropost][:category]})
     @user = User.new
     if @micropost.save
-      @upload = Photo.new(:url => @url, :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
+      @upload = Photo.new(:url => @url.url, :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false) unless @url.err.present?
       if @upload.save
         flash[:success] = "Post Created. Thanks for sharing!"
         redirect_to microposts_path

@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(:version => 20120620002745) do
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
+  create_table "photos", :force => true do |t|
+    t.string   "url"
+    t.integer  "user_id",      :null => false
+    t.integer  "micropost_id"
+    t.boolean  "is_profile"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "temp_locations", :force => true do |t|
     t.string   "address"
     t.float    "latitude"

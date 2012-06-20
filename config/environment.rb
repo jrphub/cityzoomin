@@ -18,3 +18,5 @@ ActionMailer::Base.smtp_settings = {
     :password => "#{ENV['GMAIL_PWD']}",
     :enable_starttls_auto => true,
 }
+
+Rails.logger = Logger.new(STDOUT)

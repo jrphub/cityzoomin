@@ -20,7 +20,11 @@ class MicropostsController < ApplicationController
       params[:micropost][:location_id] = @location.id
     end
 
-    @url = ImageShack.rest_upload(params[:micropost][:upload].tempfile)
+    tmp = params[:micropost][:upload].tempfile
+    file = File.join("tmp", params[:micropost][:upload].original_filename)
+    FileUtils.cp tmp.path, file
+    @url = ImageShack.rest_upload("#{file}")
+    FileUtils.rm file
     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
                                               :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
                                               :category=>params[:micropost][:category]})

@@ -2,7 +2,7 @@
 <div id="inner-box" style="margin-bottom:0px;padding-bottom:0px;">
 <h1 style="width: 50%;margin-left:25%;">Share Your Experience</h1>
 <div style="align:center;">
-	<table style="bord">
+	<table style="border:none;">
 		<tr>
 			<td style="padding-left:5%;">
 				<table>
@@ -67,6 +67,8 @@
 						      	<br>
 						      	<%= i.label :country %><br>
 						      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
+						      	<%= i.hidden_field :latitude%>
+						      	<%= i.hidden_field :longitude%>
 						    <%end%>
 						      	<br>
 								<%= f.label :title %><br>

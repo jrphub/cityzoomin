@@ -14,7 +14,7 @@ class MicropostsController < ApplicationController
     else
        @location=Location.create({:name => params[:location][:name], :city => params[:location][:city],
               :state => params[:location][:state], :country => params[:location][:country],
-              :latitude => params[:location][:latitude], :longitude => params[:location][:longitude]})
+              :latitude=>params[:location][:latitude],:longitude=>params[:location][:longitude]})
        params[:micropost][:location_id] = @location.id
     end
     
@@ -53,7 +53,7 @@ class MicropostsController < ApplicationController
       @post=Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
       .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
-      user_id, locations.name as locname, city, state, country, username, email").where(:id=>params[:id])
+      user_id, locations.name as locname, city, state, country,latitude,longitude, username, email").where(:id=>params[:id])
     
     elsif (params[:view] == 'only')
       @allposts = Micropost.joins(:user)

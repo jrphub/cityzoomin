@@ -22,3 +22,15 @@
    height: 400px;
    border:#555555 2px solid;
 }
+
+.map-header {
+	color:#333333;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.map-details {
+	color:#DE4343;
+	font-weight: bold;
+	font-size: 14px;
+}

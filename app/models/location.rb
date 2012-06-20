@@ -15,8 +15,15 @@
 
 class Location < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :name, :city, :state, :country, :latitude, :longitude
+  attr_accessible :name, :city, :state, :country, :latitude, :longitude, :gmaps
   #is_impressionable
+  acts_as_gmappable
+      def gmaps4rails_address
+          name
+      end
+       def gmaps4rails_infowindow
+         "<div class='map-header'>Location</div>" << "<div class='map-details'>#{name}</div>"
+     end
    
   
   validates :name, presence:true

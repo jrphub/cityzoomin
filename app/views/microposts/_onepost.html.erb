@@ -1,3 +1,9 @@
+<h1 style="margin-bottom:10px;"><%=@post.first.title.titleize%></h1>
+<div id="inner-box">
+	<%@loc=Location.find_by_name(@post.first.locname)%>
+	<%@json = @loc.to_gmaps4rails%>
+	<%= gmaps4rails(@json) %>	
+</div>
 <ul>
   	<li id="micropost_<%=@post.first.id%>">
 		<div id="inner-box">
@@ -36,7 +42,7 @@
 								<%@allcomments=Comment.find_all_by_micropost_id(post_id)%>
 								<%if @allcomments.nil?%>
 								<%else%>
-									<p style="padding:10px 0px;"><span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
+									<p style="padding:10px 0px;">View <span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
 										<a href="#" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
 									</p>
 									<ul class="slidingDiv">
@@ -49,10 +55,16 @@
 								<%end%>
 							</div>
 							
+							<div id="new_comment_<%=post_id%>" class="comments">
+								<ul class="newslidingDiv">
+									<!--New li comments will be added using ajax-->
+								</ul>
+							</div>
+							
 							<div id="comment_box_<%=post_id%>" class="comment_box">
-								<form style="width:80%;" action="/microposts/<%=post_id%>/comment_create" method="post" data-remote="true" onsubmit="return validateComment();"/>
+								<form style="width:80%;" action="/microposts/<%=post_id%>/comment_create" method="post" data-remote="true"/>
 									<fieldset style="float:left;width:80%;line-height: 1.5;">
-										<textarea name="micropost[description]" id="comment" placeholder="Write a comment here..." style="width:100%;" rows="1"></textarea>
+										<textarea name="micropost[description]" id="comment_text_<%=post_id%>" placeholder="Write a comment here..." style="width:100%;" rows="1"></textarea>
 										<input type="hidden" name="micropost[micropost_id]" value="<%=post_id%>">
 									</fieldset>
 									<fieldset id="actions" style="float:right;width:14%;margin-top:0px;">
@@ -60,7 +72,7 @@
 									</fieldset>
 								</form>
 							</div>
- 									
+ 							<!--%@json = @post.first.to_gmaps4rails%-->
 							<!--comment end-->
 							<div style="height: 15px;">
 						</td>

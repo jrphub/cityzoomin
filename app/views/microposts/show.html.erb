@@ -5,7 +5,6 @@
         <div id="<%= key %>" style="display:block;"><%= value %></div>
   	<% end %>
     <%=render 'instant_create'%>
-    <div style="margin:4% 0;height:3px;"></div>
 	<%= render 'onepost.html.erb' %>
 </div>
 <%elsif @allposts%>
@@ -19,21 +18,13 @@
 <script type="text/javascript">
 	function validatePost(){
 		var city = $("#q").val();
-		if(city == "" || city == null || city == "Type the location address"){
+		if(city == "" || city == null || city == "Type the location address to create a post"){
 			alert("Please enter a city name");
 			$("input#q").focus();
 			return false;
 		}
 	}
 	
-	function validateComment(){
-		var comment = $("#comment").val();
-		if(comment == "" || comment == null || comment == "Write a comment here"){
-			alert("Please write a comment");
-			$("#comment").focus();
-			return false;
-		}
-	}
 </script>
 <script type="text/javascript">
  

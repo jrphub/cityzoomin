@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618081947) do
+ActiveRecord::Schema.define(:version => 20120620002745) do
 
   create_table "comments", :force => true do |t|
     t.text     "description",  :null => false
@@ -48,14 +48,15 @@ ActiveRecord::Schema.define(:version => 20120618081947) do
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "locations", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "city",       :null => false
-    t.string   "state",      :null => false
-    t.string   "country",    :null => false
+    t.string   "name",                         :null => false
+    t.string   "city",                         :null => false
+    t.string   "state",                        :null => false
+    t.string   "country",                      :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "gmaps",      :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "locations", ["name", "city"], :name => "unique_locations", :unique => true

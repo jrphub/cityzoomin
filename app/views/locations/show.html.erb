@@ -1,12 +1,20 @@
 <% provide(:title, @locname) %>
-<div id="box">
+<div id="inner-box" style="width:50%;margin-right:7px;float:right;background: rgba(41, 38, 34, 0.28);">
 	<h1 style="margin-bottom:10px;">All Zoomins for&nbsp;&quot;<%=@locname%>&quot;</h1>
 	<% flash.each do |key, value| %>
         <div id="<%= key %>"><%= value %></div>
     <% end %>
-	<%=render '/microposts/instant_create'%>
-	<div style="margin:4% 0;height:3px;"></div>
-	<div id="inner-box">Share this result with 1 click :&nbsp;&nbsp;
+    <%if signed_in? %>
+		<%=render '/microposts/instant_create'%>
+	<%else%>
+		<form class="form-wp cf" action="/pages/result" method="get">
+			<input type="text" name="s" id="s" placeholder="Search here..." required>
+			<button type="submit">Search</button>
+		</form>
+	<%end%>
+	<br>
+	<div id="inner-box">
+	Share this result with 1 click :&nbsp;&nbsp;
 		<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/<%=request.fullpath%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 	</div>
 		<ul>
@@ -28,6 +36,7 @@
 								</table>
 							</td>
 							<td style="padding-left:10px;width:100%;">
+								<%if signed_in?%>
 								<div style="float:right;">
 									<% if current_user?(post.user) || current_user.admin?%>
     								<%= link_to image_tag('close.png'), post, method:  :delete,
@@ -35,14 +44,14 @@
                                      	title:   "Delete",:remote=>true %>
   									<% end %>
 								</div>
-								
+								<%end%>
 								<p style="font-weight: bold;"><a href="/microposts/<%=post.id%>"><%=post.title.titleize%></a></p>
 								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username.titleize%></a></span></p>
 								<p><%=post.content%></p>
-								<p><span style="font-weight: bold;">Location: </span><a href="<%=post.location_id%>"><%=post.locname.titleize%></a></p>
-								<p><span style="font-weight: bold;">Address: </span><a href="show?city=<%=post.city%>"><%=post.city.titleize%></a>, 
-									<a href="show?state=<%=post.state%>"><%=post.state.titleize%></a>, 
-									<a href="show?country=<%=post.country%>"><%=post.country.titleize%></a></p>
+								<p><span style="font-weight: bold;">Location: </span><a href="<%=post.location_id%>"><%=post.name.titleize%></a></p>
+								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>, 
+									<a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>, 
+									<a href="/locations/show?country=<%=post.country%>"><%=post.country.titleize%></a></p>
 								<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.
@@ -56,56 +65,82 @@
 									<%@allcomments=Comment.find_all_by_micropost_id(post_id)%>
 									<%if @allcomments.nil?%>
 									<%else%>
-										<p style="padding:10px 0px;"><span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
-											<a href="#" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
+										<p style="padding:10px 0px;">View <span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
+											<a href="#comment_<%=post_id%>" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
 										</p>
 										<ul class="slidingDiv">
 											<%@allcomments.each do |comment|%>
 												<li id="comment_<%=comment.id%>">
-	 												<%=render '/microposts/comment', :comment=>comment, :post=>post%>
+													<%if signed_in?%>
+	 													<%=render '/microposts/comment', :comment=>comment, :post=>post%>
+	 												<%else%>
+		 												<p class="title">
+															<%= gravatar_for_comment comment%>
+															<a href="/users/<%=comment.user_id%>" class="username"><%=comment.username.titleize%></a>
+															<span class="comment_on">On <%=comment.created_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></span>
+														</p>
+														<p class="content">
+														<%=comment.description.capitalize%>
+														</p>
+														<hr>
+													<%end%>
  												</li>
 											<%end%>
 										</ul>
 									<%end%>
 								</div>
-								
-								<div id="comment_box_<%=post_id%>" class="comment_box">
-									<form style="width:80%;" action="/microposts/<%=post_id%>/comment_create" method="post" data-remote="true" onsubmit="return validateComment();"/>
-										<fieldset style="float:left;width:80%;line-height: 1.5;">
-											<textarea name="micropost[description]" id="comment" placeholder="Write a comment here..." style="width:100%;" rows="1"></textarea>
-											<input type="hidden" name="micropost[micropost_id]" value="<%=post_id%>">
-										</fieldset>
-										<fieldset id="actions" style="float:right;width:14%;margin-top:0px;">
-											<input type="submit" name="micropost[create]" value="Post" style="width:80%;color:#000;background-color:#66CCFF;border:0px;">
-										</fieldset>
-									</form>
-								</div>
- 									
+								<% if signed_in? %>
+									<div id="new_comment_<%=post_id%>" class="comments">
+										<ul class="newslidingDiv">
+											<!--New li comments will be added using ajax-->
+										</ul>
+									</div>
+									
+									<div id="comment_box_<%=post_id%>" class="comment_box">
+										<form style="width:80%;" action="/microposts/<%=post_id%>/comment_create" method="post" data-remote="true" onsubmit="return validateComment();"/>
+											<fieldset style="float:left;width:80%;line-height: 1.5;">
+												<textarea name="micropost[description]" id="comment_text_<%=post_id%>" placeholder="Write a comment here..." style="width:100%;" rows="1"></textarea>
+												<input type="hidden" name="micropost[micropost_id]" value="<%=post_id%>">
+											</fieldset>
+											<fieldset id="actions" style="float:right;width:14%;margin-top:0px;">
+												<input type="submit" name="micropost[create]" value="Post" style="width:80%;color:#000;background-color:#66CCFF;border:0px;">
+											</fieldset>
+										</form>
+									</div>
+ 								<%end%>	
 								<!--comment end-->
- 								<div style="height: 15px;">
+ 								<div style="height: 15px;"></div>
 							</td>
 						</tr>
 					</tbody>
-		</table>
+			</table>
 		</div>
 			</li>
 			<%end%>
 		</ul>
 	<%= will_paginate @allposts%>
+</div>
+<div id="inner-box" style="float:left;margin-left:2%;width:40%;position:fixed;background: rgba(41, 38, 34, 0.28);">
+	<h1 style="margin-bottom:10px;">Map Zoomin</h1>
+	<%if (params[:city])%>
+		<%@loc=Location.find_all_by_city(params[:city])%>
+	<%elsif (params[:state])%>
+		<%@loc=Location.find_all_by_state(params[:state])%>
+	<%elsif (params[:country])%>
+		<%@loc=Location.find_all_by_country(params[:country])%>
+	<%elsif(params[:id] != 'show')%>
+		<%@loc=Location.find(params[:id])%>
+	<%end%>
+	<%@json = @loc.to_gmaps4rails%>
+	<%= gmaps4rails(@json) %>
+	
+</div>
 <script type="text/javascript">
 	function validatePost(){
 		var city = $("#q").val();
 		if(city == "" || city == null || city == "Type the location address"){
 			alert("Please enter a city name");
 			$("input#q").focus();
-			return false;
-		}
-	}
-	function validateComment(){
-		var comment = $("#comment").val();
-		if(comment == "" || comment == null || comment == "Write a comment here"){
-			alert("Please write a comment");
-			$("#comment").focus();
 			return false;
 		}
 	}

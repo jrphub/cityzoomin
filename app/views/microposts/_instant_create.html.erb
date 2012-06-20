@@ -1,8 +1,4 @@
-<%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
-	<fieldset id="inputs" style="float:left;width:80%;line-height: 1.5;">
-		<input type="text" name="q" id="q" placeholder="Type the location address to create a post" style="width:100%;padding-right:10px;">
-	</fieldset>
-	<fieldset id="actions" style="float:right;width:14%;line-height: 1.5;margin-top:2px;">
-		<%= submit_tag("Create", :id =>"submit",:style=>"height:46px;width:100%;")%>
-	</fieldset>
+<%= form_tag(new_micropost_path,:class=>"form-wp cf", :method => "get", :onsubmit=>"return validatePost();") do %>
+		<input type="text" name="q" id="q" placeholder="Type the location address to create a post" required/>
+		<%= button_tag("Create")%>
 <% end %>

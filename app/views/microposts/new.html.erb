@@ -28,7 +28,7 @@
 					<tr>
 						<td>
 							<div id="inner-box">
-						    	<h4>*If the location is not showing or showing the wrong one, you can try again with more hints.
+						    	<h4>*If the location is not showing or showing the wrong one, you can try again with more hints.</h4>
 						    	<%= form_tag(new_micropost_path, :method => "get", :onsubmit=>"return validatePost();") do %>
 									<fieldset id="inputs">
 										<label for="q" style="font-size: 18px;">Enter a location with more hints</label><br/>
@@ -67,19 +67,23 @@
 						      	<br>
 						      	<%= i.label :country %><br>
 						      	<%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
+
 						      	<%= i.hidden_field :latitude%>
 						      	<%= i.hidden_field :longitude%>
-						    <%end%>
-						      	<br>
-								<%= f.label :title %><br>
-						      	<%= f.text_field :title,:placeholder=>"Give a title to your post"%>
-						      	<br>
-								<%= f.label :content %> (Optional)<br>
-						      	<%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
-						      	<br>
-								<%= f.label :category %><br>
-						      	<%= f.text_field :category,:placeholder=>"Tag your post"%>
-						 </fieldset>
+                          	<%end%>
+		                          <br>
+		                          <%= f.label :title %><br>
+		                          <%= f.text_field :title,:placeholder=>"Give a title to your post"%>
+		                          <br>
+		                          <%= f.label :content %> (Optional)<br>
+		                          <%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
+		                          <br>
+		                          <%= f.label :category %><br>
+		                          <%= f.text_field :category,:placeholder=>"Tag your post"%>
+		                          <%= f.label :upload%>
+		                          <%= f.file_field :upload %>
+                        </fieldset>
+
 						 <fieldset id="actions">     	
 				      			<%= f.submit "Create", :id =>"submit"%>
 				      	</fieldset>

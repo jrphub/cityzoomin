@@ -15,6 +15,7 @@
 class Micropost < ActiveRecord::Base
   attr_accessible :category, :content, :title, :location_id
   belongs_to :user
+  has_many :photos, dependent: :destroy
   has_one :location
   acts_as_voteable
   has_many :comments, dependent: :destroy#This is to create one object for sync.

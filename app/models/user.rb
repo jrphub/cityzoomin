@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :signin_at, :admin
   has_secure_password
   has_many :microposts, dependent: :destroy
+  has_many :photos, dependent: :destroy
   acts_as_voter
   has_many :comments#polymorphic association is not applicable for comment, user, micropost
   #is_impressionable

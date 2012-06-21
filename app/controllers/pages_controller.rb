@@ -30,8 +30,8 @@ class PagesController < ApplicationController
     .select("microposts.id,content, location_id, title,
      category,microposts.created_at,user_id, name, city,
       state, country, username,email")
-    .where("name LIKE :search OR city LIKE :search OR state LIKE :search OR country LIKE :search",
-    {:search=>"%#{params[:s]}%"})
+    .where("UPPER(name) LIKE :search OR UPPER(city) LIKE :search OR UPPER(state) LIKE :search OR UPPER(country) LIKE :search",
+    {:search=>"%#{params[:s].upcase}%"})
     .paginate(page: params[:page],per_page:3)
   end
 end

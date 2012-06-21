@@ -3,12 +3,13 @@ require 'nokogiri'
 
 class ImageShack
   def self.rest_upload(file)
+    path = File.join(Rails.root, file)
     post_data = {}
     response = nil
     post_data['key'] = "#{ENV['IMAGESHACK_KEY']}"
     post_data['a_user_name'] =  "#{ENV['IMAGESHACK_UID']}"
     post_data['public'] = "no"
-    post_data['fileupload'] = File.new("#{Rails.root}/#{file}", "rb")
+    post_data['fileupload'] = File.new(path, "rb")
     begin
       response = RestClient.post('http://imageshack.us/upload_api.php', post_data)
     rescue SocketError => e

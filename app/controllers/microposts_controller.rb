@@ -28,8 +28,6 @@ class MicropostsController < ApplicationController
     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
                                               :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
                                               :category=>params[:micropost][:category]})
-    @user = User.new
-    #TODO may be we dont need this
     if @micropost.save
       if @url[:url].nil?
         if @url[:err] == "auth_error"

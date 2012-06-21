@@ -30,14 +30,14 @@ class MicropostsController < ApplicationController
                                               :category=>params[:micropost][:category]})
     @user = User.new
     if @micropost.save
-      if @url[:err].present?
+      if @url[:url].nil?
         if @url[:err] == "auth_error"
           flash[:error] = "We are having some problem with our hosting. So, the image could not be uploaded. Please bear with us."
         else
           flash[:error] = @url[:err]
         end
       else
-        if Photo.save(:url => @url[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
+        if Photo.create(:url => @url[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
           flash[:success] = "Post Created. Thanks for sharing!"
         else
           flash[:error] = "Post created successfully; but we could not save the image."

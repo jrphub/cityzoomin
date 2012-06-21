@@ -5,8 +5,8 @@ class ImageShack
   def self.rest_upload(file)
     post_data = {}
     response = nil
-    post_data['key'] = "479DNRXY61263849b91ad44aeb92a46a3b6224d3"#"#{ENV['IMAGESHACK_KEY']}"
-    post_data['a_user_name'] =  "cityzoomin"#"#{ENV['IMAGESHACK_UID']}"
+    post_data['key'] = "#{ENV['IMAGESHACK_KEY']}"
+    post_data['a_user_name'] =  "#{ENV['IMAGESHACK_UID']}"
     post_data['public'] = "no"
     post_data['fileupload'] = File.new("#{Rails.root}/#{file}", "rb")
     begin

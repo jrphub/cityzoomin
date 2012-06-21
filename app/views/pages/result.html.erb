@@ -4,10 +4,12 @@
 	<% flash.each do |key, value| %>
         <div id="<%= key %>"><%= value %></div>
     <% end %>
+    <%unless signed_in?%>
     <form class="form-wp cf" action="/pages/result" method="get">
 		<input type="text" name="s" id="s" placeholder="Search here..." required>
 		<button type="submit">Search</button>
 	</form>
+	<%end%>
     <br>
 <%unless (@allposts.size == 0)%>
 	<div id="inner-box">
@@ -72,6 +74,25 @@
 										</ul>
 									<%end%>
 								</div>
+								<% if signed_in? %>
+									<div id="new_comment_<%=post_id%>" class="comments">
+										<ul class="newslidingDiv">
+											<!--New li comments will be added using ajax-->
+										</ul>
+									</div>
+									
+									<div id="comment_box_<%=post_id%>" class="comment_box">
+										<form style="width:80%;" action="/microposts/<%=post_id%>/comment_create" method="post" data-remote="true" onsubmit="return validateComment();"/>
+											<fieldset style="float:left;width:80%;line-height: 1.5;">
+												<textarea name="micropost[description]" id="comment_text_<%=post_id%>" placeholder="Write a comment here..." style="width:100%;" rows="1"></textarea>
+												<input type="hidden" name="micropost[micropost_id]" value="<%=post_id%>">
+											</fieldset>
+											<fieldset id="actions" style="float:right;width:14%;margin-top:0px;">
+												<input type="submit" name="micropost[create]" value="Post" style="width:80%;color:#000;background-color:#66CCFF;border:0px;">
+											</fieldset>
+										</form>
+									</div>
+ 								<%end%>	
 								<!--comment end-->
  								<div style="height: 15px;"></div>
 							</td>

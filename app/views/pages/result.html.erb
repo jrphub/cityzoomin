@@ -111,7 +111,7 @@
 </div>
 <div id="inner-box" style="float:left;margin-left:2%;width:40%;position:fixed;background: rgba(41, 38, 34, 0.28);">
 	<h1 style="margin-bottom:10px;">Map Zoomin</h1>
-	<%@loc = Location.find(:all, :conditions => ['name LIKE :search OR city LIKE :search OR state LIKE :search OR country LIKE :search',{:search=>"%#{params[:s]}%"}])%>
+	<%@loc = Location.find(:all, :conditions => ['UPPER(name) LIKE :search OR UPPER(city) LIKE :search OR UPPER(state) LIKE :search OR UPPER(country) LIKE :search',{:search=>"%#{params[:s].upcase}%"}])%>
 	<%unless (@loc.size == 0)%>
 		<%@json = @loc.to_gmaps4rails%>
 		<%= gmaps4rails(@json) %>

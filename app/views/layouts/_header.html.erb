@@ -4,60 +4,70 @@
 <div class="content">
 	<div class="header">
 		<div style="float:left;">
-			<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="90%"/></a>
+			<%unless signed_in?%>
+				<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="90%"/></a>
+			<%else%>
+				<a href="/"><img src="/assets/header.png" alt="cityzoomin" width="90%" height="50%"/></a>
+			<%end%>
 		</div>
 		<div style="float:right">
 			<% if signed_in? %>
-			<div style="color: #FFFFFF;font-size:12px;text-align:center;padding:20px;">
+			<!--div style="color: #FFFFFF;font-size:12px;text-align:center;padding:20px;">
 				Welcome! <%=current_user.username.titleize%>
 				<%if current_user.admin?%>
 				(Admin)
 				<%end%>
-			</div>
-			<ul class="ca-menu">
-				<%if current_user.admin?%>
-				<li>
-	            	<div class="ca-content">
-	            	<h3><%= link_to("All Users", :users, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-	            	</div>
-            	</li>
-				<%end%>
-                <li>
-                	<div class="ca-content">
-                	<h3><%= link_to("Image Wall", :image_wall, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-                	</div>
-            	</li>
-                
-                <li>
-                	<div class="ca-content">
-                	<h3><%=link_to("All CZ", :microposts, :class=>"ca-sub", :style=>"text-align:center;")%></h3>
-                	</div>
-            	</li>
-                <li>
-                	<div class="ca-content">
-                	<h3><a style="text-align:center;" class="ca-sub" href="/microposts/index?view=only">Your CZ</a></h3>
-                	</div>
-            	</li>
-                <li>
-                	<div class="ca-content">
-                	<h3><%= link_to("Profile", current_user, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-                	</div>
-            	</li>
-            	<li>
-                	<div class="ca-content">
-                	<h3><%= link_to("Edit Profile", edit_user_path(current_user), :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-                	</div>
-            	</li>
-            	<li>
-                	<div>
-                	<h3><%= link_to("Signout", signout_path, :method => :delete, :class=>"ca-sub", :style=>"text-align:center;") %></h3>
-                	</div>
-            	</li>
-        	</ul>
+			</div-->
+			<nav id="topNav" style="margin-top:10px;">
+        		<ul>
+        			<li><%= gravatar_for_comment current_user%></li>
+	            	<li><a href="/users/<%=session[:userid]%>" title="Profile" style="border-left:0px;"><%=current_user.username.titleize%></a></li>
+	          		<li><%=link_to("Home", :microposts)%></li>
+	          		<li><a href="#" title="others" style="margin-right:10px;">More</a>
+	                	<ul>
+	                        <li><a href="/microposts/index?view=only" title="Your Zoomin">Your CZ</a></li>
+	                        <li><%= link_to("Image Wall", :image_wall) %></li>
+	                        <li><%= link_to("Edit Profile", edit_user_path(current_user)) %></li>
+	                       	<%if current_user.admin?%>
+	                       		<%= link_to("All Users", :users) %>
+	                       	<%end%>
+	                        <li class="last"><%= link_to("Signout", signout_path, :method => :delete) %></li>
+	                    </ul>        
+	                </li>
+                </ul>
+        	</nav>
 			<%else%>
 			<!--do nothing-->
             <% end %>
        </div>
 	</div>
-	<div style="height:130px;display:block;"></div>
+	<%unless signed_in?%>
+		<div style="height:130px;display:block;"></div>
+	<%else%>
+		<div style="height:70px;display:block;"></div>
+	<%end%>
+	
+	<script type="text/javascript">
+			(function($){
+				
+				//cache nav
+				var nav = $("#topNav");
+				
+				//add indicator and hovers to submenu parents
+				nav.find("li").each(function() {
+					if ($(this).find("ul").length > 0) {
+						$("<span>").text("^").appendTo($(this).children(":first"));
 
+						//show subnav on hover
+						$(this).mouseenter(function() {
+							$(this).find("ul").stop(true, true).slideDown();
+						});
+						
+						//hide submenus on exit
+						$(this).mouseleave(function() {
+							$(this).find("ul").stop(true, true).slideUp();
+						});
+					}
+				});
+			})(jQuery);
+		</script>

@@ -4,22 +4,32 @@ require 'nokogiri'
 class ImageShack
   def self.rest_upload(file)
     post_data = {}
-    post_data['key'] = "#{ENV['IMAGESHACK_KEY']}"
-    post_data['a_user_name'] =  "#{ENV['IMAGESHACK_UID']}"
+    response = nil
+    post_data['key'] = "479DNRXY61263849b91ad44aeb92a46a3b6224d3"#"#{ENV['IMAGESHACK_KEY']}"
+    post_data['a_user_name'] =  "cityzoomin"#"#{ENV['IMAGESHACK_UID']}"
     post_data['public'] = "no"
     post_data['fileupload'] = File.new("#{Rails.root}/#{file}", "rb")
-    response = RestClient.post('http://imageshack.us/upload_api.php', post_data)
-    response = CGI::unescapeHTML(response)
-    doc = Nokogiri::XML(response)
-    if doc.root.elements.first.name == "error"
-      return {:err => doc.root.elements.first.attributes["id"].value, :url => nil}
-    else
-      puts doc.root.elements.last.elements.first.children.first.text if doc.root.elements.last.elements.first.name == "image_link" and doc.root.elements.last.name == "links"
-      puts "rating = #{doc.root.elements.first.children[1].children.text.to_i}"
-      puts "width = #{doc.root.elements[2].children[1].children.text.to_i}"
-      puts "height = #{doc.root.elements[2].children[3].children.text.to_i}"
-      puts "#{doc.root.elements[5].name} = #{doc.root.elements[5].children.text}"
+    begin
+      response = RestClient.post('http://imageshack.us/upload_api.php', post_data)
+    rescue SocketError => e
+      Rails.logger.debug e.inspect
     end
-    return {:err => nil, :url => doc.root.elements.last.elements.first.children.first.text}
+
+    if response.nil?
+      return {:err => "Unable to reach hosting service as of now. Please try again later.", :url => nil}
+    else
+      response = CGI::unescapeHTML(response)
+      doc = Nokogiri::XML(response)
+      if doc.root.elements.first.name == "error"
+        return {:err => doc.root.elements.first.attributes["id"].value, :url => nil}
+      else
+        puts doc.root.elements.last.elements.first.children.first.text if doc.root.elements.last.elements.first.name == "image_link" and doc.root.elements.last.name == "links"
+        puts "rating = #{doc.root.elements.first.children[1].children.text.to_i}"
+        puts "width = #{doc.root.elements[2].children[1].children.text.to_i}"
+        puts "height = #{doc.root.elements[2].children[3].children.text.to_i}"
+        puts "#{doc.root.elements[5].name} = #{doc.root.elements[5].children.text}"
+        return {:err => nil, :url => doc.root.elements.last.elements.first.children.first.text}
+      end
+    end
   end
 end

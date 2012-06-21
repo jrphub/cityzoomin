@@ -15,12 +15,13 @@
         
         <!--CSS -->
         <link rel="stylesheet" type="text/css" href="/assets/image_wall_css/style.css" />
-        <%=stylesheet_link_tag "body_style", "button", "craftyslide", "form_style",
+        <%=stylesheet_link_tag "body_style", "button", "craftyslide", "form_style","nav",
         						"gmaps4rails", "notification", "pagination", "style7", "home_search"
         %>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css' />
 		<link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css' />
         <script type="text/javascript" src="/assets/jquery.min.js"></script>
+        <script type="text/javascript" src=".assets/modernizr.js"></script>
 		<%= csrf_meta_tags %>
 		<%= render 'layouts/shim' %>
 		
@@ -39,7 +40,7 @@
 
 		</script>
     </head>
-    <body>
+    <body class="no-js">
     	<!--Facebook like plugin script-->
     	<div id="fb-root"></div>
 			<script>(function(d, s, id) {
@@ -52,7 +53,15 @@
 			</script>
 			
 		<!--End of script-->
-			
+		<script>
+			var el = document.getElementsByTagName("body")[0];
+			el.className = "";
+		</script>
+        <noscript>
+        	<!--[if IE]>
+            	<link rel="stylesheet" href="css/ie.css">
+            <![endif]-->
+        </noscript>	
 	    <%= render 'layouts/header' %>
 	    <div class="container" id="container">
 	      <%= yield %>

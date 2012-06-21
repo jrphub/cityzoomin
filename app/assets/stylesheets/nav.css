@@ -26,18 +26,13 @@ nav ul ul a:hover { background-color:#555; }
 .csstransforms ul a span { -moz-transform:rotate(-180deg);-webkit-transform:rotate(-180deg);margin:0px 0px 0px 10px; }
 
 /* fallbacks */
-.no-cssgradients nav, .no-js nav { padding-bottom:4px; border:none;) repeat-x 0 0; }
-.no-borderradius nav ul, .no-js nav ul {  no-repeat 100% 0; }
+.no-cssgradients nav, .no-js nav { padding-bottom:4px; border:none;}
 .no-borderradius nav ul ul, .no-js nav ul ul { background:none; }
 .no-borderradius nav li, .no-js nav li { height:44px; }
-.no-cssgradients nav li:hover, .no-js nav li:hover {) repeat-x 0 0; }
 .no-borderradius nav li li, .no-js nav li li { height:auto; width:98%; left:-2px; }
-.no-borderradius nav li:first-child, .no-js nav li:first-child { no-repeat 0 0; }
-.no-borderradius nav li:first-child:hover, .no-js nav li:first-child:hover {  no-repeat 0 0; }
 .no-borderradius nav li li:first-child, .no-js nav li li:first-child { background:none; }
-.no-rgba nav ul ul, .no-js nav ul ul { left:1px; padding-left:2px; no-repeat 100% 100%; }
+.no-rgba nav ul ul, .no-js nav ul ul { left:1px; padding-left:2px;}
 .no-rgba nav ul ul a, .no-js nav ul ul a { left:3px; }
-.no-rgba nav ul ul a:hover { repeat 0 0; }
-.no-csstransforms ul a span { height:7px; width:12px; margin-top:8px; text-indent:-5000px; overflow:hidden; no-repeat 0 0; }
+.no-csstransforms ul a span { height:7px; width:12px; margin-top:8px; text-indent:-5000px; overflow:hidden; }
 .no-borderradius ul ul li.last { margin-bottom:10px; }
 .no-cssgradients.boxshadow nav { box-shadow:none; }

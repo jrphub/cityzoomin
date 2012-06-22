@@ -49,9 +49,10 @@
 								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username.titleize%></a></span></p>
 								<p><%=post.content%></p>
 								<p><span style="font-weight: bold;">Location: </span><a href="<%=post.location_id%>"><%=post.name.titleize%></a></p>
-								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>, 
-									<a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>, 
-									<a href="/locations/show?country=<%=post.country%>"><%=post.country.titleize%></a></p>
+								<p><span style="font-weight: bold;">Address: </span><%if post.city.present?%><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>,<%end%>
+										&nbsp;<%if post.state.present?%><a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>,<%end%>
+										&nbsp;<%if post.country.present?%><a href="/locations/show?country=<%=post.country%>"><%=post.country.titleize%></a><%end%>
+								</p>
 								<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.

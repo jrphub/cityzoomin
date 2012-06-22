@@ -8,7 +8,7 @@
 				<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="90%"/></a>
 			<%else%>
 				<div style="float:left;">
-				<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="11%" style="position:fixed;"/></a>
+				<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="11%" style="position:absolute;"/></a>
 				</div>
 				<div style="margin-left:230px;">
 				<form id="search" action="/pages/result" method="get">
@@ -19,12 +19,6 @@
 		</div>
 		<div style="float:right">
 			<% if signed_in? %>
-			<!--div style="color: #FFFFFF;font-size:12px;text-align:center;padding:20px;">
-				Welcome! <%=current_user.username.titleize%>
-				<%if current_user.admin?%>
-				(Admin)
-				<%end%>
-			</div-->
 			<nav id="topNav" style="margin-top:10px;">
         		<ul>
         			<li><%= gravatar_for_comment current_user%></li>

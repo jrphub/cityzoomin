@@ -19,28 +19,33 @@ class MicropostsController < ApplicationController
               :latitude=>params[:location][:latitude],:longitude=>params[:location][:longitude]})
        params[:micropost][:location_id] = @location.id
     end
-
-    tmp = params[:micropost][:upload].tempfile
-    file = File.join("tmp", params[:micropost][:upload].original_filename)
-    FileUtils.cp tmp.path, file
-    @url = ImageShack.rest_upload("#{file}")
-    FileUtils.rm file
+    
+    unless params[:micropost][:upload].nil?
+      @url = store_files(params[:micropost][:upload])
+    end
+    
     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
                                               :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
                                               :category=>params[:micropost][:category]})
     if @micropost.save
-      if @url[:url].nil?
-        if @url[:err] == "auth_error"
-          flash[:error] = "We are having some problem with our hosting. So, the image could not be uploaded. Please bear with us."
-        else
-          flash[:error] = @url[:err]
+      unless params[:micropost][:upload].nil?
+        @url.each do |file_info|
+          if file_info[:url].nil?
+            if file_info[:err] == "auth_error"
+              flash[:error] = "We are having some problem with our hosting. So, the image could not be uploaded. Please bear with us."
+            else
+              flash[:error] = file_info[:err]
+            end
+          else
+            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
+              flash[:success] = "Post Created. Thanks for sharing!"
+            else
+              flash[:error] = "Post created successfully; but we could not save the image."
+            end
+          end
         end
       else
-        if Photo.create(:url => @url[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
-          flash[:success] = "Post Created. Thanks for sharing!"
-        else
-          flash[:error] = "Post created successfully; but we could not save the image."
-        end
+        flash[:success] = "Post Created. Thanks for sharing!"
       end
       redirect_to microposts_path
     else

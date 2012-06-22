@@ -6,29 +6,6 @@ $(document).ready(function(){
 	// on submit...
 	form.submit(function() {
 		$("#error").hide();
-		var city = $("input#location_city").val();
-		if(city == "" || city == null || city == "Which city does it belong?"){
-			$("#error").fadeIn().text("Please provide the city");
-			$("input#location_city").focus();
-			
-			return false;
-		}
-		
-		var state = $("input#location_state").val();
-		if(state == "" || state == null || state == "Which state does it belong?"){
-			$("#error").fadeIn().text("Please provide the state");
-			$("input#location_state").focus();
-			
-			return false;
-		}
-		
-		var country = $("input#location_country").val();
-		if(country == "" || country == null || country == "Which country does it belong?"){
-			$("#error").fadeIn().text("Please provide the country");
-			$("input#location_country").focus();
-			
-			return false;
-		}
 		
 		var title = $("input#micropost_title").val();
 		if(title == "" || title == null || title == "Give a title to your post"){

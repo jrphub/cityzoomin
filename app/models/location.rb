@@ -4,11 +4,12 @@
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(255)     not null
-#  city       :string(255)     not null
-#  state      :string(255)     not null
-#  country    :string(255)     not null
+#  city       :string(255)
+#  state      :string(255)
+#  country    :string(255)
 #  latitude   :float
 #  longitude  :float
+#  gmaps      :boolean(1)      default(TRUE), not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
@@ -27,9 +28,6 @@ class Location < ActiveRecord::Base
    
   
   validates :name, presence:true
-  validates :city, presence:true
-  validates :state, presence:true
-  validates :country, presence:true
   
   
   

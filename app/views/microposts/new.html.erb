@@ -80,8 +80,9 @@
                   <br>
                   <%= f.label :category %><br>
                   <%= f.text_field :category,:placeholder=>"Tag your post"%>
-                  <%= f.label :upload%>
-                  <%= f.file_field :upload%>
+                  <%= f.label :upload%> (Optional)<br>
+                  <%= f.file_field :upload, :multiple => true, :style=>"width:44%"%>
+                  <p style="color:#E6E6E6;">*Press ctrl to select multiple photos</p>
                 </fieldset>
 
                 <fieldset id="actions">

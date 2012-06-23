@@ -15,7 +15,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :signin_at, :admin
+  attr_accessible :username, :email,:temp_password, :password, :password_confirmation, :signin_at, :admin, :has_pic
   has_secure_password
   has_many :microposts, dependent: :destroy
   has_many :photos, dependent: :destroy

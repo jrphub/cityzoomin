@@ -45,7 +45,7 @@
 												<div class="hidden_photo">
 													<%$i=1%>
 													<%while $i < photo_count%>
-														<a class="fancybox"  rel="gallery_<%=post.id%>" href="<%=photo[$i].url%>" title="<%=post.title.capitalize%>">
+														<a class="fancybox-buttons" data-fancybox-group="button"  rel="gallery_<%=post.id%>" href="<%=photo[$i].url%>" title="<%=post.title.capitalize%>">
 															<img src="<%=photo[$i].url%>" alt="<%=photo[$i].url%>" />
 														</a>
 														<%$i+=1%>

@@ -13,7 +13,7 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :category, :content, :title, :location_id
+  attr_accessible :category, :content, :title, :location_id, :has_photo
   belongs_to :user
   has_many :photos, dependent: :destroy
   has_one :location

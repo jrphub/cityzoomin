@@ -45,7 +45,7 @@ class MicropostsController < ApplicationController
               flash[:error] = file_info[:err]
             end
           else
-            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => 0)
+            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :profile_pic => 0)
               flash[:success] = "Post Created. Thanks for sharing!"
             else
               flash[:error] = "Post created successfully; but we could not save the image."

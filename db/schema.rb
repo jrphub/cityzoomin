@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623075100) do
+ActiveRecord::Schema.define(:version => 20120623215458) do
 
   create_table "comments", :force => true do |t|
     t.text     "description",  :null => false
@@ -76,11 +76,11 @@ ActiveRecord::Schema.define(:version => 20120623075100) do
 
   create_table "photos", :force => true do |t|
     t.string   "url"
-    t.integer  "user_id",      :null => false
+    t.integer  "user_id",                     :null => false
     t.integer  "micropost_id"
-    t.integer  "is_profile",   :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "profile_pic",  :default => 0, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "temp_locations", :force => true do |t|

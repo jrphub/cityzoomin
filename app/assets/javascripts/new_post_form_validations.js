@@ -14,7 +14,7 @@ $(document).ready(function(){
 			return false;
 		}
 		
-		var category = $("input#micropost_category").val();
+		var tags = $("input#micropost_tags").val();
 		if(category == "" || category == null || category == "Tag your post"){
 			$("#error").fadeIn().text("Tag the place");
 			$("input#category").focus();

@@ -25,9 +25,11 @@ class MicropostsController < ApplicationController
     end
     
     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
-                                              :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
-                                              :category=>params[:micropost][:category]})
+                                              :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title] })
+    @tags = params[:micropost][:tags].split(',')
     if @micropost.save
+      tags = Tag.save_and_update_tags(@tags)
+      @micropost.tags = tags
       unless params[:micropost][:upload].nil?
         @url.each do |file_info|
           if file_info[:url].nil?
@@ -59,9 +61,18 @@ class MicropostsController < ApplicationController
     @user = User.find(cookies[:userid])
     @allposts = Micropost.joins(:user)
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-    .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
+    .select("microposts.id,content, location_id, title, microposts.created_at, microposts.updated_at,
     user_id, locations.name as locname, city, state, country, username, email")
     .paginate(page: params[:page],per_page:3)
+    @tags = []
+    @allposts.each do |post|
+      labels = []
+      post.tags.each do |t|
+        labels << t.label
+      end
+      @tags << {post.id => labels}
+      logger.debug "=========================#{@tags}================================="
+    end
     
     #sql version
     #SELECT microposts.id,content, location_id, title, category,microposts.created_at,microposts.updated_at,
@@ -76,15 +87,28 @@ class MicropostsController < ApplicationController
     if (params[:id] != 'index')
       @post=Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-      .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
+      .select("microposts.id,content, location_id, title, microposts.created_at, microposts.updated_at,
       user_id, locations.name as locname, city, state, country,latitude,longitude, username, email").where(:id=>params[:id])
-    
+      @tags = []
+      @post.first.tags.each do |t|
+        @tags << t.label
+      end
+
     elsif (params[:view] == 'only')
       @allposts = Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-      .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
+      .select("microposts.id,content, location_id, title, microposts.created_at, microposts.updated_at,
       user_id, locations.name as locname, city, state, country, username, email").where("user_id=?",cookies[:userid])
       .paginate(page: params[:page],per_page:3)
+      @tags = []
+      @allposts.each do |post|
+        labels = []
+        post.tags.each do |t|
+          labels << t.label
+        end
+        @tags << {post.id => labels}
+      end
+      logger.debug "=========================#{@tags}================================="
     end
   end
   

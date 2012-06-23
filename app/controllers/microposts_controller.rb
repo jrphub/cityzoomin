@@ -39,7 +39,7 @@ class MicropostsController < ApplicationController
               flash[:error] = file_info[:err]
             end
           else
-            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
+            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :profile_pic => 0)
               flash[:success] = "Post Created. Thanks for sharing!"
             else
               flash[:error] = "Post created successfully; but we could not save the image."
@@ -58,7 +58,6 @@ class MicropostsController < ApplicationController
 
 
   def index
-    @user = User.find(cookies[:userid])
     @allposts = Micropost.joins(:user)
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')
     .select("microposts.id,content, location_id, title, microposts.created_at, microposts.updated_at,

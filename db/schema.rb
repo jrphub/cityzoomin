@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622125700) do
+ActiveRecord::Schema.define(:version => 20120623215458) do
 
   create_table "comments", :force => true do |t|
     t.text     "description",  :null => false
@@ -63,23 +63,24 @@ ActiveRecord::Schema.define(:version => 20120622125700) do
 
   create_table "microposts", :force => true do |t|
     t.text     "content"
-    t.integer  "location_id", :null => false
-    t.string   "title",       :null => false
-    t.string   "category",    :null => false
-    t.integer  "user_id",     :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "has_photo",   :default => false, :null => false
+    t.integer  "location_id",                    :null => false
+    t.string   "title",                          :null => false
+    t.string   "category",                       :null => false
+    t.integer  "user_id",                        :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "photos", :force => true do |t|
     t.string   "url"
-    t.integer  "user_id",      :null => false
+    t.integer  "user_id",                     :null => false
     t.integer  "micropost_id"
-    t.boolean  "is_profile"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "profile_pic",  :default => 0, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "temp_locations", :force => true do |t|
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120622125700) do
     t.string   "remember_token",  :limit => 256
     t.string   "temp_password"
     t.datetime "signin_at"
+    t.boolean  "has_pic",                        :default => false, :null => false
     t.boolean  "admin",                          :default => false
   end
 

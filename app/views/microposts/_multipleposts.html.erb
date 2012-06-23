@@ -31,7 +31,30 @@
 									<span class="timestamp">
 	    								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.
 	 								</span>
-	 								<br><br>
+	 								<br>
+	 								<div class="photo_container">
+	 									<p>
+		 								<%if post.has_photo?%>
+		 									<%photo=post.photos%>
+		 									<%photo_count=photo.count%>
+		 									<div>Added  <span style="font-size:16px;color:#CCFF66;"><%=pluralize(photo_count, "picture")%></span>  in the album, Click to view</div>
+		 										<a class="fancybox-buttons" data-fancybox-group="button"  rel="gallery_<%=post.id%>" href="<%=photo[0].url%>" title="<%=post.title.capitalize%>">
+													<img src="<%=photo[0].url%>" alt="<%=photo[0].url%>" />
+												</a>
+												<%if photo_count >1 %>
+												<div class="hidden_photo">
+													<%$i=1%>
+													<%while $i < photo_count%>
+														<a class="fancybox"  rel="gallery_<%=post.id%>" href="<%=photo[$i].url%>" title="<%=post.title.capitalize%>">
+															<img src="<%=photo[$i].url%>" alt="<%=photo[$i].url%>" />
+														</a>
+														<%$i+=1%>
+													<%end%>
+												</div>
+												<%end%>
+		 								<%end%>
+		 								</p>
+	 								</div>
 	 								<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/microposts/<%=post.id%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 	 								
 	 								<!--Comment-->
@@ -84,3 +107,62 @@
 	</ul>
 <%end%>
 <%= will_paginate @allposts%>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.fancybox').fancybox();
+	$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					thumbs : {
+							width: 75,
+							height: 50
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+});
+</script>
+<style type="text/css">
+.photo_container{
+	clear: both;
+    overflow: hidden;
+    
+  }
+.photo_container p{
+	display:block;
+	padding-left: 15px;
+	margin: 15px 0px;
+	
+}
+.photo_container a {
+	display:inline-block;
+	border: 1px dotted #888;
+	position:relative;
+}
+
+.photo_container a img {
+	display: block;
+    margin-bottom: 4px;
+    max-height: 250px;
+    max-width: 500px;
+    vertical-align: top;
+}
+
+.hidden_photo {
+	display:none;
+}
+</style>

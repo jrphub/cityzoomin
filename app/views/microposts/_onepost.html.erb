@@ -25,9 +25,9 @@
 							<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=@post.first.user_id%>"><%=@post.first.username.titleize%></a></span></p>
 							<p><%=@post.first.content%></p>
 							<p><span style="font-weight: bold;">Location: </span><a href="/locations/<%=@post.first.location_id%>"><%=@post.first.locname.titleize%></a></p>
-							<p><span style="font-weight: bold;">Address: </span><%if @post.city.present?%><a href="/locations/show?city=<%=@post.city%>"><%=@post.city.titleize%></a>,<%end%>
-										&nbsp;<%if @post.state.present?%><a href="/locations/show?state=<%=@post.state%>"><%=@post.state.titleize%></a>,<%end%>
-										&nbsp;<%if @post.country.present?%><a href="/locations/show?country=<%=@post.country%>"><%=@post.country.titleize%></a><%end%>
+							<p><span style="font-weight: bold;">Address: </span><%if @post.first.city?%><a href="/locations/show?city=<%=@post.first.city%>"><%=@post.first.city.titleize%></a>,<%end%>
+										&nbsp;<%if @post.first.state?%><a href="/locations/show?state=<%=@post.first.state%>"><%=@post.first.state.titleize%></a>,<%end%>
+										&nbsp;<%if @post.first.country?%><a href="/locations/show?country=<%=@post.first.country%>"><%=@post.first.country.titleize%></a><%end%>
 									</p>
 							<p><span style="font-weight: bold;">Tag: </span><%=@post.first.category.titleize%></p>
 							<span class="timestamp">

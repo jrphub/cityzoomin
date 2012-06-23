@@ -24,9 +24,17 @@ class MicropostsController < ApplicationController
       @url = store_files(params[:micropost][:upload])
     end
     
-    @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
+    #TODO : remove category
+    if params[:micropost][:upload].nil?
+     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
                                               :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
                                               :category=>params[:micropost][:category]})
+    else
+      @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
+                                              :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
+                                              :category=>params[:micropost][:category], :has_photo=>true})
+    end
+      
     if @micropost.save
       unless params[:micropost][:upload].nil?
         @url.each do |file_info|
@@ -37,7 +45,7 @@ class MicropostsController < ApplicationController
               flash[:error] = file_info[:err]
             end
           else
-            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => false)
+            if Photo.create(:url => file_info[:url], :user_id => @current_user.id, :micropost_id => @micropost.id, :is_profile => 0)
               flash[:success] = "Post Created. Thanks for sharing!"
             else
               flash[:error] = "Post created successfully; but we could not save the image."
@@ -56,12 +64,11 @@ class MicropostsController < ApplicationController
 
 
   def index
-    @user = User.find(cookies[:userid])
     @allposts = Micropost.joins(:user)
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-    .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
-    user_id, locations.name as locname, city, state, country, username, email")
-    .paginate(page: params[:page],per_page:3)
+    .select("microposts.id,content,has_photo, location_id, title, category,microposts.created_at, microposts.updated_at, 
+    user_id, locations.name as locname, city, state, country, username, email, has_pic")
+    .paginate(page: params[:page],per_page:6)
     
     #sql version
     #SELECT microposts.id,content, location_id, title, category,microposts.created_at,microposts.updated_at,

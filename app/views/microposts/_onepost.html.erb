@@ -35,7 +35,30 @@
 								Posted <%= time_ago_in_words(@post.first.created_at.localtime) %> ago.
 							</span>
 							<%post=@post.first%>
-							<br><br>
+							<br>
+							<div class="photo_container">
+								<p>
+ 								<%if post.has_photo?%>
+ 									<%photo=post.photos%>
+ 									<%photo_count=photo.count%>
+ 									<div>Added  <span style="font-size:16px;color:#CCFF66;"><%=pluralize(photo_count, "picture")%></span>  in the album, Click to view</div>
+ 										<a class="fancybox-buttons" data-fancybox-group="button"  rel="gallery_<%=post.id%>" href="<%=photo[0].url%>" title="<%=post.title.capitalize%>">
+											<img src="<%=photo[0].url%>" alt="<%=photo[0].url%>" />
+										</a>
+										<%if photo_count >1 %>
+										<div class="hidden_photo">
+											<%$i=1%>
+											<%while $i < photo_count%>
+												<a class="fancybox-buttons" data-fancybox-group="button"  rel="gallery_<%=post.id%>" href="<%=photo[$i].url%>" title="<%=post.title.capitalize%>">
+													<img src="<%=photo[$i].url%>" alt="<%=photo[$i].url%>" />
+												</a>
+												<%$i+=1%>
+											<%end%>
+										</div>
+										<%end%>
+ 								<%end%>
+ 								</p>
+							</div>
 							<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/microposts/<%=post.id%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 							<!--Comment-->
 
@@ -76,7 +99,7 @@
 							</div>
  							<!--%@json = @post.first.to_gmaps4rails%-->
 							<!--comment end-->
-							<div style="height: 15px;">#TODO: Jyoti: this div is not closed probably
+							<div style="height: 15px;"></div>#TODO: Jyoti: this div is not closed probably
 						</td>
 					</tr>
 				</tbody>
@@ -84,3 +107,31 @@
 		</div>
 	</li>
 </ul>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					thumbs : {
+							width: 75,
+							height: 50
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+});
+</script>

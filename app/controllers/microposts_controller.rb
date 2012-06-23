@@ -83,14 +83,14 @@ class MicropostsController < ApplicationController
     if (params[:id] != 'index')
       @post=Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-      .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
-      user_id, locations.name as locname, city, state, country,latitude,longitude, username, email").where(:id=>params[:id])
+      .select("microposts.id,content,has_photo, location_id, title, category,microposts.created_at, microposts.updated_at, 
+      user_id, locations.name as locname, city, state, country,latitude,longitude, username, email, has_pic").where(:id=>params[:id])
     
     elsif (params[:view] == 'only')
       @allposts = Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-      .select("microposts.id,content, location_id, title, category,microposts.created_at, microposts.updated_at, 
-      user_id, locations.name as locname, city, state, country, username, email").where("user_id=?",cookies[:userid])
+      .select("microposts.id,content,has_photo, location_id, title, category,microposts.created_at, microposts.updated_at, 
+      user_id, locations.name as locname, city, state, country, username, email, has_pic").where("user_id=?",cookies[:userid])
       .paginate(page: params[:page],per_page:3)
     end
   end

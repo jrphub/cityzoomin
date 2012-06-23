@@ -221,3 +221,33 @@
 .show_hide {
     display:none;
 }
+
+/* ------- Photo viewing ---------*/
+.photo_container{
+	clear: both;
+    overflow: hidden;
+    
+  }
+.photo_container p{
+	display:block;
+	padding-left: 15px;
+	margin: 15px 0px;
+	
+}
+.photo_container a {
+	display:inline-block;
+	border: 1px dotted #888;
+	position:relative;
+}
+
+.photo_container a img {
+	display: block;
+    margin-bottom: 4px;
+    max-height: 300px;
+    max-width: 600px;
+    vertical-align: top;
+}
+
+.hidden_photo {
+	display:none;
+}

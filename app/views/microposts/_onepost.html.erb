@@ -1,4 +1,5 @@
 <h1 style="margin-bottom:10px;"><%=@post.first.title.titleize%></h1>
+<!--TODO: Jyoti, id should not be repeated probably; but "inner-box is repeated"-->
 <div id="inner-box">
 	<%@loc=Location.find_by_name(@post.first.locname)%>
 	<%@json = @loc.to_gmaps4rails%>

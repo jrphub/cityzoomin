@@ -21,7 +21,6 @@ class Tag < ActiveRecord::Base
         tag.save!
         tags << tag
       end
-      logger.debug "==========================#{tag}================================"
     end
     return tags
   end

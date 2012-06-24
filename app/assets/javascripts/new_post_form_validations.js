@@ -14,10 +14,10 @@ $(document).ready(function(){
 			return false;
 		}
 		
-		var category = $("input#micropost_category").val();
-		if(category == "" || category == null || category == "Tag your post"){
+		var tags = $("input#micropost_tags").val();
+		if(tags == "" || tags == null || tags == "Tag your post"){
 			$("#error").fadeIn().text("Tag the place");
-			$("input#category").focus();
+			$("input#tags").focus();
 			return false;
 		}
 		

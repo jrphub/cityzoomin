@@ -19,6 +19,7 @@
 		<ul>
 			<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">
+                <!--TODO: Jyoti, id should not be repeated probably; but "inner-box is repeated"-->
   				<div id="inner-box">
   				<table style="border-collapse: collapse;">
 					<tbody>
@@ -39,10 +40,10 @@
 								<p>By&nbsp;<span style="font-weight: bold;"><a href="/users/<%=post.user_id%>"><%=post.username.titleize%></a></span></p>
 								<p><%=post.content%></p>
 								<p><span style="font-weight: bold;">Location: </span><a href="/locations/<%=post.location_id%>"><%=post.name.titleize%></a></p>
-								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>, 
-									<a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>, 
+								<p><span style="font-weight: bold;">Address: </span><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>,
+									<a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>,
 									<a href="/locations/show?country=<%=post.country%>"><%=post.country.titleize%></a></p>
-								<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
+								<p><span style="font-weight: bold;">Tag: </span><%=@tags[post.id].join(',')%></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.
  								</span>

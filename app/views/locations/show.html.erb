@@ -53,7 +53,7 @@
 										&nbsp;<%if post.state.present?%><a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>,<%end%>
 										&nbsp;<%if post.country.present?%><a href="/locations/show?country=<%=post.country%>"><%=post.country.titleize%></a><%end%>
 								</p>
-								<p><span style="font-weight: bold;">Tag: </span><%=post.category.titleize%></p>
+								<p><span style="font-weight: bold;">Tag: </span><%= @tags[post.id].join(',') %></p>
 								<span class="timestamp">
     								Posted <%= time_ago_in_words(post.created_at.localtime) %> ago.
  								</span>

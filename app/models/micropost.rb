@@ -13,7 +13,7 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :category, :content, :title, :location_id, :has_photo
+  attr_accessible :content, :title, :location_id, :has_photo
   belongs_to :user
   has_many :photos, dependent: :destroy
   has_one :location
@@ -21,9 +21,9 @@ class Micropost < ActiveRecord::Base
   has_many :comments, dependent: :destroy#This is to create one object for sync.
   #polymorphic association is not applicable for comment, user, micropost
   #is_impressionable
+  has_and_belongs_to_many :tags
   
   validates :user_id, presence: true
-  validates :category, presence:true
   validates :location_id, presence:true
   validates :title, presence:true, length:{maximum: 80}
   

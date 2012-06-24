@@ -2,73 +2,74 @@
 <%= javascript_include_tag 'application' %>
 <!--gems overwrite the new structure of the default.js location-->
 <div class="content">
-	<div class="header">
-		<div style="float:left;">
-			<%unless signed_in?%>
-				<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="90%"/></a>
-			<%else%>
-				<div style="float:left;">
-				<a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="11%" style="position:absolute;"/></a>
-				</div>
-				<div style="margin-left:230px;">
-				<form id="search" action="/pages/result" method="get">
-					<input type="text" name="s" id="s" placeholder="Search here..." required>
-				</form>
-				</div>
-			<%end%>
-		</div>
-		<div style="float:right">
-			<% if signed_in? %>
-			<nav id="topNav" style="margin-top:10px;">
-        		<ul>
-        			<li><%= gravatar_for_comment current_user%></li>
-	            	<li><a href="/users/<%=session[:userid]%>" title="Profile" style="border-left:0px;"><%=current_user.username.titleize%></a></li>
-	          		<li><%=link_to("Home", :microposts)%></li>
-	          		<li><a href="#" title="others" style="margin-right:10px;">More</a>
-	                	<ul>
-	                        <li><a href="/microposts/index?view=only" title="Your Zoomin">Your CZ</a></li>
-	                        <li><%= link_to("Image Wall", :image_wall) %></li>
-	                        <li><%= link_to("Edit Profile", edit_user_path(current_user)) %></li>
-	                       	<%if current_user.admin?%>
-	                       		<%= link_to("All Users", :users) %>
-	                       	<%end%>
-	                        <li class="last"><%= link_to("Signout", signout_path, :method => :delete) %></li>
-	                    </ul>        
-	                </li>
+  <div class="header">
+    <div style="float:left;">
+      <%unless signed_in?%>
+          <a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="90%"/></a>
+      <%else%>
+          <div style="float:left;">
+            <a href="/"><img src="/assets/logo.png" alt="cityzoomin" width="11%" style="position:absolute;"/></a>
+          </div>
+          <div style="margin-left:230px;">
+            <form id="search" action="/pages/result" method="get">
+              <input type="text" name="s" id="s" placeholder="Search here..." required>
+            </form>
+          </div>
+      <%end%>
+    </div>
+    <div style="float:right">
+      <% if signed_in? %>
+          <nav id="topNav" style="margin-top:10px;">
+            <ul>
+              <li><%= gravatar_for_comment current_user%></li>
+              <li><a href="/users/<%=session[:userid]%>" title="Profile" style="border-left:0px;"><%=current_user.username.titleize%></a></li>
+              <li><%=link_to("Home", :microposts)%></li>
+              <li><a href="#" title="others" style="margin-right:10px;">More</a>
+                <ul>
+                  <li><a href="/microposts/index?view=only" title="Your Zoomin">Your CZ</a></li>
+                  <li><%= link_to("Image Wall", :image_wall) %></li>
+                  <li><%= link_to("Edit Profile", edit_user_path(current_user)) %></li>
+                  <%if current_user.admin?%>
+                      <%= link_to("All Users", :users) %>
+                  <%end%>
+                  <li class="last"><%= link_to("Signout", signout_path, :method => :delete) %></li>
                 </ul>
-        	</nav>
-			<%else%>
-			<!--do nothing-->
-            <% end %>
-       </div>
-	</div>
-	<%unless signed_in?%>
-		<div style="height:130px;display:block;"></div>
-	<%else%>
-		<div style="height:70px;display:block;"></div>
-	<%end%>
-	
-	<script type="text/javascript">
-			(function($){
-				
-				//cache nav
-				var nav = $("#topNav");
-				
-				//add indicator and hovers to submenu parents
-				nav.find("li").each(function() {
-					if ($(this).find("ul").length > 0) {
-						$("<span>").text("^").appendTo($(this).children(":first"));
+              </li>
+            </ul>
+          </nav>
+      <%else%>
+          <!--do nothing-->
+      <% end %>
+    </div>
+  </div>
+  <%unless signed_in?%>
+      <div style="height:130px;display:block;"></div>
+  <%else%>
+      <div style="height:70px;display:block;"></div>
+  <%end%>
 
-						//show subnav on hover
-						$(this).mouseenter(function() {
-							$(this).find("ul").stop(true, true).slideDown();
-						});
-						
-						//hide submenus on exit
-						$(this).mouseleave(function() {
-							$(this).find("ul").stop(true, true).slideUp();
-						});
-					}
-				});
-			})(jQuery);
-		</script>
+  <script type="text/javascript">
+      (function($){
+
+          //cache nav
+          var nav = $("#topNav");
+
+          //add indicator and hovers to submenu parents
+          nav.find("li").each(function() {
+              if ($(this).find("ul").length > 0) {
+                  $("<span>").text("^").appendTo($(this).children(":first"));
+
+                  //show subnav on hover
+                  $(this).mouseenter(function() {
+                      $(this).find("ul").stop(true, true).slideDown();
+                  });
+
+                  //hide submenus on exit
+                  $(this).mouseleave(function() {
+                      $(this).find("ul").stop(true, true).slideUp();
+                  });
+              }
+          });
+      })(jQuery);
+  </script>
+</div>

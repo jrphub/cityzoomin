@@ -23,19 +23,19 @@ class MicropostsController < ApplicationController
     unless params[:micropost][:upload].nil?
       @url = store_files(params[:micropost][:upload])
     end
-    
-    #TODO : remove category
+
     if params[:micropost][:upload].nil?
-     @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
-                                              :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
-                                              :category=>params[:micropost][:category]})
+      @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
+                                                :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title] })
     else
       @micropost=current_user.microposts.build({:content=>params[:micropost][:content],
-                                              :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],
-                                              :category=>params[:micropost][:category], :has_photo=>true})
+                                                :location_id=>params[:micropost][:location_id],:title=>params[:micropost][:title],:has_photo=>true})
     end
-      
+
+    @tags = params[:micropost][:tags].split(',')
     if @micropost.save
+      tags = Tag.save_and_update_tags(@tags)
+      @micropost.tags = tags
       unless params[:micropost][:upload].nil?
         @url.each do |file_info|
           if file_info[:url].nil?
@@ -66,9 +66,18 @@ class MicropostsController < ApplicationController
   def index
     @allposts = Micropost.joins(:user)
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-    .select("microposts.id,content,has_photo, location_id, title, category,microposts.created_at, microposts.updated_at, 
+    .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
     user_id, locations.name as locname, city, state, country, username, email, has_pic")
-    .paginate(page: params[:page],per_page:6)
+    .paginate(page: params[:page],per_page:3)
+    @tags = {}
+    @allposts.each do |post|
+      labels = []
+      post.tags.select("label").all.each do |t|
+        labels << t.label
+      end
+      @tags[post.id] = labels
+    end
+    logger.debug "=========================#{@tags}================================="
     
     #sql version
     #SELECT microposts.id,content, location_id, title, category,microposts.created_at,microposts.updated_at,
@@ -83,15 +92,28 @@ class MicropostsController < ApplicationController
     if (params[:id] != 'index')
       @post=Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-      .select("microposts.id,content,has_photo, location_id, title, category,microposts.created_at, microposts.updated_at, 
+      .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
       user_id, locations.name as locname, city, state, country,latitude,longitude, username, email, has_pic").where(:id=>params[:id])
-    
+      @tags = []
+      @post.first.tags.select("label").all.each do |t|
+        @tags << t.label
+      end
+
     elsif (params[:view] == 'only')
       @allposts = Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
-      .select("microposts.id,content,has_photo, location_id, title, category,microposts.created_at, microposts.updated_at, 
+      .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
       user_id, locations.name as locname, city, state, country, username, email, has_pic").where("user_id=?",cookies[:userid])
       .paginate(page: params[:page],per_page:3)
+      @tags = {}
+      @allposts.each do |post|
+        labels = []
+        post.tags.select("label").all.each do |t|
+          labels << t.label
+        end
+        @tags[post.id] = labels
+      end
+      logger.debug "=========================#{@tags}================================="
     end
   end
   

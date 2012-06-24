@@ -70,8 +70,8 @@
 						      	<% end %>
 								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
 									<fieldset id="inputs">
-									      	<%= f.text_field :email,:placeholder=>"Email"%>
-									      	<%= f.password_field :password,:placeholder=>"Password"%>
+									      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
+									      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%>
 									</fieldset>
 									<fieldset id="actions" style="margin: 0px;">
 										<%= f.submit "Signin", :id =>"submit"%>
@@ -92,13 +92,13 @@
 								<%= form_for(@user) do |f| %>
 									<%= render 'shared/error_messages', object: f.object%>
 									<fieldset id="inputs">
-								      	<%= f.text_field :username,:placeholder=>"Your Name"%>
+								      	<%= f.text_field :username,:placeholder=>"Your Name", :required=>"required"%>
 								      	
-								      	<%= f.text_field :email,:placeholder=>"Email"%>
+								      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
 								      	
-								      	<%= f.password_field :password,:placeholder=>"Password"%>
+								      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%>
 								      	
-								      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password"%>
+								      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :required=>"required"%>
 									</fieldset>
 									<fieldset id="actions" style="margin: 0px;">
 										<%= f.submit "Signup", :id =>"submit"%>

@@ -12,6 +12,10 @@
 		<meta property="og:image" content="http://cityzoomin.herokuapp.com/assets/logo.png" />
 		<meta property="og:site_name" content="CityZoomin" />
 		<meta property="fb:admins" content="100001924177406" />
+		
+		<!--[if lt IE 9]>
+			<script src="/assets/html5shiv.js"></script>
+		<![endif]-->
         
         <!--CSS -->
         <link rel="stylesheet" type="text/css" href="/assets/image_wall_css/style.css" />
@@ -24,7 +28,7 @@
         <script type="text/javascript" src="/assets/jquery.min.js"></script>
         <script type="text/javascript" src="/assets/modernizr.js"></script>
 		<%= csrf_meta_tags %>
-		<%= render 'layouts/shim' %>
+		
 		
 		<!--Google Analytics Code-->
 		<script type="text/javascript">

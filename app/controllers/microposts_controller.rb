@@ -69,13 +69,13 @@ class MicropostsController < ApplicationController
     .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
     user_id, locations.name as locname, city, state, country, username, email, has_pic")
     .paginate(page: params[:page],per_page:3)
-    @tags = []
+    @tags = {}
     @allposts.each do |post|
       labels = []
-      post.tags.each do |t|
+      post.tags.select("label").all.each do |t|
         labels << t.label
       end
-      @tags << {post.id => labels}
+      @tags[post.id] = labels
     end
     logger.debug "=========================#{@tags}================================="
     
@@ -105,13 +105,13 @@ class MicropostsController < ApplicationController
       .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
       user_id, locations.name as locname, city, state, country, username, email, has_pic").where("user_id=?",cookies[:userid])
       .paginate(page: params[:page],per_page:3)
-      @tags = []
+      @tags = {}
       @allposts.each do |post|
         labels = []
-        post.tags.each do |t|
+        post.tags.select("label").all.each do |t|
           labels << t.label
         end
-        @tags << {post.id => labels}
+        @tags[post.id] = labels
       end
       logger.debug "=========================#{@tags}================================="
     end

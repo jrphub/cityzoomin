@@ -30,5 +30,13 @@ class LocationsController < ApplicationController
       .paginate(page: params[:page],per_page:3)
       @locname=@allposts.first.name
     end
+    @tags = {}
+    @allposts.each do |post|
+      labels = []
+      post.tags.select("label").all.each do |t|
+        labels << t.label
+      end
+      @tags[post.id] = labels
+    end
   end
 end

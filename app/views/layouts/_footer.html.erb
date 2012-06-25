@@ -9,11 +9,11 @@
 		<h1>Contact Us</h1>	
 		<div id="contact_error" style="display:none;"></div>	
 			<!-- form -->
-			<%= form_for(:page, :url=>"/pages/sendContact", :method => "post",:html=>{:id=>"contact", :onsubmit=>"return contact();"}) do |f|%>
+			<%= form_for(:page, :url=>"/pages/sendContact", :method => "post",:html=>{:id=>"contact"}) do |f|%>
 				<fieldset id="inputs">
 			      	<%= f.text_field :username,:placeholder=>"Your name please", :required=>"required"%>
 			      	
-			      	<%= f.text_field :email,:placeholder=>"Your email id please", :required=>"required"%>
+			      	<%= f.email_field :email,:placeholder=>"Your email id please", :required=>"required"%>
 			      	
 			      	<%= f.text_area :description,:placeholder=>"Description", :rows=>"5", :required=>"required"%>
 			</fieldset>
@@ -29,7 +29,7 @@
 		<h1>Give your Feedback</h1>	
 		<div id="feedback_error" style="display:none;"></div>	
 			<!-- form -->
-			<%= form_for(:page, :url=>"/pages/sendFeedback", :method => "post",:html=>{:id=>"feedback", :onsubmit=>"return feedback();"}) do |f|%>
+			<%= form_for(:page, :url=>"/pages/sendFeedback", :method => "post",:html=>{:id=>"feedback"}) do |f|%>
 				<fieldset id="inputs">
 			      	<%= f.text_field :username,:placeholder=>"Your name please", :required=>"required"%>
 			      	

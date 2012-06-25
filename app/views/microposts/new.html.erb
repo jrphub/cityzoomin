@@ -79,7 +79,7 @@
                   <%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
                   <br>
                   <%= f.label :tags %><br>
-                  <%= f.text_field :tags,:placeholder=>"Tag your post"%>
+                  <%= f.text_field :tags,:placeholder=>"Tag your post", :value=>""%>
                   <%= f.label :upload%> (Optional)<br>
                   <%= f.file_field :upload, :multiple => true, :style=>"width:44%"%>
                   <p style="color:#E6E6E6;">*Press ctrl to select multiple photos</p>

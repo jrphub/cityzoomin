@@ -66,13 +66,17 @@ ActiveRecord::Schema.define(:version => 20120623215458) do
     t.boolean  "has_photo",   :default => false, :null => false
     t.integer  "location_id",                    :null => false
     t.string   "title",                          :null => false
-    t.string   "category",                       :null => false
     t.integer  "user_id",                        :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "microposts_tags", :force => true do |t|
+    t.integer "micropost_id", :null => false
+    t.integer "tag_id",       :null => false
+  end
 
   create_table "photos", :force => true do |t|
     t.string   "url"
@@ -81,6 +85,13 @@ ActiveRecord::Schema.define(:version => 20120623215458) do
     t.integer  "profile_pic",  :default => 0, :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "label"
+    t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "temp_locations", :force => true do |t|

@@ -30,6 +30,8 @@ Cityzoomin::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
+  match '/pages/sendFeedback', to: 'pages#sendFeedback'
+  match '/pages/sendContact', to: 'pages#sendContact'
   match '/pages/result', to: 'pages#result'
   match '/fplast', to: 'pages#fplast'
   match '/forgot_password', to: 'pages#forgot_password'

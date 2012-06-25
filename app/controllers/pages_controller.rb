@@ -24,6 +24,26 @@ class PagesController < ApplicationController
     
   end
   
+  def sendContact
+    @user = params[:page]
+    if Emailer.contact_email(@user)
+      flash[:success] = "Thanks for the contact. We will get back to you soon"
+    else
+      flash[:error] = "Sorry, For some reason, mail is not sent. Please try again later"
+    end
+    redirect_to root_path
+  end
+  
+  def sendFeedback
+    @user= params[:page]
+    if Emailer.feedback_email(@user)
+      flash[:success] = "Thanks for the feedback."
+    else
+      flash[:error] = "Sorry, For some reason, mail is not sent. Please try again later"
+    end
+    redirect_to root_path
+  end
+  
   def result
     @allposts=Micropost.joins(:user)
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')

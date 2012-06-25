@@ -3,13 +3,25 @@ class Emailer < ActionMailer::Base
   # TODO: set up a background job for it in resque following http://blog.leshill.org/blog/2011/04/03/using-resque-and-resque-scheduler-on-heroku.html
   def confirmation_email(user)
     @user = user
-    headers("X-Author" => "City Zoom-in")
+    headers("X-Author" => "CityZoomin")
     mail(:to => user.email, :subject => "Confirmation from CityZoomin Team").deliver
   end
   
   def forgot_password_email(user)
     @user = user
-    headers("X-Author" => "City Zoom-in")
+    headers("X-Author" => "CityZoomin")
     mail(:to => user.email, :subject => "Reset password from CityZoomin Team").deliver
+  end
+  
+  def contact_email(user)
+    @user = user
+    headers("X-Author" => "CityZoomin Admin")
+    mail(:from => user.email, :to=> "#{ENV['GMAIL_ID']}", :subject => "Contact submitted by user").deliver
+  end
+  
+  def feedback_email(user)
+    @user = user
+    headers("X-Author" => "CityZoomin Admin")
+    mail(:from => user.email, :to=> "#{ENV['GMAIL_ID']}", :subject => "Feedback submitted by user").deliver
   end
 end

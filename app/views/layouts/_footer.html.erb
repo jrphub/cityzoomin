@@ -1,37 +1,56 @@
 <div class="footer">
 	<a class="left" href="#">&copy;2012&nbsp;An Adict Product</a>
 	<a class="left" href="/home">Home</a>
-	<a class='activate_modal left' name='modal_window2' href="#">About</a>
-	<a class='activate_modal left' name='modal_window1' href="#">Contact</a>
+	<a class='left fancybox' href="#feedback">Feedback</a>
+	<a class='left fancybox' href="#contact">Contact</a>
 </div>
-<div id='mask' class='close_modal'></div>
-<div id='modal_window1' class='modal_window'>
-	<div id="login">
-		<h1>Contact Us</h1>		
+<div id="contact" style="display:none;">
+	<div class="fa-box">
+		<h1>Contact Us</h1>	
+		<div id="contact_error" style="display:none;"></div>	
 			<!-- form -->
-			<%= form_for("#", :method => "post",:id=>"formContent") do |f|%>
+			<%= form_for(:page, :url=>"/pages/sendContact", :method => "post",:html=>{:id=>"contact", :onsubmit=>"return contact();"}) do |f|%>
 				<fieldset id="inputs">
-					<%= f.label :username %><br>
-			      	<%= f.text_field :username,:placeholder=>"Your name please"%>
+			      	<%= f.text_field :username,:placeholder=>"Your name please", :required=>"required"%>
 			      	
-			      	<%= f.label :email %><br>
-			      	<%= f.text_field :email,:placeholder=>"Your email id please"%>
+			      	<%= f.text_field :email,:placeholder=>"Your email id please", :required=>"required"%>
 			      	
-			      	<%= f.label :comment %><br>
-			      	<%= f.text_area :comment,:placeholder=>"Any comment?", :rows=>"5"%>
+			      	<%= f.text_area :description,:placeholder=>"Description", :rows=>"5", :required=>"required"%>
 			</fieldset>
 			<fieldset id="actions">
-				<%= f.submit "Submit", :id =>"submit"%>
+				<%= f.submit "Submit", :id =>"submit", :style=>"margin-left:12%;"%>
+				<%= f.submit "Reset", :id =>"submit", :type=>"reset",:style=>"margin-left:10px;"%>
 			</fieldset>
-    	<% end %>
+		<% end %>
 	</div>
 </div>
-<!--for a new modal window, just change the name in the link and put the same name as id in the content -->
-<div id='modal_window2' class='modal_window'>
-	<div id="login">
-		<h1>About Us</h1>
-		<h3>Don't memorize it</h3>
-		<h3>We are murderer....of time</h3>
+<div id="feedback" style="display:none;">
+	<div class="fa-box">
+		<h1>Give your Feedback</h1>	
+		<div id="feedback_error" style="display:none;"></div>	
+			<!-- form -->
+			<%= form_for(:page, :url=>"/pages/sendFeedback", :method => "post",:html=>{:id=>"feedback", :onsubmit=>"return feedback();"}) do |f|%>
+				<fieldset id="inputs">
+			      	<%= f.text_field :username,:placeholder=>"Your name please", :required=>"required"%>
+			      	
+			      	<%= f.email_field :email,:placeholder=>"Your email id please", :required=>"required"%>
+			      	<p>Feedback type:&nbsp;(Optional)&nbsp;
+			      	<select name="page[feedback_type]">
+			      		<option value="0">None</option>
+			      		<option value="1">Idea</option>
+			      		<option value="2">Question</option>
+			      		<option value="3">Problem</option>
+			      		<option value="4">praise</option>
+			      	</select>
+			      	</p>
+			      	<br>
+			      	<%= f.text_area :description,:placeholder=>"Description", :rows=>"5", :required=>"required"%>
+			</fieldset>
+			<fieldset id="actions">
+				<%= f.submit "Submit", :id =>"submit", :style=>"margin-left:12%;"%>
+				<%= f.submit "Reset", :id =>"submit", :type=>"reset",:style=>"margin-left:10px;"%>
+			</fieldset>
+		<% end %>
 	</div>
 </div>
 
@@ -45,5 +64,15 @@
 <script type="text/javascript" src="/assets/jquery.fancybox-buttons.js"></script>
 <script type="text/javascript" src="/assets/jquery.fancybox-thumbs.js"></script>
 <script type="text/javascript" src="/assets/view_photos.js"></script>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+	$(".fancybox").fancybox({
+		fitToView	: false,
+		width		: '30%',
+		height		: 'auto',
+		autoSize	: false,
+		closeClick	: false,
+	});
+});
+</script>
 <%= yield :scripts %>

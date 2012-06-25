@@ -7,7 +7,7 @@
     <% end %>
 	<div id="login">		
 			<!-- form -->
-			<%= form_for("#", :method => "post",:id=>"formContent") do |f|%>
+			<%= form_for("", :method => "post",:id=>"formContent") do |f|%>
 				<fieldset id="inputs">
 					<%= f.label :username %><br>
 			      	<%= f.text_field :username,:placeholder=>"Your name please"%>

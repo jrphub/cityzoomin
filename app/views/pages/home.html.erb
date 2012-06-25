@@ -13,6 +13,11 @@
 		font-size:18px;
 	}
 </style>
+<div style="margin-left:25%;margin-bottom:10px;width:50%;">
+	<% flash.each do |key, value| %>
+		<div id="<%= key %>" style="margin: 0px;"><%= value %></div>
+	<% end %>
+</div>
 <div style="align:center;margin:0 5%;">
 	<table>
 		<tr>
@@ -65,9 +70,6 @@
 						<td>
 							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;">
 								<div id="error" style="margin: 5px;"></div>
-								<% flash.each do |key, value| %>
-						        	<div id="<%= key %>" style="margin: 0px;"><%= value %></div>
-						      	<% end %>
 								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
 									<fieldset id="inputs">
 									      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
@@ -85,9 +87,6 @@
 						<td style="padding-top:2%;">
 							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;">
 								<div id="signup_error" style="margin: 5px;display:none;"></div>
-								<% flash.each do |key, value| %>
-							        <div id="<%= key %>" style="margin: 0px;"><%= value %></div>
-						      	<% end %>
 								<%@user = User.new%>
 								<%= form_for(@user) do |f| %>
 									<%= render 'shared/error_messages', object: f.object%>

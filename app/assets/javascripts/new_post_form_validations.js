@@ -17,7 +17,7 @@ $(document).ready(function(){
 		var tags = $("input#micropost_tags").val();
 		if(tags == "" || tags == null || tags == "Tag your post"){
 			$("#error").fadeIn().text("Tag the place");
-			$("input#tags").focus();
+			$("input#micropost_tags").focus();
 			return false;
 		}
 		

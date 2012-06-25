@@ -6,7 +6,7 @@ end
 <%provide(:title,"Sign up")%>
 	<div id="box">
 		<h1>Signup</h1>
-		<div id="signup_error"></div>
+		<div id="signup_error" style="display: none;"></div>
 		<% flash.each do |key, value| %>
 	        <div id="<%= key %>"><%= value %></div>
 	      <% end %>

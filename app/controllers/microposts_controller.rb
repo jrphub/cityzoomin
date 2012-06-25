@@ -68,7 +68,7 @@ class MicropostsController < ApplicationController
     .joins('INNER JOIN locations ON microposts.location_id = locations.id')
     .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
     user_id, locations.name as locname, city, state, country, username, email, has_pic")
-    .paginate(page: params[:page],per_page:3)
+    .paginate(page: params[:page],per_page:20)
     @tags = {}
     @allposts.each do |post|
       labels = []
@@ -104,7 +104,7 @@ class MicropostsController < ApplicationController
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
       .select("microposts.id,content, has_photo, location_id, title, microposts.created_at, microposts.updated_at,
       user_id, locations.name as locname, city, state, country, username, email, has_pic").where("user_id=?",cookies[:userid])
-      .paginate(page: params[:page],per_page:3)
+      .paginate(page: params[:page],per_page:20)
       @tags = {}
       @allposts.each do |post|
         labels = []
@@ -113,7 +113,6 @@ class MicropostsController < ApplicationController
         end
         @tags[post.id] = labels
       end
-      logger.debug "=========================#{@tags}================================="
     end
   end
   

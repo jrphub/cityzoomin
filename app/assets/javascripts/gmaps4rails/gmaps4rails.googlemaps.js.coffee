@@ -10,7 +10,7 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
     @map_options =
       disableDefaultUI:       false
       disableDoubleClickZoom: false
-      type:                   "HYBRID" # HYBRID, ROADMAP, SATELLITE, TERRAIN
+      type:                   "SATELLITE" # HYBRID, ROADMAP, SATELLITE, TERRAIN
 
     #markers + info styling
     @markers_conf =

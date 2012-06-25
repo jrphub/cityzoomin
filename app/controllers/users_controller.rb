@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   
   def index
     #eager loading
-    @users = User.includes(:microposts).paginate(page: params[:page], per_page:5)
+    @users = User.includes(:microposts).paginate(page: params[:page], per_page:20)
   end
   
   def destroy

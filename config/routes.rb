@@ -36,9 +36,6 @@ Cityzoomin::Application.routes.draw do
   match '/fplast', to: 'pages#fplast'
   match '/forgot_password', to: 'pages#forgot_password'
   match '/home', to: 'pages#home'
-  match '/about', to: 'pages#about'
-  match '/contact', to: 'pages#contact'
-  match '/help', to: 'pages#help'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

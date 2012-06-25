@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	Placeholders.init();
 	// hide messages 
-	$("#signup_error").css("display", "none");
+	$("#signup_error").hide();
 	//$("#success").hide();
 	var form = $("#new_user");
 	// on submit...
 	form.submit(function() {
-		$("#signup_error").css("display", "none");
+		$("#signup_error").hide();
 		
 		//name
 		var name = $("input#user_username").val();

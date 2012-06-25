@@ -1,11 +1,11 @@
 <p>Dear Admin,</p>
 <br/>
-<%=@user.username%> (Email: <%=@user.email%> ) has given feedback.
+<%=@page["username"]%> (Email: <%=@page["email"]%> ) has given feedback.
 <br/>
-<p><b>Feedback Type:&nbsp;</b><%=@user.feedback_type%></p>
+<p><b>Feedback Type:&nbsp;</b><%=@page["feedback_type"]%></p>
 <br>
 <b>Description: </b><br>
-<p><%=@user.description.capitalize%></p>
+<p><%=@page["description"].capitalize%></p>
 
 <p>CityZoomin</p>
 

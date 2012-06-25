@@ -25,8 +25,8 @@ class PagesController < ApplicationController
   end
   
   def sendContact
-    @user = params[:page]
-    if Emailer.contact_email(@user)
+    @page = params[:page]
+    if Emailer.contact_email(@page)
       flash[:success] = "Thanks for the contact. We will get back to you soon"
     else
       flash[:error] = "Sorry, For some reason, mail is not sent. Please try again later"
@@ -35,8 +35,8 @@ class PagesController < ApplicationController
   end
   
   def sendFeedback
-    @user= params[:page]
-    if Emailer.feedback_email(@user)
+    @page= params[:page]
+    if Emailer.feedback_email(@page)
       flash[:success] = "Thanks for the feedback."
     else
       flash[:error] = "Sorry, For some reason, mail is not sent. Please try again later"

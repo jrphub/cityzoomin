@@ -13,15 +13,15 @@ class Emailer < ActionMailer::Base
     mail(:to => user.email, :subject => "Reset password from CityZoomin Team").deliver
   end
   
-  def contact_email(user)
-    @user = user
+  def contact_email(page)
+    @page = page
     headers("X-Author" => "CityZoomin Admin")
-    mail(:from => user.email, :to=> "#{ENV['GMAIL_ID']}", :subject => "Contact submitted by user").deliver
+    mail(:to=> "#{ENV['GMAIL_ID']}", :subject => "Contact submitted by user").deliver
   end
   
-  def feedback_email(user)
-    @user = user
+  def feedback_email(page)
+    @page = page
     headers("X-Author" => "CityZoomin Admin")
-    mail(:from => user.email, :to=> "#{ENV['GMAIL_ID']}", :subject => "Feedback submitted by user").deliver
+    mail(:to=> "#{ENV['GMAIL_ID']}", :subject => "Feedback submitted by user").deliver
   end
 end

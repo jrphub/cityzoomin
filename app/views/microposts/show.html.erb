@@ -5,14 +5,14 @@
         <div id="<%= key %>" style="display:block;"><%= value %></div>
   	<% end %>
     <%=render 'instant_create'%>
-	<%= render 'onepost.html.erb' %>
+	<%= render 'onepost' %>
 </div>
 <%elsif @allposts%>
 	<% provide(:title, "Your Post") %>
 <div id="box">
 	<h1 style="margin-bottom:10px;">Zoomins By You Only</h1>
 	<%=render 'instant_create'%>
-	<%= render 'multipleposts.html.erb' %>
+	<%= render 'multipleposts' %>
 </div>
 <%end%>
 <script type="text/javascript">

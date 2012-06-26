@@ -23,7 +23,7 @@
 		<tr>
 			<td style="padding-left:5%;">
 				<form class="form-wp cf" action="/pages/result" method="get">
-					<input type="text" name="s" id="s" placeholder="Search here..." required>
+					<input type="text" name="s" id="s" placeholder="Search any city, place, state here..." required>
 					<button type="submit">Search</button>
 				</form>
 				<div id="slideshow">
@@ -68,16 +68,17 @@
 				<table>
 					<tr>
 						<td>
-							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;">
+							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;width:100%;">
 								<div id="error" style="margin: 5px;"></div>
 								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
 									<fieldset id="inputs">
-									      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
-									      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%>
+									      	<img src="/assets/email.png"/>&nbsp;<%= f.text_field :email,:placeholder=>"Email", :required=>"required", :class=>"em-pa"%>
+									      	<br>
+									      	<img src="/assets/password.png"/>&nbsp;<%= f.password_field :password,:placeholder=>"Password", :required=>"required", :class=>"pa-em"%>
 									</fieldset>
-									<fieldset id="actions" style="margin: 0px;">
+									<fieldset id="actions">
 										<%= f.submit "Signin", :id =>"submit"%>
-										<a href="forgot_password" style="color:#fff;">Forgot your password?</a>
+										<a href="forgot_password" style="color:#fff;">Forgot password?</a>
 							      	</fieldset>
 						    	<% end %>
 							</div>
@@ -85,19 +86,19 @@
 					</tr>
 					<tr>
 						<td style="padding-top:2%;">
-							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;">
+							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;width:100%;">
 								<div id="signup_error" style="margin: 5px;display:none;"></div>
 								<%@user = User.new%>
 								<%= form_for(@user) do |f| %>
 									<%= render 'shared/error_messages', object: f.object%>
 									<fieldset id="inputs">
-								      	<%= f.text_field :username,:placeholder=>"Your Name", :required=>"required"%>
-								      	
-								      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
-								      	
-								      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%>
-								      	
-								      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :required=>"required"%>
+								      	<img src="/assets/username.png"/>&nbsp;<%= f.text_field :username,:placeholder=>"Your Name", :required=>"required"%>
+								      	<br>
+								      	<img src="/assets/email.png"/>&nbsp;<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
+								      	<br>
+								      	<img src="/assets/password.png"/>&nbsp;<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%>
+								      	<br>
+								      	<img src="/assets/password.png"/>&nbsp;<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :required=>"required"%>
 									</fieldset>
 									<fieldset id="actions" style="margin: 0px;">
 										<%= f.submit "Signup", :id =>"submit"%>

@@ -119,10 +119,10 @@ fieldset
 
 #inputs input
 {
-    background: #f1f1f1 url(http://www.red-team-design.com/wp-content/uploads/2011/09/login-sprite.png) no-repeat;
+    background: #f1f1f1;
     padding: 15px 10px 15px 30px;
     margin: 0 0 10px 0;
-    width: 82%; /* 353 + 2 + 45 = 400 */
+    width: 75%; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -131,13 +131,12 @@ fieldset
     -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
     box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
 }
-
 #inputs textarea
 {
-    background: #f1f1f1 no-repeat;
+    background: #f1f1f1;
     padding: 15px 15px 15px 30px;
-    margin: 0 0 10px 0;
-    width: 82%; /* 353 + 2 + 45 = 400 */
+    margin: 0 0 5px 0;
+    width: 75%; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -170,7 +169,7 @@ fieldset
 /*--------------------*/
 #actions
 {
-    margin: 25px 0 0 0;
+    margin: 5px 0 0 0;
 }
 
 #submit
@@ -202,6 +201,7 @@ fieldset
     cursor: pointer;
     font: bold 15px Arial, Helvetica;
     color: #8f5a0a;
+    margin-left:10%;
 }
 
 #submit:hover,#submit:focus
@@ -232,4 +232,10 @@ fieldset
     color: #3151A2;    
     line-height: 35px;
     margin-left: 10px;
+}
+
+#inputs img{
+	position: relative;
+	width: 22px;
+	height: 22px;
 }

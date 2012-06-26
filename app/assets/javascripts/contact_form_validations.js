@@ -2,6 +2,7 @@
  * @author lipu
  */
 function contact () {
+	Placeholders.init();
 	// hide messages 
 	$("#contact_error").hide();
 	//$("#success").hide();

@@ -33,14 +33,14 @@
 										<a href="/locations/<%=post.location_id%>" style="font-size:14px;font-weight:bold;color:#C2C2C2;"><%=post.locname.titleize%></a>
 									</p>
 									<p style="border-bottom:1px solid #888888;margin-right:20%"></p>
-									<p style="margin:10px 0px;;"><%=post.content%></p>
+									<p style="margin:10px 0px;;"><img src="/assets/content.png"/>&nbsp;<%=post.content%></p>
 									
-									<p><span style="font-weight: bold;">Address: </span><%if post.city.present?%><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>,<%end%>
+									<p><img src="/assets/address.png"/><span style="font-weight: bold;">&nbsp;Address: </span><%if post.city.present?%><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>,<%end%>
 										&nbsp;<%if post.state.present?%><a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>,<%end%>
 										&nbsp;<%if post.country.present?%><a href="/locations/show?country=<%=post.country%>"><%=post.country.titleize%></a><%end%>
 									</p>
 									<br>
-									<p><span style="font-weight: bold;">Tag: </span><%=@tags[post.id].join(',')%></p>
+									<p><img src="/assets/tag.png"/><span style="font-weight: bold;">&nbsp;Tag: </span><%=@tags[post.id].join(',')%></p>
 	 								
 	 								<div class="photo_container" id="<%=post.id%>">
 	 									<p>
@@ -74,8 +74,8 @@
 										<%@allcomments=Comment.find_all_by_micropost_id(post_id)%>
 										<%if @allcomments.nil?%>
 										<%else%>
-											<p style="padding:10px 0px;">View <span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
-												<a href="#comment_<%=post_id%>" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
+											<p style="padding:10px 0px;"><img src="/assets/comment.png"/>&nbsp;View <span style="font-size:20px;font-type:bold;"><%=@allcomments.size%></span> Comments:&nbsp;&nbsp;
+												<a href="#micropost_<%=post_id%>" class="show_hide" style="color:#ADD6FF;">Show/hide</a>
 											</p>
 											<ul class="slidingDiv">
 												<%@allcomments.each do |comment|%>

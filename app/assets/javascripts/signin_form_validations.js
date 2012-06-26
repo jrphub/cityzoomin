@@ -2,6 +2,7 @@
  * @author lipu
  */
 $(document).ready(function(){
+	Placeholders.init();
 	// hide messages 
 	$("#error").hide();
 	//$("#success").hide();

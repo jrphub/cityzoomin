@@ -55,3 +55,7 @@ abbr,acronym { border:0;
 ::-webkit-input-placeholder {
     color: #777777;
 }
+
+:-ms-placeholder {
+   color: #777777;
+}   

@@ -1,8 +1,9 @@
 <style type="text/css">
 	.home-caption{
-		margin-top:2%;
+		margin-top:4%;
 		color:#000;
 		margin-bottom:2%;
+		width:90%;
 	}
 	.home-caption h2{
 		font-size:20px;
@@ -19,56 +20,80 @@
 	<% end %>
 </div>
 <div style="align:center;margin:0 5%;">
-	<table>
+	<table style="width:100%;">
 		<tr>
-			<td style="padding-left:5%;">
-				<form class="form-wp cf" action="/pages/result" method="get">
-					<input type="text" name="s" id="s" placeholder="Search any city, place, state here..." required>
-					<button type="submit">Search</button>
-				</form>
-				<div id="slideshow">
-			        <ul>
-			          <li>
-			            <img src="/assets/bg1.gif" alt="Light" title="Light Trails" />
-			          </li>
-			          
-			          <li>
-			            <img src="/assets/bg3.jpg" alt="Kid" title="Sweet" />
-			          </li>
-			          
-			          <li>           
-			            <img src="/assets/bg10.gif" alt="Colours" title="Colours" />
-			          </li>
-			          
-			          <li>           
-			            <img src="/assets/bg12.jpg" alt="Whistle Podu" title="Whistle Podu" />
-			          </li>
-			          
-			          <li>           
-			            <img src="/assets/bg4.jpg" alt="cute" title="Cute" />
-			          </li>	                         
-			        </ul>
-			      </div>
-			      <script type="text/javascript" src="/assets/craftyslide.min.js"></script>
-			      <script>
-			        $("#slideshow").craftyslide();
-			      </script>
-			      <div class="home-caption">
-			      	<h2>Welcome to CityZoomin</h2>
-			      	<div id="inner-box" style="text-align:left;">
-			      	<h4><b>CityZoomin</b> is a free service to help you in sharing interesting things about your places<br> easily.
-			      	Our objective is to provide micro informations on a place which will make you fall in<br> love with the city.
-			      	We have made it simple and easy enough to discover the fun in the city.</h4>
-			      	</div>
-			      </div>
+			<td style="width:60%;float:left;">
+				<!-- Code for dynamic spehere-->
+				<!--[if IE]>
+				 <style>
+		                    .circle{
+		                        background:transparent url(assets/circleIE.gif) no-repeat top left;
+		                    }
+		                    .description ul a{
+		                        font-weight:normal;
+		                    }
+				</style>
+		        <![endif]-->
+				<div class="wrapper">
+	                <div id="images" class="images">
+	                    <img id="image_about" src="/assets/first.gif" alt="" width="402" height="402" style="display:block;"/>
+	                    <img id="image_portfolio" src="/assets/second.gif" alt="" width="402" height="402"/>
+	                    <img id="image_contact" src="/assets/third.gif" alt="" width="402" height="402" />
+	                </div>
+	                <div class="circleBig">
+	                    <div id="menu" class="menu">
+	                        <a id="about" class="about" href="">Create</a>
+	                        <a id="portfolio" class="portfolio" href="">Share</a>
+	                        <a id="contact" class="contact" href="">Discover</a>
+	                    </div>
+	                </div>
+	            </div>
+	            <div id="circle_about" class="circle">
+	                <div class="description">
+	                    <ul>
+	                        <li><a href="#">1 simple step</a></li>
+	                        <li><a href="#">Create Zoomin</a></li>
+	                        <li><a href="#">Need 20 seconds</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <div id="circle_portfolio" class="circle">
+	                <div class="description">
+	                    <ul>
+	                        <li><a href="#">1 click Share</a></li>
+	                        <li><a href="#">In Social media</a></li>
+	                        <li><a href="#">Need 20 seconds</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <div id="circle_contact" class="circle">
+	                <div class="description">
+	                    <ul>
+	                        <li><a href="#">Many places</a></li>
+	                        <li><a href="#">Around you,</a></li>
+	                        <li><a href="#">Get happiness...</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+		        <div class="home-caption">
+		      		<div id="inner-box" style="text-align:left;">
+		      		<h4><b>CityZoomin</b> is a free service to help you in sharing interesting things about your places easily.
+		      		Our objective is to provide micro informations on a place which will make you fall in love with the city.
+		      		We have made it simple and easy enough to discover the fun in the city.<br> It is very much in <b>BETA</b> now.</h4>
+		      	</div>
+		      </div>
 			      <!--Facebook like plugin -->
 			      <div class="fb-like" data-href="http://cityzoomin.herokuapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
 			</td>
-			<td>
-				<table>
+			<td style="float:left;width:40%">
+				<form class="form-wp cf" action="/pages/result" method="get">
+					<input type="text" name="s" id="s" placeholder="Search any city, place, state here..." required/>
+					<button type="submit" style="width:19%;">Search</button>
+				</form>
+				<table style="width:90%;">
 					<tr>
 						<td>
-							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;width:100%;">
+							<div id="box" style="padding:3%;color: #000;margin-top:10px;margin-bottom:0px;width:100%;">
 								<div id="error" style="margin: 5px;"></div>
 								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
 									<fieldset id="inputs">
@@ -86,7 +111,7 @@
 					</tr>
 					<tr>
 						<td style="padding-top:2%;">
-							<div id="box" style="padding:3%;color: #000;margin-left:15%;margin-bottom:0px;width:100%;">
+							<div id="box" style="padding:3%;color: #000;margin-top:5px;margin-bottom:0px;width:100%;">
 								<div id="signup_error" style="margin: 5px;display:none;"></div>
 								<%@user = User.new%>
 								<%= form_for(@user) do |f| %>

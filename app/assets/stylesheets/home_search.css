@@ -184,7 +184,7 @@
     left:260px;
     z-index:999;
 }
-a.about, a.portfolio, a.contact{
+a.create, a.share, a.discover{
     float:left;
     clear:both;
     height:23px;
@@ -193,15 +193,15 @@ a.about, a.portfolio, a.contact{
     opacity:0.8;
     font-size:18px;
 }
-a.portfolio{
+a.share{
     width:90px;
     background-position:-105px 0px;
 }
-a.contact{
+a.discover{
     width:88px;
     background-position:-199px 0px;
 }
-a.about:hover, a.portfolio:hover, a.contact:hover{
+a.create:hover, a.share:hover, a.discover:hover{
     opacity:1.0;
 }
 .circle{

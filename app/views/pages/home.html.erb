@@ -36,19 +36,29 @@
 		        <![endif]-->
 				<div class="wrapper">
 	                <div id="images" class="images">
-	                    <img id="image_about" src="/assets/first.gif" alt="" width="402" height="402" style="display:block;"/>
-	                    <img id="image_portfolio" src="/assets/second.gif" alt="" width="402" height="402"/>
-	                    <img id="image_contact" src="/assets/third.gif" alt="" width="402" height="402" />
+	                    <img id="image_create" src="/assets/first.gif" alt="" width="402" height="402" style="display:block;"/>
+	                    <img id="image_share" src="/assets/second.gif" alt="" width="402" height="402"/>
+	                    <img id="image_discover" src="/assets/third.gif" alt="" width="402" height="402" />
 	                </div>
 	                <div class="circleBig">
 	                    <div id="menu" class="menu">
-	                        <a id="about" class="about" href="">Create</a>
-	                        <a id="portfolio" class="portfolio" href="">Share</a>
-	                        <a id="contact" class="contact" href="">Discover</a>
+	                        <a id="create" class="create" href="">Create</a>
+	                        <a id="share" class="share" href="">Share</a>
+	                        <a id="discover" class="discover" href="">Discover</a>
 	                    </div>
 	                </div>
 	            </div>
-	            <div id="circle_about" class="circle">
+	            <div id="start"></div>
+	            <div id="circle_start" class="circle">
+	                <div class="description">
+	                    <ul>
+	                        <li><a href="#">Put cursor over</a></li>
+	                        <li><a href="#">Text inside circle</a></li>
+	                        <li><a href="#">To know more...</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <div id="circle_create" class="circle">
 	                <div class="description">
 	                    <ul>
 	                        <li><a href="#">1 simple step</a></li>
@@ -57,7 +67,7 @@
 	                    </ul>
 	                </div>
 	            </div>
-	            <div id="circle_portfolio" class="circle">
+	            <div id="circle_share" class="circle">
 	                <div class="description">
 	                    <ul>
 	                        <li><a href="#">1 click Share</a></li>
@@ -66,7 +76,7 @@
 	                    </ul>
 	                </div>
 	            </div>
-	            <div id="circle_contact" class="circle">
+	            <div id="circle_discover" class="circle">
 	                <div class="description">
 	                    <ul>
 	                        <li><a href="#">Many places</a></li>
@@ -79,7 +89,7 @@
 		      		<div id="inner-box" style="text-align:left;">
 		      		<h4><b>CityZoomin</b> is a free service to help you in sharing interesting things about your places easily.
 		      		Our objective is to provide micro informations on a place which will make you fall in love with the city.
-		      		We have made it simple and easy enough to discover the fun in the city.<br> It is very much in <b>BETA</b> now.</h4>
+		      		We have made it simple and easy enough to discover the fun surrounding you. It is very much in <b>BETA</b> now.</h4>
 		      	</div>
 		      </div>
 			      <!--Facebook like plugin -->
@@ -141,8 +151,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
                 
-    /* when page loads animate the about section by default */
-    move($('#about'),2000,2);
+    /* when page loads animate the create section by default */
+    move($('#start'),2000,2);
 
     $('#menu > a').mouseover(
     function(){

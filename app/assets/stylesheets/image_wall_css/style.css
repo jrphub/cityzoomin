@@ -83,7 +83,7 @@ ul.iw_thumbs li img:hover{
 	box-shadow:1px 1px 7px #777;
 }
 ul.iw_thumbs li:nth-child(even) img{
-	height:20px;
+	/*height:20px; */
 }
 ul.iw_thumbs li:nth-child(odd) img{
 	height:40px;

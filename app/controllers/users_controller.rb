@@ -57,6 +57,10 @@ class UsersController < ApplicationController
   
   def image_wall
     @user = User.find(session[:userid])
+    
+    @allpics= Photo.joins(:micropost).joins(:user)
+    .joins('INNER JOIN locations ON microposts.location_id = locations.id')
+    .select("url, title, username, name, city, state, country").where("profile_pic=?",0)
   end
   
   private

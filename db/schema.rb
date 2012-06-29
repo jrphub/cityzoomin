@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(:version => 20120629140026) do
 
   create_table "comments", :force => true do |t|
-    t.text     "description",                     :null => false
-    t.integer  "user_id",                         :null => false
-    t.integer  "micropost_id",                    :null => false
-    t.string   "username",                        :null => false
-    t.string   "email",                           :null => false
-    t.boolean  "has_pic",      :default => false, :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.text     "description",                 :null => false
+    t.integer  "user_id",                     :null => false
+    t.integer  "micropost_id",                :null => false
+    t.string   "username",                    :null => false
+    t.string   "email",                       :null => false
+    t.integer  "has_pic",      :default => 0, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "impressions", :force => true do |t|

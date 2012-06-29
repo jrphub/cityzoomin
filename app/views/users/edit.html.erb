@@ -1,7 +1,7 @@
 <%provide(:title,"Profile Edit")%>
 	<div id="box">
 		<h1>Edit Your Profile</h1>
-		<div id="error"></div>
+		<div id="error" style="display:none;"></div>
 		<% flash.each do |key, value| %>
 	        <div id="<%= key %>"><%= value %></div>
 	      <% end %>
@@ -14,21 +14,21 @@
 				
 				<div style="text-align: center;">
 					<img src="<%=own_pic_url(@user)%>" width="100px" height="100px" alt="<%=@user.username%>" title="<%=@user.username%>"/>
-				<a class="fancybox" href="#profile_pic" style="color:#000;">change</a></div>
+				<a class="fancybox" href="#profile_pic" style="color:#000;text-decoration: underline;">change</a></div>
 				<div></div>
 				<br />
 				<fieldset id="inputs">
 				<%= f.label :username %><br>
-		      	<%= f.text_field :username,:placeholder=>"Your Name", :autofocus=>"required"%>
+		      	<%= f.text_field :username,:placeholder=>"Your Name",:autofocus=>"required", :required=>"required"%>
 		      	<br>
 				<%= f.label :email %><br>
-		      	<%= f.text_field :email,:placeholder=>"Email", :autofocus=>"required"%>
+		      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
 		      	<br>
 				<%= f.label :password %><br>
-		      	<%= f.password_field :password,:placeholder=>"Password", :autofocus=>"required" %>
+		      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required" %>
 		      	<br>
 		      	<%= f.label :password_confirmation, "Confirmation" %><br>
-		      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :autofocus=>"required" %>
+		      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :required=>"required" %>
 			</fieldset>
 			<fieldset id="actions">
 				<%= f.submit "Update", :id =>"submit"%>

@@ -72,7 +72,7 @@
         padding: 0;
         cursor: pointer;
         height: 40px;
-        width: 20.5%;
+        width: 20%;
         font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
         text-transform: uppercase;
@@ -160,7 +160,7 @@
     width:550px;
     height:400px;
     position:relative;
-    margin-left:8%;
+    margin-left:3%;
 }
 .images img{
     display:none;

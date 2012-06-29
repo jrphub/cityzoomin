@@ -11,6 +11,6 @@
 <div class="comment_body">
 	<a href="/users/<%=comment.user_id%>" class="username"><%=comment.username.titleize%></a>
 	<p class="time">On <%=comment.created_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></p>
-	<p class="content"><%=comment.description.capitalize%></p>
+	<p class="comment_content"><%=comment.description.capitalize%></p>
 	<hr>
 </div>

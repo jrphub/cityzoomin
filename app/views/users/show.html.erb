@@ -57,11 +57,12 @@
 							 	<%if dt.signin_at.nil?%>
 							 		<span>Newbie</span>
 							 	<%else%>
-							 	<span style="font-size: 12px;font-weight: bold;">
+							 	<span style="font-size: 10px;font-weight: bold;">
 							 		<%=dt.signin_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%>
-							 	</span>
+							 	
 							 	&nbsp;
 							 		( <%=time_ago_in_words(dt.signin_at.localtime)%> ago )
+							 		</span>
 							 	<%end%>
 							 <%end%>
 						</p>

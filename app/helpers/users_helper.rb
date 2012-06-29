@@ -19,7 +19,7 @@ module UsersHelper
         else
           return gravatar_for user
         end
-      else
+      else  
         if user.has_pic?
           url_row=Photo.where(['user_id=? AND profile_pic=?', user.user_id, 1])
           return url_row.first.url
@@ -27,7 +27,7 @@ module UsersHelper
           return gravatar_for user
         end
       end
-     else
+     else #this is for search result page before sign up, where session values are not set
        if user.has_pic?
           url_row=Photo.where(['user_id=? AND profile_pic=?', user.user_id, 1])
           return url_row.first.url

@@ -49,7 +49,7 @@
 										<a href="/locations/<%=post.location_id%>" style="font-size:14px;font-weight:bold;color:#C2C2C2;"><%=post.name.titleize%></a>
 									</p>
 									<p style="border-bottom:1px solid #888888;margin-right:20%"></p>
-									<p style="margin:10px 0px;;"><img src="/assets/content.png"/>&nbsp;<%=post.content%></p>
+									<p style="margin:10px 10% 5px 0px;"><img src="/assets/content.png"/>&nbsp;<%=post.content%></p>
 									
 									<p><span style="font-weight: bold;"><img src="/assets/address.png"/>&nbsp;Address: </span><%if post.city.present?%><a href="/locations/show?city=<%=post.city%>"><%=post.city.titleize%></a>,<%end%>
 										&nbsp;<%if post.state.present?%><a href="/locations/show?state=<%=post.state%>"><%=post.state.titleize%></a>,<%end%>
@@ -76,7 +76,7 @@
 														<a href="/users/<%=comment.user_id%>" class="username"><%=comment.username.titleize%></a>
 														<span class="comment_on">On <%=comment.created_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></span>
 													</p>
-													<p class="content">
+													<p class="comment_content">
 													<%=comment.description.capitalize%>
 													</p>
 													<hr>
@@ -120,7 +120,7 @@
 		<a href="/sessions/new" style="color: #FF2020;"> Signin </a> to create one</p>
 <%end%>
 </div>
-<div id="inner-box" style="float:left;margin-left:2%;width:40%;position:fixed;background: rgba(41, 38, 34, 0.28);">
+<div id="inner-box" style="float:left;margin-left:1%;width:40%;position:fixed;background: rgba(41, 38, 34, 0.28);">
 	<h1 style="margin-bottom:10px;">Map Zoomin</h1>
 	<%@loc = Location.find(:all, :conditions => ['UPPER(name) LIKE :search OR UPPER(city) LIKE :search OR UPPER(state) LIKE :search OR UPPER(country) LIKE :search',{:search=>"%#{params[:s].upcase}%"}])%>
 	<%unless (@loc.size == 0)%>

@@ -20,16 +20,16 @@ end
 				
 				<fieldset id="inputs">
 					<%= f.label :username %><br>
-			      	<%= f.text_field :username,:placeholder=>"Your Name"%><br>
+			      	<%= f.text_field :username,:placeholder=>"Your Name",:autofocus=>"required", :required=>"required"%><br>
 			      	
 					<%= f.label :email %><br>
-			      	<%= f.text_field :email,:placeholder=>"Email"%><br>
+			      	<%= f.email_field :email,:placeholder=>"Email", :required=>"required"%><br>
 			      	
 					<%= f.label :password %><br>
-			      	<%= f.password_field :password,:placeholder=>"Password"%><br>
+			      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%><br>
 			      	
 			      	<%= f.label :password_confirmation, "Confirmation" %><br>
-			      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password"%><br>
+			      	<%= f.password_field :password_confirmation,:placeholder=>"Re-enter Password", :required=>"required"%><br>
 				</fieldset>
 				<fieldset id="actions">
 					<%= f.submit "Signup", :id =>"submit"%>

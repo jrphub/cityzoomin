@@ -107,7 +107,7 @@
 								<div id="error" style="margin: 5px;display:none;"></div>
 								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
 									<fieldset id="inputs">
-									      	<img src="/assets/email.png"/>&nbsp;<%= f.text_field :email,:placeholder=>"Email", :required=>"required", :class=>"em-pa"%>
+									      	<img src="/assets/email.png"/>&nbsp;<%= f.email_field :email,:placeholder=>"Email", :required=>"required", :class=>"em-pa"%>
 									      	<br>
 									      	<img src="/assets/password.png"/>&nbsp;<%= f.password_field :password,:placeholder=>"Password", :required=>"required", :class=>"pa-em"%>
 									</fieldset>
@@ -129,7 +129,7 @@
 									<fieldset id="inputs">
 								      	<img src="/assets/username.png"/>&nbsp;<%= f.text_field :username,:placeholder=>"Your Name", :required=>"required"%>
 								      	<br>
-								      	<img src="/assets/email.png"/>&nbsp;<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
+								      	<img src="/assets/email.png"/>&nbsp;<%= f.email_field :email,:placeholder=>"Email", :required=>"required"%>
 								      	<br>
 								      	<img src="/assets/password.png"/>&nbsp;<%= f.password_field :password,:placeholder=>"Password", :required=>"required"%>
 								      	<br>
@@ -187,8 +187,8 @@
                 $theCircle.stop()
             .animate({
                 path : new $.path.arc({
-                    center	: [320,300],
-                    radius	: 271,
+                    center	: [270,290],
+                    radius	: 240,
                     start	: 50,
                     end     : -150,
                     dir	: -1
@@ -201,12 +201,12 @@
         });
 
         /* make the circle appear in a circular movement */
-        var end = 60 - 360 * (turns-1);
+        var end = 58 - 360 * (turns-1);
         $circle.stop()
         .animate({
             path : new $.path.arc({
-                center	: [320,300],
-                radius	: 271,
+                center	: [270,290],
+                radius	: 285,
                 start	: 180,
                 end		: end,
                 dir		: -1

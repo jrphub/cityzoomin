@@ -4,9 +4,12 @@
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(255)     not null
-#  city       :string(255)     not null
-#  latitude   :decimal(6, 6)
-#  longitude  :decimal(6, 6)
+#  city       :string(255)
+#  state      :string(255)
+#  country    :string(255)
+#  latitude   :float
+#  longitude  :float
+#  gmaps      :boolean(1)      default(TRUE), not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #

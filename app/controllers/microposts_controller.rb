@@ -1,5 +1,4 @@
 require "imageshack"
-
 class MicropostsController < ApplicationController
   #impressionist
   before_filter :signed_in_user
@@ -97,8 +96,7 @@ class MicropostsController < ApplicationController
       @tags = []
       @post.first.tags.select("label").all.each do |t|
         @tags << t.label
-      end
-
+      end 
     elsif (params[:view] == 'only')
       @allposts = Micropost.joins(:user)
       .joins('INNER JOIN locations ON microposts.location_id = locations.id')
@@ -113,6 +111,7 @@ class MicropostsController < ApplicationController
         end
         @tags[post.id] = labels
       end
+      
     end
   end
   
@@ -147,7 +146,7 @@ class MicropostsController < ApplicationController
   def comment_create
     @comment = Comment.new({:description => params[:micropost][:description],
               :micropost_id=>params[:micropost][:micropost_id],
-              :user_id=>session[:userid], :username=>session[:username], :email=>session[:email]})
+              :user_id=>session[:userid], :username=>session[:username], :has_pic => session[:has_pic], :email=>session[:email]})
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back} #changed
@@ -178,5 +177,5 @@ class MicropostsController < ApplicationController
         redirect_to signin_path, notice: "Please sign in."
       end
     end
-  
+    
 end

@@ -9,7 +9,7 @@
 						<tbody>
 							<tr>
 								<td style="width:30px;vertical-align:top;">
-									<%= gravatar_for post%>
+									<img src="<%=profile_pic_url(post)%>" width="100px" height="100px" alt="<%=post.username%>" title="<%=post.username%>"/>
 								</td>
 								<td style="padding-left:10px;width:100%;">
 									<div style="float:right;">

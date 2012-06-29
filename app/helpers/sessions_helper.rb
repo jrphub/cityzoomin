@@ -14,6 +14,13 @@ module SessionsHelper
     session[:userid] = user.id
     session[:username] = user.username
     session[:email] = user.email
+    if user.has_pic?
+      url_row=Photo.where(['user_id=? AND profile_pic=?', user.id, 1])
+      session[:picurl]=url_row.first.url
+      session[:has_pic] = 1
+    else
+      session[:has_pic] = 0
+    end
     current_user = user
   end
   
@@ -35,6 +42,10 @@ module SessionsHelper
     cookies.delete(:remember_token)
     cookies.delete(:userid)
     session[:userid] = session[:username] = session[:email]=nil
+    if session[:picurl]
+      session[:picurl]=nil
+    end
+    session[:has_pic] = nil
     cookies.delete(:last_signin)
   end
   

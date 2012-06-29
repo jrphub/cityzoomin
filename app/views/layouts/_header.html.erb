@@ -21,7 +21,7 @@
       <% if signed_in? %>
           <nav id="topNav" style="margin-top:10px;">
             <ul>
-              <li><%= gravatar_for_comment current_user%></li>
+              <li><img src="<%=own_pic_url(current_user)%>" width="40px" height="40px" alt="<%=current_user.username%>" title="<%=current_user.username%>"/></li>
               <li><a href="/users/<%=session[:userid]%>" title="Profile" style="border-left:0px;"><%=current_user.username.titleize%></a></li>
               <li><%=link_to("Home", :microposts)%></li>
               <li><a href="#" title="others" style="margin-right:10px;">More</a>

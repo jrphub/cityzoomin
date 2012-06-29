@@ -8,6 +8,7 @@
 #  micropost_id :integer(4)      not null
 #  username     :string(255)     not null
 #  email        :string(255)     not null
+#  haspic       :boolean(1)
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
 #

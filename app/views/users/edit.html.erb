@@ -6,13 +6,15 @@
 	        <div id="<%= key %>"><%= value %></div>
 	      <% end %>
 		<div id="login">
+			<%@user = User.find(@current_user.id)%>
 			<!--form id="new_user" action="/users" and each element has id user_* -->
 			<%= form_for(@user) do |f| %>
 				<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
 				<%= render 'shared/error_messages', object: f.object%>
 				
-				<div style="text-align: center;"><%= gravatar_for @user%>
-				<a href="http://gravatar.com/emails" id="" style="color:#000;">change</a></div>
+				<div style="text-align: center;">
+					<img src="<%=own_pic_url(@user)%>" width="100px" height="100px" alt="<%=@user.username%>" title="<%=@user.username%>"/>
+				<a class="fancybox" href="#profile_pic" style="color:#000;">change</a></div>
 				<div></div>
 				<br />
 				<fieldset id="inputs">
@@ -33,4 +35,37 @@
       		</fieldset>
 	    	<% end %>
     	</div>
+	</div>
+	<div id="profile_pic" style="display: none;">
+		<div class="fa-box">
+			<p>Click <a href="http://gravatar.com/emails">Here</a> to change your gravatar profile picture</p>
+			<h1>OR</h1>
+			<p>Upload a photo of yours</p>
+				<%= form_for @user, :html=>{:multipart => true} do |f| %>
+					<%= f.file_field :upload,  :style=>"width:60%", :required=>"required"%>
+					<%= f.submit "Update",:id=>"submit", :style=>"width:22%;float:right;height:25px;"%>
+				<%end%>
+			
+			<!-- The below code is for the case where user wants to go back to his gravatar again
+				Not implemented due to error in passing hidden value
+				<br />
+			<h1>OR</h1>
+			<p>If you already have your uploaded profile picture and want to set your gravatar picture
+				 as your profile picture. Then Click Reset
+				 <%= form_for(@user) do |f| %>
+					<%= f.hidden_field :has_pic%>
+					<%=f.submit "Reset",:id=>"submit", :style=>"width:25%;margin-left:0px;height:25px;"%>
+				 <%end%>
+			</p>
+			<br>
+			-->
+			<br />
+			<br />
+		</div>
+		<style type="text/css">
+		.fa-box p{
+			font-size:14px;
+			padding:5px;
+		}
+		</style>
 	</div>

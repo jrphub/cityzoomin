@@ -160,35 +160,33 @@
   list-style: none;
 }
  
-.comments p {
-  margin: 0;
+.comment-pic {
+	float:left;
+	width:50px;
+	height:50px;
+	margin-top:3%;
 }
- 
-.comments .title {
-  font-size: 13px;
-  font-weight: bold;
-  padding-left:5px;
-  vertical-align:top;
+.comment_body {
+	float:left;width:85%;height:auto;margin-top:-8%;margin-left:50px;
 }
 
-.comments .title .username {
-	vertical-align:top;
-	padding-left: 5px;
+.comment_body a {
 	color:#CCFF66;
-}
- 
-.comments .content {
-  font-size: 12px;
-  margin-top:10px;
-  margin-bottom: 10px;
-  margin-left:55px
+	font-size:13px;
+	font-weight:bold;
+	vertical-align:top;
 }
 
-.comments .title .comment_on {
-	margin-left:-8%;
-	font-weight:lighter;
-	font-size: 8pt;
-  	color:#CCFF99
+.time {
+	font-size: 11px;
+	color:#CCFF99;
+	font-style: italic;
+}
+
+.content {
+	margin-top:5px;
+	margin-bottom:5px;
+	font-size:14px;
 }
 
 .show_hide {

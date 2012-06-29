@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id         :integer(4)      not null, primary key
+#  label      :string(255)
+#  count      :integer(4)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 #TODO https://www.ruby-toolbox.com/projects/acts-as-taggable-on
 #TODO http://mattmcnierney.wordpress.com/2011/07/30/tag-clouds-in-ruby-on-rails/
 #TODO http://www.idolhands.com/ruby-on-rails/guides-tips-and-tutorials/creating-a-heatmap-or-tag-cloud-in-rails

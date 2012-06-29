@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
     logger.debug "---------------------------#{result}------------------------"
     return result
   end
-  
 
   private
 

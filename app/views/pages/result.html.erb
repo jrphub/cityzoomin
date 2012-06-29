@@ -29,7 +29,7 @@
 		    						<tr>
 		    							<td>
 		    								<div>
-		    									<%= gravatar_for post%>
+		    									<img src="<%=profile_pic_url(post)%>" width="100px" height="100px" alt="<%=post.username%>" title="<%=post.username%>"/>
 		    								</div>
 		    							</td>
 									</tr>
@@ -72,7 +72,7 @@
 											<%@allcomments.each do |comment|%>
 												<li id="comment_<%=comment.id%>">
 	 												<p class="title">
-														<%= gravatar_for_comment comment%>
+														<img src="<%=profile_pic_url(comment)%>" width="40px" height="40px" alt="<%=comment.username%>" title="<%=comment.username%>"/>
 														<a href="/users/<%=comment.user_id%>" class="username"><%=comment.username.titleize%></a>
 														<span class="comment_on">On <%=comment.created_at.localtime.strftime("%a, %B %d, %Y at %I:%M %p")%></span>
 													</p>

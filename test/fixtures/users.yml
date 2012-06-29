@@ -11,6 +11,7 @@
 #  remember_token  :string(256)
 #  temp_password   :string(255)
 #  signin_at       :datetime
+#  has_pic         :boolean(1)      default(FALSE), not null
 #  admin           :boolean(1)      default(FALSE)
 #
 

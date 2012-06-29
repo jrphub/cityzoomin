@@ -6,7 +6,7 @@
 #  url          :string(255)
 #  user_id      :integer(4)      not null
 #  micropost_id :integer(4)
-#  is_profile   :boolean(1)
+#  profile_pic  :integer(4)      default(0), not null
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
 #

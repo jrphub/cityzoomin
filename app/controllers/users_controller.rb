@@ -1,3 +1,4 @@
+require "imageshack"
 class UsersController < ApplicationController
   #ssl_required  :create
   #force_ssl :only=>:create
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
   #impressionist
   def show
     @user = User.find(params[:id])
+    
   end
   
   def new
@@ -26,21 +28,65 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user=User.find(params[:id])
+    @user=User.find(@current_user.id)
   end
   
   def update
-    @user= User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:success]="Profile Updated"
-      cookies[:before_update] = cookies[:last_signin]
-      #storing last signin value before its getting updated during signin
-      sign_in @user
-      #restoring last signin cookie value
-      cookies[:last_signin]=cookies[:before_update]
-      redirect_to @user
-    else
-      render "edit"
+    if params[:user][:upload] #This checks whether user is uploading his pic
+      arr = [params[:user][:upload]]
+      @url = store_files(arr)
+      if @url.first[:url].nil?
+        if @url.first[:err] == "auth_error"
+          flash[:error] = "We are having some problem with our hosting. So, the image could not be uploaded. Please bear with us."
+        else
+          flash[:error] = @url.first[:err]
+        end
+      else
+        @recent_pic = Photo.create(:url => @url.first[:url], :user_id => @current_user.id, :profile_pic => 1)
+        if @recent_pic
+          @old_pic = Photo.where(['user_id=? AND profile_pic=? AND id <> ?', @current_user.id, 1, @recent_pic.id])
+          if @old_pic.empty? #checks previously existing profile pic is thr or not
+            user_update=User.find(@current_user.id)
+            user_update.attributes={:has_pic=>1}
+            user_update.save(:validate=>false)
+            flash[:success] = "Profile photo is changed"
+          else
+            @old_pic.first.update_attributes(:profile_pic=>2) #This means prev. profile pic exist
+            flash[:success] = "Profile photo is changed"
+          end
+          session[:picurl]=@recent_pic.url
+          session[:has_pic] = 1
+        else
+          flash[:error] = "Sorry! Photo is not changed"
+        end
+      end
+     render 'edit'
+     #The below code is for 3rd case , where user want to go to his gravatar pic again
+    #elsif params[:user][:has_pic] #this checks whether user reset his gravatar pic
+      #reset_user = User.find(@current_user.id)
+      #if reset_user.has_pic
+      #  reset_user.attributes = {:has_pic => 0}
+       # reset_user.save(:validate=>false)
+       # reset_photo = Photo.where(['user_id=? AND profile_pic=?', @current_user.id, 1])
+       # reset_photo.first.update_attributes(:profile_pic=>2)
+        #flash[:success] = "Profile photo is changed to your gravatar"
+      #else
+        # flash[:error] = "You already have gravatar as your profile picture"
+      #end
+     #render 'edit'
+    else #This will be executed if nothing above is true, means, he is updating his info only
+      @user= User.find(params[:id])
+      if @user.update_attributes(params[:user])
+        flash[:success]="Profile Updated"
+        cookies[:before_update] = cookies[:last_signin]
+        #storing last signin value before its getting updated during signin
+        sign_in @user
+        #restoring last signin cookie value
+        cookies[:last_signin]=cookies[:before_update]
+        redirect_to @user
+      else
+        render 'edit'
+      end
     end
   end
   

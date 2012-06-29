@@ -104,7 +104,7 @@
 					<tr>
 						<td>
 							<div id="box" style="padding:3%;color: #000;margin-top:10px;margin-bottom:0px;width:100%;">
-								<div id="error" style="margin: 5px;"></div>
+								<div id="error" style="margin: 5px;display:none;"></div>
 								<%= form_for(:session, :url => sessions_path, :html=>{:id=>'session_user', :class=>'session_user'}) do |f| %>
 									<fieldset id="inputs">
 									      	<img src="/assets/email.png"/>&nbsp;<%= f.text_field :email,:placeholder=>"Email", :required=>"required", :class=>"em-pa"%>

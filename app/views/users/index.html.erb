@@ -1,7 +1,7 @@
 <% provide(:title, "All Users") %>
 <div id="box">
 	<h1>Admin : List of all users</h1>
-	<div id="error"></div>
+	<div id="error" style="display:none;"></div>
 	<% flash.each do |key, value| %>
         <div id="<%= key %>"><%= value %></div>
     <% end %>

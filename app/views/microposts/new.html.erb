@@ -46,7 +46,7 @@
         <td id="separator"></td>
         <td style="width:50%;">
           <div id="box" style="background-color: rgba(197, 197, 197, 0.31);">
-            <div id="error" style="margin:0px;"></div>
+            <div id="error" style="margin:0px;display:none;"></div>
             <% flash.each do |key, value| %>
                 <div id="<%= key %>" style="margin:0px;"><%= value %></div>
             <% end %>
@@ -59,26 +59,26 @@
                       <p>Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
                       <input type="hidden" name="location[name]" value="<%=@loc_name%>">
                       <!-- pending @temp_city, @temp_state, @temp_country-->
-                      <%= i.label :city %><br>
+                      <%= i.label :city %> (Optional)<br>
                       <%= i.text_field :city,:placeholder=>"Which city does it belong?"%>
                       <br>
-                      <%= i.label :state %><br>
+                      <%= i.label :state %> (Optional)<br>
                       <%= i.text_field :state,:placeholder=>"Which state does it belong?"%>
                       <br>
-                      <%= i.label :country %><br>
+                      <%= i.label :country %> (Optional)<br>
                       <%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
 
                       <%= i.hidden_field :latitude%>
                       <%= i.hidden_field :longitude%>
                   <%end%>
                   <br>
-                  <%= f.label :title %><br>
-                  <%= f.text_field :title,:placeholder=>"Give a title to your post"%>
+                  <%= f.label :title %> <b>(*Required)</b><br>
+                  <%= f.text_field :title,:placeholder=>"Give a title to your post", :required=>"required"%>
                   <br>
                   <%= f.label :content %> (Optional)<br>
                   <%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
                   <br>
-                  <%= f.label :tags %><br>
+                  <%= f.label :tags %> (Optional)<br>
                   <%= f.text_field :tags,:placeholder=>"Tag your post", :value=>""%>
                   <br>
                   <%= f.label :upload%> (Optional)<br>

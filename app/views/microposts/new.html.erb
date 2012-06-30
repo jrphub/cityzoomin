@@ -56,32 +56,32 @@
                 <%= render 'shared/error_messages', object: f.object%>
                 <fieldset id="inputs">
                   <%= fields_for(:location) do |i| %>
-                      <p>Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
+                      <p style="color:#6FFFE8;font-size:14px;">Location:<span style="font-size:18px;font-weight: bold;padding-left: 20px;"><%=@loc_name%></span></p>
                       <input type="hidden" name="location[name]" value="<%=@loc_name%>">
                       <!-- pending @temp_city, @temp_state, @temp_country-->
-                      <%= i.label :city %> (Optional)<br>
+                      <%= i.label :city, :style=>"color:#6FFFE8;font-size:14px;" %> (Optional)<br>
                       <%= i.text_field :city,:placeholder=>"Which city does it belong?"%>
                       <br>
-                      <%= i.label :state %> (Optional)<br>
+                      <%= i.label :state, :style=>"color:#6FFFE8;font-size:14px;" %> (Optional)<br>
                       <%= i.text_field :state,:placeholder=>"Which state does it belong?"%>
                       <br>
-                      <%= i.label :country %> (Optional)<br>
+                      <%= i.label :country, :style=>"color:#6FFFE8;font-size:14px;" %> (Optional)<br>
                       <%= i.text_field :country,:placeholder=>"Which country does it belong?"%>
 
                       <%= i.hidden_field :latitude%>
                       <%= i.hidden_field :longitude%>
                   <%end%>
                   <br>
-                  <%= f.label :title %> <b>(*Required)</b><br>
+                  <%= f.label :title, :style=>"color:#6FFFE8;font-size:14px;" %>&nbsp; <b style="color:#EBF148;">(*Required)</b><br>
                   <%= f.text_field :title,:placeholder=>"Give a title to your post", :required=>"required"%>
                   <br>
-                  <%= f.label :content %> (Optional)<br>
+                  <%= f.label :content, :style=>"color:#6FFFE8;font-size:14px;" %> (Optional)<br>
                   <%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
                   <br>
-                  <%= f.label :tags %> (Optional)<br>
+                  <%= f.label :tags, :style=>"color:#6FFFE8;;font-size:14px;" %> (Optional)<br>
                   <%= f.text_field :tags,:placeholder=>"Tag your post", :value=>""%>
                   <br>
-                  <%= f.label :upload%> (Optional)<br>
+                  <%= f.label :upload, :style=>"color:#6FFFE8;font-size:14px;"%> (Optional)<br>
                   <%= f.file_field :upload, :multiple => true, :style=>"width:50%"%>
                   <p style="color:#E6E6E6;">*Press ctrl to select multiple photos</p>
                 </fieldset>

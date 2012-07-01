@@ -11,16 +11,7 @@ module SessionsHelper
     #User.update_attributes("signin_at=?", Time.now)
     cookies.permanent[:remember_token] = user.remember_token
     cookies.permanent[:userid] = user.id
-    session[:userid] = user.id
-    session[:username] = user.username
-    session[:email] = user.email
-    if user.has_pic?
-      url_row=Photo.where(['user_id=? AND profile_pic=?', user.id, 1])
-      session[:picurl]=url_row.first.url
-      session[:has_pic] = 1
-    else
-      session[:has_pic] = 0
-    end
+    restore_session(user)
     current_user = user
   end
   
@@ -77,10 +68,25 @@ module SessionsHelper
 
     def user_from_remember_token
       remember_token = cookies[:remember_token]
-      User.find_by_remember_token(remember_token) unless remember_token.nil?
+      user = User.find_by_remember_token(remember_token) unless remember_token.nil?
+      restore_session(user) if user
+      return user
     end
     
     def clear_return_to
       session.delete(:return_to)
+    end
+    
+    def restore_session(user)
+      session[:userid] = user.id
+      session[:username] = user.username
+      session[:email] = user.email
+      if user.has_pic?
+        url_row=Photo.where(['user_id=? AND profile_pic=?', user.id, 1])
+        session[:picurl]=url_row.first.url
+        session[:has_pic] = 1
+      else
+        session[:has_pic] = 0
+      end
     end
 end

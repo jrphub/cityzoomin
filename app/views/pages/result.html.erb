@@ -116,8 +116,15 @@
 		</ul>
 		<%= will_paginate @allposts%>
 <%else%>
-<p style="font-size:18px;text-align:center;">No post found on this location.
-		<a href="/sessions/new" style="color: #FF2020;"> Signin </a> to create one</p>
+<p style="font-size:18px;text-align:center;">No post found on this location. Please
+	<%unless signed_in?%>
+		<a href="/sessions/new" style="color: #FF2020;"> Signin </a> to 
+	<%end%>
+	create one</p>
+	<br>
+	<%if signed_in?%>
+		<%=render 'microposts/instant_create'%>
+	<%end%>
 <%end%>
 </div>
 <div id="inner-box" style="float:left;margin-left:1%;width:40%;position:fixed;background: rgba(41, 38, 34, 0.28);">

@@ -6,7 +6,6 @@
 	        <div id="<%= key %>"><%= value %></div>
 	      <% end %>
 		<div id="login">
-			<%@user = User.find(@current_user.id)%>
 			<!--form id="new_user" action="/users" and each element has id user_* -->
 			<%= form_for(@user) do |f| %>
 				<!-- if javascript is disabled in a browser, we should provide server side validation. Check giving already registered email id-->
@@ -22,7 +21,7 @@
 		      	<%= f.text_field :username,:placeholder=>"Your Name",:autofocus=>"required", :required=>"required"%>
 		      	<br>
 				<%= f.label :email %><br>
-		      	<%= f.text_field :email,:placeholder=>"Email", :required=>"required"%>
+		      	<%= f.email_field :email,:placeholder=>"Email", :required=>"required"%>
 		      	<br>
 				<%= f.label :password %><br>
 		      	<%= f.password_field :password,:placeholder=>"Password", :required=>"required" %>

@@ -49,15 +49,16 @@ class UsersController < ApplicationController
             user_update=User.find(@current_user.id)
             user_update.attributes={:has_pic=>1}
             user_update.save(:validate=>false)
-            flash[:success] = "Profile photo is changed"
+            flash.now[:success] = "Profile photo is changed"                       
           else
             @old_pic.first.update_attributes(:profile_pic=>2) #This means prev. profile pic exist
-            flash[:success] = "Profile photo is changed"
+            flash.now[:success] = "Profile photo is changed"
           end
           session[:picurl]=@recent_pic.url
           session[:has_pic] = 1
+          @user=User.find(@current_user.id) #important
         else
-          flash[:error] = "Sorry! Photo is not changed"
+          flash.now[:error] = "Sorry! Photo is not changed"
         end
       end
      render 'edit'

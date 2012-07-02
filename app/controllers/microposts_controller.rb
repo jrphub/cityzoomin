@@ -3,9 +3,12 @@ class MicropostsController < ApplicationController
   #impressionist
   before_filter :signed_in_user
   before_filter :correct_user,   only: :destroy
+  #respond_to :html, :xml, :json
   def new
     @loc_name=params[:q]
     @micropost=current_user.microposts.build(params[:micropost])
+    #@tags=Tag.pluck(:label)
+    #respond_with(@tags)
   end
   
   def create

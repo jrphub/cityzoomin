@@ -78,12 +78,12 @@
                   <%= f.label :content, :style=>"color:#6FFFE8;font-size:14px;" %> (Optional)<br>
                   <%= f.text_area :content,:placeholder=>"Put some word to your memory", :size=>"24X6"%>
                   <br>
-                  <%= f.label :tags, :style=>"color:#6FFFE8;;font-size:14px;" %> (Optional)<br>
-                  <%= f.text_field :tags,:placeholder=>"Tag your post", :value=>""%>
-                  <br>
                   <%= f.label :upload, :style=>"color:#6FFFE8;font-size:14px;"%> (Optional)<br>
                   <%= f.file_field :upload, :multiple => true, :style=>"width:50%"%>
                   <p style="color:#E6E6E6;">*Press ctrl to select multiple photos</p>
+                  <br>
+                  <%= f.label :tags, :style=>"color:#6FFFE8;;font-size:14px;" %> (Optional)<br>
+                  <%= f.text_field :tags,:placeholder=>"Tag your post", :value=>""%>
                 </fieldset>
 
                 <fieldset id="actions">
@@ -96,4 +96,10 @@
     </table>
   </div>
 </div>
-
+<script type="text/javascript" src="/assets/jquery.tagsinput.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/jquery.tagsinput.css" />
+<script type="text/javascript">
+	$(function() {
+		$('#micropost_tags').tagsInput({width:'auto'});
+	});
+</script>

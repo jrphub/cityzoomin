@@ -3,15 +3,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 	margin:0;
 	padding:0;
 }
-html{
-	background: url("/assets/bac.gif") no-repeat center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	-moz-transition: width 0.2s ease-in-out 0s;
-}
-body {
+html,body {
 	margin:0;
 	padding:0;
 }
@@ -25,7 +17,6 @@ fieldset,img {
 input{
 	border:1px solid #b0b0b0;
 	padding:3px 5px 4px;
-	color:#000;
 	width:190px;
 }
 address,caption,cite,code,dfn,th,var {
@@ -38,7 +29,6 @@ ol,ul {
 caption,th {
 	text-align:left;
 }
-
 h1,h2,h3,h4,h5,h6 {
 	font-size:100%;
 	font-weight:normal;
@@ -48,14 +38,3 @@ q:before,q:after {
 }
 abbr,acronym { border:0;
 }
-:-moz-placeholder {
-    color: #777777;
-}
- 
-::-webkit-input-placeholder {
-    color: #777777;
-}
-
-:-ms-placeholder {
-   color: #777777;
-}   

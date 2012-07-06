@@ -122,7 +122,7 @@ fieldset
     background: #f1f1f1;
     padding: 10px 30px 10px 20px;
     margin: 0 0 10px 0;
-    width: 75%; /* 353 + 2 + 45 = 400 */
+    width: 70%; /* 353 + 2 + 45 = 400 */
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;

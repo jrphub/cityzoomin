@@ -11,10 +11,10 @@
 			<!-- form -->
 			<%= form_for(:page, :url=>"/pages/sendContact", :method => "post",:html=>{:id=>"contact"}) do |f|%>
 				<fieldset id="inputs">
-			      	<img src="/assets/username.png"/>&nbsp;<%= f.text_field :username,:placeholder=>"Your name please", :required=>"required"%>
-			      	
-			      	<img src="/assets/email.png"/>&nbsp;<%= f.email_field :email,:placeholder=>"Your email id please", :required=>"required"%>
-			      	
+			      	<img src="/assets/username.png"/>&nbsp;<%= f.text_field :username,:placeholder=>"Your name", :required=>"required"%>
+			      	<br>
+			      	<img src="/assets/email.png"/>&nbsp;<%= f.email_field :email,:placeholder=>"Your email id", :required=>"required"%>
+			      	<br>
 			      	<img src="/assets/text.png"/>&nbsp;<%= f.text_area :description,:placeholder=>"Description", :rows=>"5", :required=>"required"%>
 			</fieldset>
 			<fieldset id="actions">
@@ -31,9 +31,10 @@
 			<!-- form -->
 			<%= form_for(:page, :url=>"/pages/sendFeedback", :method => "post",:html=>{:id=>"feedback"}) do |f|%>
 				<fieldset id="inputs">
-			      	<img src="/assets/username.png"/>&nbsp;<%= f.text_field :username,:placeholder=>"Your name please", :required=>"required"%>
-			      	
-			      	<img src="/assets/email.png"/>&nbsp;<%= f.email_field :email,:placeholder=>"Your email id please", :required=>"required"%>
+			      	<img src="/assets/username.png"/>&nbsp;<%= f.text_field :username,:placeholder=>"Your name", :required=>"required"%>
+			      	<br>
+			      	<img src="/assets/email.png"/>&nbsp;<%= f.email_field :email,:placeholder=>"Your email id", :required=>"required"%>
+			      	<br>
 			      	<p><img src="/assets/feedback.png"/>&nbsp;Feedback type:&nbsp;(Optional)&nbsp;
 			      	<select name="page[feedback_type]">
 			      		<option value="None">None</option>

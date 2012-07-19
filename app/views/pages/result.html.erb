@@ -14,7 +14,7 @@
 <%unless (@allposts.size == 0)%>
 	<div id="inner-box">
 	Share this result with 1 click :&nbsp;&nbsp;
-		<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/<%=request.fullpath%>" data-send="true" data-width="450" data-show-faces="false"></div>
+		<div class="fb-like" data-href="http://cityzoomin.herokuapp.com<%=request.fullpath%>" data-send="true" data-width="450" data-show-faces="false"></div>
 	</div>
 		<ul>
 			<%@allposts.each do |post|%>

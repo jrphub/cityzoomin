@@ -17,8 +17,6 @@ h1.main{
     padding: 10px;
 	text-align: center;
 	z-index: 1000;
-	-webkit-animation: appear 0.6s ease-in-out 6s backwards;
-	-moz-animation: appear 0.6s ease-in-out 6s backwards;
 }
 
 p.demos{
@@ -26,8 +24,6 @@ p.demos{
     z-index: 1000;
 	padding: 4px;
 	text-align: center;
-	-webkit-animation: appear 0.6s ease-in-out 6.2s backwards;
-	-moz-animation: appear 0.6s ease-in-out 6.2s backwards;
 }
 p.demos a{
     display: inline-block;
@@ -38,11 +34,6 @@ p.demos a{
 	text-transform: uppercase;
 	font-size: 11px;
 	box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-	-webkit-transition: all 0.2s linear;
-	-moz-transition: all 0.2s linear;
-	-o-transition: all 0.2s linear;
-	-ms-transition: all 0.2s linear;
-	transition: all 0.2s linear;
 }
 p.demos a:hover{
     color: #fff;

@@ -14,12 +14,11 @@
 <%unless (@allposts.size == 0)%>
 	<div id="inner-box">
 	Share this result with 1 click :&nbsp;&nbsp;
-		<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/<%=request.fullpath%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+		<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/<%=request.fullpath%>" data-send="true" data-width="450" data-show-faces="false"></div>
 	</div>
 		<ul>
 			<%@allposts.each do |post|%>
   			<li  id="micropost_<%=post.id%>">
-                <!--TODO: Jyoti, id should not be repeated probably; but "inner-box is repeated"-->
   				<div id="inner-box">
   				<table style="border-collapse: collapse;">
 					<tbody>
@@ -81,7 +80,7 @@
 		 									<%end%>
 		 								</p>
 	 								</div>
-							<div class="fb-like" data-href="http://cityzoomin.herokuapp.com/microposts/<%=post.id%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+							<!--div class="fb-like" data-href="http://cityzoomin.herokuapp.com/microposts/<%=post.id%>" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div-->
 								<!--comment-->
 								<%post_id = post.id%>
  								<div id="comment_<%=post_id%>" class="comments">

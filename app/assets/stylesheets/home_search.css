@@ -75,7 +75,7 @@
         width: 20%;
         font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
-        text-transform: uppercase;
+        text-transform: capitalize;
         background: #d83c3c;
         -moz-border-radius: 0 3px 3px 0;
         -webkit-border-radius: 0 3px 3px 0;

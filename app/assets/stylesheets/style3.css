@@ -1,6 +1,3 @@
-body {
-	font-family: 'MisoRegular';
-}
 .sp-container {
 	width: 900px;
 	height: auto;
@@ -21,7 +18,7 @@ body {
 	left: 50%;
 }
 .sp-container h2 {
-	color: #000;
+	color: #fff;
 	text-shadow: 0px 0px 1px rgba(0,0,0,0.9);
 }
 .sp-wrap {
@@ -95,6 +92,7 @@ body {
 	font-size:80%;
 	font-weight:bold;
 	margin-top:1%;
+	color:#5E0404;
 }
 .sp-full #home_button:hover {
 	opacity: 0.8;

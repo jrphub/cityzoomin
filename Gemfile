@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+#gem 'bootstrap-will_paginate'
 gem "geocoder"
 gem 'gmaps4rails'
 gem 'rest-client'

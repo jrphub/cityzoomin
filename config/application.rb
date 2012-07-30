@@ -42,6 +42,7 @@ module Cityzoomin
     #the below two lines are for making css and js file not 404, lifesaver.
     config.assets.precompile << '*.js'
     config.assets.precompile << '*.css'
+    config.assets.initialize_on_precompile = false
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,

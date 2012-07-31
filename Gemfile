@@ -22,7 +22,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  
+
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
@@ -33,7 +33,6 @@ end
 gem 'jquery-rails'
 # this is needed to solve a linux specific issue. On linux rails can't automatically detect the JS engine
 #gem 'therubyracer'
-#gem 'libv8'
 
 
 group :production do

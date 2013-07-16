@@ -17,6 +17,6 @@ They can tag their experience with funny. hangover, dance etc.
 When a new user come, he will search for the city,
 and the results showing experiences related to places in that city will be shown.
 So a user can choose the place according to his mood and taste.
-He also can share about his experience and another place and things go on.
+He can also share about his experience and another place and things go on.
 
 So basically it is a tool to explore the city but key is experience, mood etc.
